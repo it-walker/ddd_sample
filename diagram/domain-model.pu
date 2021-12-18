@@ -1,0 +1,42 @@
+@startuml タスクドメインモデル
+' left to right direction
+skinparam PackageStyle rectangle
+
+package タスク集約 {
+    object タスク {
+        タスクID
+        タスク名
+        タスクステータス
+        担当ユーザーID
+        期日
+        延期回数
+    }
+}
+package ユーザー集約 {
+    object ユーザー {
+        ユーザーID
+        ユーザー名
+        ユーザーステータス
+    }
+    object プロファイル {
+        メールアドレス
+        電話番号
+    }
+}
+
+タスク ”0..n” --> "0..1" ユーザー
+ユーザー *-left- プロファイル
+
+note right of タスク
+    * タスクステータスは
+    「未完了/完了」の2種類で、
+    「未完了」からはじまる
+    * 期日は1日ずつ、3回まで延期できる
+    * 「活性」ステータスのユーザーのみ担当に設定できる
+end note
+note right of ユーザー
+    * ユーザーステータスは
+    「活性」「非活性」がある
+end note
+
+@enduml
