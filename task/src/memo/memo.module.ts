@@ -6,8 +6,9 @@ import { MemoController } from './memo.controller';
 import { MemoService } from './memo.service';
 
 @Module({
-  controllers: [MemoController],
   imports: [TypeOrmModule.forFeature([Memo])],
+  exports: [TypeOrmModule],
   providers: [MemoService],
+  controllers: [MemoController],
 })
 export class MemoModule {}
