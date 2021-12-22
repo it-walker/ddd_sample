@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Memo } from 'src/entities/memo.entity';
 import { Repository } from 'typeorm';
+
+import { Memo } from '../entities/memo.entity';
 
 @Injectable()
 export class MemoService {

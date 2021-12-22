@@ -5,12 +5,20 @@
     "username": "root",
     "password": "password",
     "database": "ddd",
+    "synchronize": true,
+    "logging": false,
     "entities": [
-        "dist/entities/**/*.entity.js"
+        "src/entities/**/*.entity.ts"
     ],
     "migrations": [
-        "dist/migrations/**/*.js"
+        "src/migrations/**/*.ts"
     ],
-    "synchronize": true,
-    "logging": true
+    "subscribers": [
+        "src/subscribers/**/*.ts"
+    ],
+    "cli": {
+        "entitiesDir": "src/entities",
+        "migrationsDir": "src/migrations",
+        "subscribersDir": "src/subscribers"
+    }
 }

@@ -1,13 +1,13 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Memo extends BaseEntity {
+export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ length: 500 })
+  @Column()
   name: string;
-
-  @Column('text')
+  @Column()
   description: string;
+  @Column()
+  price: string;
 }
