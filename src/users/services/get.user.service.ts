@@ -1,20 +1,18 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { UserDomain } from '../../domain/user.domain';
 import { User } from '../../entities/user.entity';
-// import { UserDomain } from '../domain/user.domain';
-// import { User } from '../domain/user.entity';
-import { IGetUserService } from '../../interfaces/users/services/get.user.service.interface';
+import { IGetUserUseCase } from '../../interfaces/users/usecases/get.user.service.usecase';
 
 @Injectable()
-export class GetUserService implements IGetUserService {
+export class GetUserService implements IGetUserUseCase {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<UserDomain>,
+    @InjectRepository(User) private usersRepository: Repository<User>,
   ) {}
 
-  async getById(id: string): Promise<UserDomain> {
-    return this.usersRepository.findOne({ userId: id });
+  async getById(userId: string): Promise<UserDomain> {
+    return this.usersRepository.findOne({ id: userId });
   }
 }

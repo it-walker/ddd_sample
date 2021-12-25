@@ -9,19 +9,15 @@
 //   private mailAddress: Array<MailAddress>;
 // }
 
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { IsArray, IsString } from 'class-validator';
 
-@Entity()
+import { UserMailAddressDomain } from './user.mailAddress.domain';
+
 export class UserDomain {
-  @PrimaryGeneratedColumn('uuid')
-  userId: string;
+  @IsString()
+  readonly name: string;
 
-  @Column({ length: 100 })
-  fullName: string;
-
-  @Column({ length: 100 })
-  email: string;
-
-  @Column()
-  password: string;
+  // @IsString({ each: true })
+  @IsArray()
+  readonly mailAddresses: UserMailAddressDomain[];
 }

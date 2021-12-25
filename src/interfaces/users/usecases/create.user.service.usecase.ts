@@ -1,5 +1,5 @@
 import { UserDomain } from '../../../domain/user.domain';
 
-export interface ICreateUserService {
+export interface ICreateUserUseCase {
   create(userDomain: UserDomain): Promise<UserDomain>;
 }

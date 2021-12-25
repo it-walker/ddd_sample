@@ -1,14 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { userInfo } from 'os';
 
-import { UsersController } from '../../../controller/users.controller';
+import { UserDomain } from '../../../../domain/user.domain';
 import { TYPES } from '../../../../interfaces/types';
+import { UsersController } from '../../../users.controller';
 
-const user = {
-  userId: '123123123',
-  fullName: 'Rafael Pezzetti',
-  password: '123456',
-  email: 'rafael@pezzetti.com',
+const user: UserDomain = {
+  name: 'Rafael Pezzetti',
+  mailAddresses: [
+    {
+      value: 'rafael@pezzetti.com',
+    },
+  ],
 };
 
 class CreateUserApplicationMock {
@@ -59,7 +61,8 @@ describe('Users Controller', () => {
     it('should get user by id', async () => {
       jest.spyOn(getUserAppMock, 'getById');
 
-      expect(await controller.findOne(user.userId)).toEqual(user);
+      const id = 'xxx';
+      expect(await controller.findOne(id)).toEqual(user);
       expect(getUserAppMock.getById).toBeCalled();
     });
   });
