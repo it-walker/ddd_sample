@@ -20,11 +20,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config ormconfig.json",
-    "typeorm:entity:create": "npx ts-node ./node_modules/typeorm/cli entity:create -d src/entities -n",
     "typeorm:migration:generate": "npx ts-node ./node_modules/typeorm/cli migration:generate -d src/migrations -n",
     "typeorm:migration:run": "npx ts-node ./node_modules/typeorm/cli migration:run",
-    "typeorm:schema:sync": "npx ts-node ./node_modules/typeorm/cli schema:sync"    },
-    "mysql": "docker exec -it task_db_1 bash mysql -u root -p password",
+    "typeorm:schema:sync": "npx ts-node ./node_modules/typeorm/cli schema:sync"
+  },
+  "mysql": "docker exec -it task_db_1 bash mysql -u root -p password",
   "dependencies": {
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
@@ -33,6 +33,7 @@
     "class-validator": "^0.13.2",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
