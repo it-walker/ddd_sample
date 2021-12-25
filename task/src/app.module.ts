@@ -31,8 +31,10 @@ import { ProductModule } from './product/product.module';
     //     "subscribersDir": "src/subscribers"
     //   }
     // }),
-    CarModule, ProductModule],
+    CarModule,
+    ProductModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

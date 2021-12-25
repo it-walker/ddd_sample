@@ -151,7 +151,7 @@ describe('ProductService', () => {
       expect(repository.delete).not.toHaveBeenCalled();
       const result = await service.deleteProduct(productId);
       expect(repository.delete).toHaveBeenCalledWith(productId);
-      expect(result).toBeUndefined()
+      expect(result).toBeUndefined();
     });
   });
 });
