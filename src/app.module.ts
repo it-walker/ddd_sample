@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CarModule } from './car/car.module';
 import { ProductModule } from './product/product.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -31,8 +31,8 @@ import { ProductModule } from './product/product.module';
     //     "subscribersDir": "src/subscribers"
     //   }
     // }),
-    CarModule,
     ProductModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
