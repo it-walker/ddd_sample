@@ -5,16 +5,16 @@
     "username": "root",
     "password": "password",
     "database": "ddd",
-    "synchronize": true,
+    "synchronize": false,
     "logging": false,
     "entities": [
-        "src/entities/**/*.entity.ts"
+        "dist/entities/**/*.entity.js"
     ],
     "migrations": [
-        "src/migrations/**/*.ts"
+        "dist/migrations/**/*.js"
     ],
     "subscribers": [
-        "src/subscribers/**/*.ts"
+        "dist/subscribers/**/*.js"
     ],
     "cli": {
         "entitiesDir": "src/entities",
