@@ -2,5 +2,5 @@
  * 値オブジェクト
  */
 export class MailAddress {
-    private value: string
+  private value: string;
 }
