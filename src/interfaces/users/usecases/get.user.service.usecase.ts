@@ -1,5 +1,5 @@
 import { UserDomain } from '../../../domain/user.domain';
 
-export interface IGetUserService {
+export interface IGetUserUseCase {
   getById(id: string): Promise<UserDomain>;
 }

@@ -2,12 +2,15 @@ import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { User } from '../../../domain/user.entity';
+import { UserDomain } from '../../../../domain/user.domain';
+import { User } from '../../../../entities/user.entity';
+import { UserMailAddress } from '../../../../entities/userMailAddress.entity';
 import { CreateUserService } from '../../../services/create.user.service';
 
 describe('CreateUserService', () => {
   let service: CreateUserService;
-  let repositoryMock: Repository<User>;
+  let userRepositoryMock: Repository<User>;
+  let userMailAddressRepositoryMock: Repository<UserMailAddress>;
   beforeAll(async () => {
     const app = await Test.createTestingModule({
       providers: [
@@ -18,24 +21,46 @@ describe('CreateUserService', () => {
           // as a class value, Repository needs no generics
           useClass: Repository,
         },
+        {
+          provide: getRepositoryToken(UserMailAddress),
+          useClass: Repository,
+        },
       ],
     }).compile();
 
     service = app.get<CreateUserService>(CreateUserService);
-    repositoryMock = app.get<Repository<User>>(getRepositoryToken(User));
+    userRepositoryMock = app.get<Repository<User>>(getRepositoryToken(User));
+    userMailAddressRepositoryMock = app.get<Repository<UserMailAddress>>(
+      getRepositoryToken(UserMailAddress),
+    );
   });
 
   describe('create', () => {
     it('should create user', async () => {
-      const user: User = {
-        userId: '123123123',
-        fullName: 'Rafael Pezzetti',
-        password: '123456',
-        email: 'rafael@pezzetti.com',
+      const mail = 'test@gmail.com';
+      const userDomain: UserDomain = {
+        name: 'name',
+        mailAddresses: [
+          {
+            value: mail,
+          },
+        ],
       };
-      jest.spyOn(repositoryMock, 'save').mockResolvedValueOnce(user);
-      expect(await service.create(user)).toEqual(user);
-      expect(repositoryMock.save).toBeCalled();
+      const expectedUserMailAddress: UserMailAddress = new UserMailAddress();
+      expectedUserMailAddress.value = mail;
+      const m = new UserMailAddress();
+      m.value = mail;
+      const u = new User();
+      u.name = userDomain.name;
+      u.mailAddresses = [m];
+      jest.spyOn(userRepositoryMock, 'save').mockResolvedValueOnce(u);
+      jest
+        .spyOn(userMailAddressRepositoryMock, 'save')
+        .mockResolvedValueOnce(m);
+      const result = await service.create(userDomain);
+      expect(result).toMatchObject(userDomain);
+      expect(userRepositoryMock.save).toBeCalled();
+      expect(userMailAddressRepositoryMock.save).toBeCalled();
     });
   });
 });

@@ -1,16 +1,15 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 
-import { GetUserApplica../../../../interfaces/typeslications/get.user.application';
-import { User } from '../../../domain/user.entity';
-import { TYPES } from '../../../interfaces/types';
+import { UserDomain } from '../../../../domain/user.domain';
+import { TYPES } from '../../../../interfaces/types';
+import { GetUserApplication } from '../../../applications/get.user.application';
 
-const user: User = {
-  userId: '123123123',
-  fullName: 'Rafael Pezzetti',
-  password: '123456',
-  email: 'rafael@pezzetti.com',
+const user: UserDomain = {
+  name: 'Rafael Pezzetti',
+  mailAddresses: [{ value: 'rafael@pezzetti.com' }],
 };
+const userId = 'xxx';
 
 class GetUserService {
   getById(userId) {
@@ -38,18 +37,16 @@ describe('GetUserApplication', () => {
 
   describe('getById', () => {
     it('should get user by id', async () => {
-      expect(await application.getById(user.userId)).toEqual(user);
+      expect(await application.getById(userId)).toEqual(user);
     });
 
     it('throws 404 error when user is not found', async () => {
       jest.spyOn(service, 'getById').mockImplementation(() => null);
       try {
-        await application.getById(user.userId);
+        await application.getById(userId);
       } catch (error) {
         expect(error).toBeInstanceOf(NotFoundException);
-        expect(error.message.message).toEqual(
-          `User with id ${user.userId} was not found`,
-        );
+        expect(error.message).toEqual(`User with id ${userId} was not found`);
       }
     });
   });
