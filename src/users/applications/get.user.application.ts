@@ -1,9 +1,9 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 
-import { UserDomain } from '../../domain/user.domain';
-import { TYPES } from '../../interfaces/types';
-import { IGetUserApplication } from '../../interfaces/users/applications/get.user.application.interface';
-import { IGetUserUseCase } from '../../interfaces/users/usecases/get.user.service.usecase';
+import { UserDomain } from '@/domain/user.domain';
+import { TYPES } from '@/interfaces/types';
+import { IGetUserApplication } from '@/interfaces/users/applications/get.user.application.interface';
+import { IGetUserUseCase } from '@/interfaces/users/usecases/get.user.service.usecase';
 
 @Injectable()
 export class GetUserApplication implements IGetUserApplication {

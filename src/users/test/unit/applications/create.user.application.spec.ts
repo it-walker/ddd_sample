@@ -1,10 +1,10 @@
 import { Test } from '@nestjs/testing';
 
-import { UserDomain } from '../../../../domain/user.domain';
-import { User } from '../../../../entities/user.entity';
-import { UserMailAddress } from '../../../../entities/userMailAddress.entity';
-import { TYPES } from '../../../../interfaces/types';
-import { CreateUserApplication } from '../../../applications/create.user.application';
+import { UserDomain } from '@/domain/user.domain';
+import { User } from '@/entities/user.entity';
+import { UserMailAddress } from '@/entities/userMailAddress.entity';
+import { TYPES } from '@/interfaces/types';
+import { CreateUserApplication } from '@/users/applications/create.user.application';
 
 class CreateUserService {
   create(user) {

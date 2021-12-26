@@ -11,11 +11,11 @@ import {
   UsePipes,
 } from '@nestjs/common';
 
-import { ValidationPipe } from '../common/validation.pipe';
-import { UserDomain } from '../domain/user.domain';
-import { TYPES } from '../interfaces/types';
-import { ICreateUserApplication } from '../interfaces/users/applications/create.user.application.interface';
-import { IGetUserApplication } from '../interfaces/users/applications/get.user.application.interface';
+import { ValidationPipe } from '@/common/validation.pipe';
+import { UserDomain } from '@/domain/user.domain';
+import { TYPES } from '@/interfaces/types';
+import { ICreateUserApplication } from '@/interfaces/users/applications/create.user.application.interface';
+import { IGetUserApplication } from '@/interfaces/users/applications/get.user.application.interface';
 
 @Controller('users')
 export class UsersController {
