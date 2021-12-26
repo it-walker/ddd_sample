@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { UserDomain } from '../../../../domain/user.domain';
-import { TYPES } from '../../../../interfaces/types';
-import { UsersController } from '../../../users.controller';
+import { UserDomain } from '@/domain/user.domain';
+import { TYPES } from '@/interfaces/types';
+import { UsersController } from '@/users/users.controller';
 
 const user: UserDomain = {
   name: 'Rafael Pezzetti',

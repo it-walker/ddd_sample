@@ -2,10 +2,10 @@ import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { UserDomain } from '../../../../domain/user.domain';
-import { User } from '../../../../entities/user.entity';
-import { UserMailAddress } from '../../../../entities/userMailAddress.entity';
-import { CreateUserService } from '../../../services/create.user.service';
+import { UserDomain } from '@/domain/user.domain';
+import { User } from '@/entities/user.entity';
+import { UserMailAddress } from '@/entities/userMailAddress.entity';
+import { CreateUserService } from '@/users/services/create.user.service';
 
 describe('CreateUserService', () => {
   let service: CreateUserService;

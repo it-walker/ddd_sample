@@ -1,7 +1,7 @@
 import { BadRequestException, HttpException } from '@nestjs/common';
 import { IsEmail, IsString } from 'class-validator';
 
-import { ValidationPipe } from '../../common/validation.pipe';
+import { ValidationPipe } from '@/common/validation.pipe';
 
 export class TestDomain {
   @IsString()
