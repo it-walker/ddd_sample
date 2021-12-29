@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@/entities/user.entity';
 import { UserMailAddress } from '@/entities/userMailAddress.entity';
 import { TYPES } from '@/interfaces/types';
+
 import { CreateUserApplication } from './applications/create.user.application';
 import { GetUserApplication } from './applications/get.user.application';
 import { CreateUserService } from './services/create.user.service';
