@@ -29,7 +29,6 @@ export class UsersController {
   @UsePipes(new ValidationPipe())
   @Post('/create')
   async create(@Res() res, @Body() userDomain: UserDomain) {
-    console.log(userDomain);
     const stock = await this.createUserApp.create(userDomain);
     return res.status(HttpStatus.OK).json(stock);
   }
