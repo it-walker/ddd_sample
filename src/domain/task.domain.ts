@@ -9,7 +9,7 @@ export class TaskDomain {
   name: string;
 
   @IsString()
-  taskStatus: TaskStatus;
+  status: TaskStatus;
 
   @IsDate()
   dueDate: Date;
@@ -39,14 +39,14 @@ export class TaskDomain {
     if (name === null) {
       throw new Error('必須項目が設定されていません');
     }
-    this.taskStatus = status;
+    this.status = status;
     this.name = name;
     this.dueDate = dueDate;
     this.postponeCount = postponeCount;
   }
 
   setStatus(taskStatus: TaskStatus) {
-    this.taskStatus = taskStatus;
+    this.status = taskStatus;
   }
 
   postpone() {

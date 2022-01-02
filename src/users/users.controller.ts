@@ -36,7 +36,6 @@ export class UsersController {
   @Get(':id')
   async findOne(@Param('id', new ParseUUIDPipe()) id) {
     const user = await this.getUserApp.getById(id);
-    console.log(user);
     return user;
   }
 }
