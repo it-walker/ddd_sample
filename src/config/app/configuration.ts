@@ -1,4 +1,5 @@
 import { registerAs } from '@nestjs/config';
+
 const CONFIG_KEY_APP = 'app';
 export default registerAs(CONFIG_KEY_APP, () => ({
   env: process.env.APP_ENV,

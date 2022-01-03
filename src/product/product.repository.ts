@@ -1,6 +1,5 @@
+import { Product } from '@src/entities/product.entity';
 import { EntityRepository, Repository } from 'typeorm';
-
-import { Product } from '@/entities/product.entity';
 
 import { CreateProductDto } from './dto/create-product.dto';
 

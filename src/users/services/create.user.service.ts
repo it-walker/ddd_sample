@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { UserDomain } from '@src/domain/user.domain';
+import { User } from '@src/entities/user.entity';
+import { UserMailAddress } from '@src/entities/userMailAddress.entity';
+import { ICreateUserUseCase } from '@src/interfaces/users/usecases/create.user.service.usecase';
 import { Connection, Repository } from 'typeorm';
-
-import { UserDomain } from '@/domain/user.domain';
-import { User } from '@/entities/user.entity';
-import { UserMailAddress } from '@/entities/userMailAddress.entity';
-import { ICreateUserUseCase } from '@/interfaces/users/usecases/create.user.service.usecase';
 
 @Injectable()
 export class CreateUserService implements ICreateUserUseCase {
