@@ -1,10 +1,14 @@
 import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base';
 import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object';
 import { ProductCreatedDomainEvent } from '../events/product.created.domain.event';
+import { ProductDescription } from '../value-objects/product.description.value.object';
 import { ProductName } from '../value-objects/product.name.value.object';
+import { ProductPrice } from '../value-objects/product.price.value.object';
 
 export interface CreateProductProps {
   name: ProductName;
+  description: ProductDescription;
+  price: ProductPrice;
 }
 
 export interface ProductProps extends CreateProductProps {}
@@ -20,7 +24,9 @@ export class ProductEntity extends AggregateRoot<ProductProps> {
     product.addEvent(
       new ProductCreatedDomainEvent({
         aggregateId: id.value,
-        name: props.name.value,
+        name: props.name.getRawProps(),
+        description: props.description.getRawProps(),
+        price: props.price.getRawProps(),
       }),
     );
     return product;

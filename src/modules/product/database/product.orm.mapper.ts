@@ -5,11 +5,12 @@ import {
   OrmMapper,
 } from '@src/libs/ddd/infrastructure/database/base-classes/orm-mapper.base';
 import { ProductEntity } from '@src/modules/product/domain/entities/product.entity';
-import {
-  ProductName,
-  ProductProps,
-} from '../domain/value-objects/product.name.value.object';
+import { ProductName } from '../domain/value-objects/product.name.value.object';
+import { ProductProps } from '@src/modules/product/domain/entities/product.entity';
 import { ProductOrmEntity } from './product.orm-entity';
+import { description } from 'joi';
+import { ProductPrice } from '../domain/value-objects/product.price.value.object';
+import { ProductDescription } from '../domain/value-objects/product.description.value.object';
 
 export class ProductOrmMapper extends OrmMapper<
   ProductEntity,
@@ -22,6 +23,8 @@ export class ProductOrmMapper extends OrmMapper<
 
     const ormProps: OrmEntityProps<ProductOrmEntity> = {
       name: props.name.value,
+      description: props.description.value,
+      price: props.price.value,
     };
     return ormProps;
   }
@@ -31,9 +34,9 @@ export class ProductOrmMapper extends OrmMapper<
   ): EntityProps<ProductProps> {
     const id = new UUID(ormEntity.id);
     const props: ProductProps = {
-      name: new ProductName({
-        name: ormEntity.name,
-      }).value,
+      name: new ProductName(ormEntity.name),
+      description: new ProductDescription(ormEntity.description),
+      price: new ProductPrice(ormEntity.price),
     };
     return { id, props };
   }

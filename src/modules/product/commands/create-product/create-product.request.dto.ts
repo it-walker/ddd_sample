@@ -14,6 +14,23 @@ export class CreateProductRequest implements CreateProduct {
   @MinLength(5)
   @Field()
   readonly name: string;
+
+  @ApiProperty({
+    example: 'この商品はおすすめです',
+    description: '商品の説明を記載します',
+  })
+  @MaxLength(200)
+  @MinLength(0)
+  @Field()
+  readonly description: string;
+  @ApiProperty({
+    example: '15900',
+    description: '商品の値段を記載します',
+  })
+  @MaxLength(10)
+  @MinLength(3)
+  @Field()
+  readonly price: number;
 }
 
 export class CreateProductHttpRequest

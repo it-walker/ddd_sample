@@ -7,7 +7,11 @@ export class ProductCreatedDomainEvent extends DomainEvent {
   constructor(props: DomainEventProps<ProductCreatedDomainEvent>) {
     super(props);
     this.name = props.name;
+    this.description = props.description;
+    this.price = props.price;
   }
 
   readonly name: string;
+  readonly description: string;
+  readonly price: number;
 }

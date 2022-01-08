@@ -9,4 +9,10 @@ export class ProductOrmEntity extends TypeormEntityBase {
 
   @Column()
   name: string;
+
+  @Column()
+  description: string;
+
+  @Column()
+  price: number;
 }

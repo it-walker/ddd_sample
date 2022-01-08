@@ -27,6 +27,8 @@ export class FindUsersHttpController {
 
     /* Returning Response classes which are responsible
        for whitelisting data that is sent to the user */
-    return result.unwrap().map((user) => new UserHttpResponse(user));
+    return result.unwrap().map((user) => {
+      return new UserHttpResponse(user);
+    });
   }
 }
