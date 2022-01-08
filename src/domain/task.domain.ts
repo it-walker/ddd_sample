@@ -1,8 +1,7 @@
+import { TASK_POSTPONE_MAX_COUNT } from '@src/common/constants';
+import { TaskStatus } from '@src/common/taskStatus';
+import { Task } from '@src/entities/task.entity';
 import { IsDate, IsInt, IsString } from 'class-validator';
-
-import { TASK_POSTPONE_MAX_COUNT } from '@/common/constants';
-import { TaskStatus } from '@/common/taskStatus';
-import { Task } from '@/entities/task.entity';
 
 export class TaskDomain {
   @IsString()

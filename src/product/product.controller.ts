@@ -7,8 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-
-import { Product } from '@/entities/product.entity';
+import { Product } from '@src/entities/product.entity';
 
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
@@ -16,6 +15,7 @@ import { ProductService } from './product.service';
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
+
   @Post('create')
   public async createProduct(
     @Body() createProductDto: CreateProductDto,

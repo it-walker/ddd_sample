@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { TaskDomain } from '@src/domain/task.domain';
+import { Task } from '@src/entities/task.entity';
+import { IPostponeTaskUseCase } from '@src/interfaces/tasks/usecases/postpone.task.service.usecase';
 import { Connection, Repository } from 'typeorm';
-
-import { TaskDomain } from '@/domain/task.domain';
-import { Task } from '@/entities/task.entity';
-import { IPostponeTaskUseCase } from '@/interfaces/tasks/usecases/postpone.task.service.usecase';
 
 @Injectable()
 export class PostponeTaskService implements IPostponeTaskUseCase {

@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { UserDomain } from '@src/domain/user.domain';
+import { User } from '@src/entities/user.entity';
+import { IGetUserUseCase } from '@src/interfaces/users/usecases/get.user.service.usecase';
 import { Repository } from 'typeorm';
-
-import { UserDomain } from '@/domain/user.domain';
-import { User } from '@/entities/user.entity';
-import { IGetUserUseCase } from '@/interfaces/users/usecases/get.user.service.usecase';
 
 @Injectable()
 export class GetUserService implements IGetUserUseCase {

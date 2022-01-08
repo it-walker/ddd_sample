@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { Task } from '@/entities/task.entity';
-import { TYPES } from '@/interfaces/types';
+import { Task } from '@src/entities/task.entity';
+import { TYPES } from '@src/interfaces/types';
 
 import { CreateTaskApplication } from './applications/create.task.application';
 import { PostponeTaskApplication } from './applications/postpone.task.application';
