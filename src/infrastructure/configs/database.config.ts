@@ -8,7 +8,7 @@ const database = {
   seeds: ['dist/**/seeding/**/*.seeder.js'],
   factories: ['dist/**/factories/**/*.js'],
   cli: {
-    migrationsDir: 'dist/infrastructure/database/migrations',
+    migrationsDir: 'src/infrastructure/database/migrations',
   },
 };
 

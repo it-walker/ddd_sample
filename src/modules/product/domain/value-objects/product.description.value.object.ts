@@ -5,10 +5,10 @@ import {
 import { Guard } from '@src/libs/ddd/domain/guard';
 import { ArgumentOutOfRangeException } from '@src/libs/exceptions';
 
-export class ProductName extends ValueObject<string> {
+export class ProductDescription extends ValueObject<string> {
   constructor(value: string) {
     super({ value });
-    this.props.value = ProductName.format(value);
+    this.props.value = ProductDescription.format(value);
   }
 
   get value(): string {
@@ -16,12 +16,12 @@ export class ProductName extends ValueObject<string> {
   }
 
   protected validate({ value }: DomainPrimitive<string>): void {
-    if (!Guard.lengthIsBetween(value, 5, 200)) {
-      throw new ArgumentOutOfRangeException('name is out of range');
+    if (!Guard.lengthIsBetween(value, 0, 200)) {
+      throw new ArgumentOutOfRangeException('description is out of range');
     }
   }
 
-  static format(name: string): string {
-    return name.trim().toLowerCase();
+  static format(value: string): string {
+    return value.trim().toLowerCase();
   }
 }

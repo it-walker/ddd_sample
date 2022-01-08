@@ -13,8 +13,13 @@ type UserResponse {
   street: String!
 }
 
+type ProductResponse {
+  name: String!
+}
+
 type Query {
   findUsers(input: FindUsersRequest!): [UserResponse!]!
+  findProducts(input: FindProductsRequest!): [ProductResponse!]!
 }
 
 input FindUsersRequest {
@@ -23,10 +28,16 @@ input FindUsersRequest {
   street: String
 }
 
+input FindProductsRequest {
+  name: String
+}
+
 type Mutation {
   create(input: CreateProductRequest!): IdResponse!
 }
 
 input CreateProductRequest {
   name: String!
+  description: String!
+  price: Float!
 }

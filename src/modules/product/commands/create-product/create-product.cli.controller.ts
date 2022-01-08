@@ -20,9 +20,15 @@ export class CreateProductCliController {
     command: 'product <name>',
     description: 'Create a product',
   })
-  async createProduct(name: string): Promise<void> {
+  async createProduct(
+    name: string,
+    description: string,
+    price: number,
+  ): Promise<void> {
     const command = new CreateProductCommand({
       name,
+      description,
+      price,
     });
 
     const id = await this.commandBus.execute(command);

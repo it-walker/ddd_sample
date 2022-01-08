@@ -6,7 +6,9 @@ import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object';
 import { ProductRepositoryPort } from '@src/modules/product/database/product.repository.port';
 import { ProductAlreadyExistsError } from '@src/modules/product/errors/product.error';
 import { ProductEntity } from '../../domain/entities/product.entity';
+import { ProductDescription } from '../../domain/value-objects/product.description.value.object';
 import { ProductName } from '../../domain/value-objects/product.name.value.object';
+import { ProductPrice } from '../../domain/value-objects/product.price.value.object';
 import { CreateProductCommand } from './create-product.command';
 
 @CommandHandler(CreateProductCommand)
@@ -25,9 +27,9 @@ export class CreateProductService extends CommandHandlerBase {
       return Result.err(new ProductAlreadyExistsError());
     }
     const product = ProductEntity.create({
-      name: new ProductName({
-        name: command.name,
-      }),
+      name: new ProductName(command.name),
+      description: new ProductDescription(command.description),
+      price: new ProductPrice(command.price),
     });
 
     product.someBusinessLogic();

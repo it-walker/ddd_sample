@@ -47,5 +47,6 @@ export const typeormConfig: TypeOrmModuleOptions = {
   // entities: [],
   // autoLoadEntities: true,
   // connectTimeoutMS: 2000,
-  logging: ['error', 'migration', 'schema'],
+  logging: true,
+  // logging: ['error', 'migration', 'schema'],
 };
