@@ -8,15 +8,7 @@ export default registerAs(CONFIG_KEY_DATABASE, () => ({
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_DATABASE,
-  entities: ['dist/**/*.orm-entity.js'],
-  migrationsTableName: 'migrations',
-  migrations: ['dist/**/migrations/*.js'],
-  subscribers: ['dist/**/subscribers/*.js'],
-  seeds: ['dist/**/seeding/**/*.seeder.js'],
-  factories: ['dist/**/factories/**/*.js'],
-  cli: {
-    entitiesDir: 'src/modules/*/database',
-    migrationsDir: 'src/infrastructure/database/migrations',
-    subscribersDir: 'src/modules/*/subscribers',
-  },
+  entities: [],
+  autoLoadEntities: true,
+  logging: true,
 }));
