@@ -7,6 +7,7 @@ import {
 } from '@nestjs/swagger';
 import { AppModule } from '@src/app.module';
 import { AppConfigService } from '@src/config/app/config.service';
+import { ExceptionInterceptor } from './infrastructure/interceptors/exception.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,6 +23,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config, options);
   SwaggerModule.setup('api', app, document);
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalInterceptors(new ExceptionInterceptor());
+  app.enableShutdownHooks();
 
   const appConfig = app.get(AppConfigService);
   await app.listen(appConfig.port);

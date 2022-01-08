@@ -8,17 +8,19 @@
     "synchronize": false,
     "logging": false,
     "entities": [
-        "dist/entities/**/*.entity.js"
+        "dist/**/*.orm-entity.js"
     ],
+    "migrationsTableName": "migrations",
     "migrations": [
-        "dist/migrations/**/*.js"
+        "dist/**/migrations/*.js"
     ],
-    "subscribers": [
-        "dist/subscribers/**/*.js"
+    "seeds": [
+        "dist/**/seeding/**/*.seeder.js"
+    ],
+    "factories": [
+        "dist/**/factories/**/*.js"
     ],
     "cli": {
-        "entitiesDir": "src/entities",
-        "migrationsDir": "src/migrations",
-        "subscribersDir": "src/subscribers"
+        "migrationsDir": "dist/infrastructure/database/migrations"
     }
 }

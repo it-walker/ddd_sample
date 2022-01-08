@@ -24,14 +24,14 @@ export class UserResponse extends ResponseBase implements User {
 
   @ApiProperty({
     example: 'joh-doe@gmail.com',
-    description: "User's email address",
+    description: `User's email address`,
   })
   @Field() // <- only if you are using GraphQL
   email: string;
 
   @ApiProperty({
     example: 'France',
-    description: "User's country of residence",
+    description: `User's country of residence`,
   })
   @Field() // <- only if you are using GraphQL
   country: string;

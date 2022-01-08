@@ -2,13 +2,13 @@ import { typeormConfig } from './ormconfig';
 
 const database = {
   ...typeormConfig,
-  entities: ['src/**/*.orm-entity.ts'],
+  entities: ['dist/**/*.orm-entity.js'],
   migrationsTableName: 'migrations',
-  migrations: ['src/**/migrations/*.ts'],
-  seeds: ['src/**/seeding/**/*.seeder.ts'],
-  factories: ['src/**/factories/**/*.ts'],
+  migrations: ['dist/**/migrations/*.js'],
+  seeds: ['dist/**/seeding/**/*.seeder.js'],
+  factories: ['dist/**/factories/**/*.js'],
   cli: {
-    migrationsDir: 'src/infrastructure/database/migrations',
+    migrationsDir: 'dist/infrastructure/database/migrations',
   },
 };
 

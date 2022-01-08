@@ -1,4 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { UserOrmEntity } from '@src/modules/user/database/user.orm-entity';
 import { config } from 'dotenv';
 import { get } from 'env-var';
 
@@ -31,20 +32,20 @@ class DatabaseConfig {
 
 export const typeormConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: 'localhost',
-  port: 3406,
-  username: 'root',
-  password: 'password',
-  database: 'ddd',
+  // host: 'localhost',
+  // port: 3306,
+  // username: 'root',
+  // password: 'password',
+  // database: 'ddd',
   entities: [],
-  // autoLoadEntities: true,
-  // host: DatabaseConfig.DB_HOST,
-  // port: DatabaseConfig.DB_PORT,
-  // username: DatabaseConfig.DB_USERNAME,
-  // password: DatabaseConfig.DB_PASSWORD,
-  // database: DatabaseConfig.DB_NAME,
+  autoLoadEntities: true,
+  host: DatabaseConfig.DB_HOST,
+  port: DatabaseConfig.DB_PORT,
+  username: DatabaseConfig.DB_USERNAME,
+  password: DatabaseConfig.DB_PASSWORD,
+  database: DatabaseConfig.DB_NAME,
   // entities: [],
   // autoLoadEntities: true,
   // connectTimeoutMS: 2000,
-  // logging: ['error', 'migration', 'schema'],
+  logging: ['error', 'migration', 'schema'],
 };

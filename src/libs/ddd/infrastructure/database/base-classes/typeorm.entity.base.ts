@@ -11,13 +11,13 @@ export abstract class TypeormEntityBase {
   id: string;
 
   @CreateDateColumn({
-    type: 'timestamptz',
+    type: 'timestamp',
     update: false,
   })
   createdAt: Date;
 
   @UpdateDateColumn({
-    type: 'timestamptz',
+    type: 'timestamp',
   })
   updatedAt: Date;
 }

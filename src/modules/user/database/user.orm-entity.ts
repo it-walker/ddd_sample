@@ -1,4 +1,4 @@
-import { TypeormEntityBase } from '@libs/ddd/infrastructure/database/base-classes/typeorm.entity.base';
+import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base';
 import { Column, Entity } from 'typeorm';
 
 import { UserRoles } from '../domain/entities/user.types';
@@ -21,6 +21,6 @@ export class UserOrmEntity extends TypeormEntityBase {
   @Column()
   street: string;
 
-  @Column({ enum: UserRoles })
+  @Column({ type: 'set', enum: UserRoles, default: UserRoles.guest })
   role: UserRoles;
 }

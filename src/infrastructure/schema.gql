@@ -24,12 +24,9 @@ input FindUsersRequest {
 }
 
 type Mutation {
-  create(input: CreateUserRequest!): IdResponse!
+  create(input: CreateProductRequest!): IdResponse!
 }
 
-input CreateUserRequest {
-  email: String!
-  country: String!
-  postalCode: String!
-  street: String!
+input CreateProductRequest {
+  name: String!
 }
