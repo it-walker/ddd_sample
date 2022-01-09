@@ -1,12 +1,17 @@
-import {Injectable} from '@nestjs/common';
-import {InjectConnection, InjectRepository} from '@nestjs/typeorm';
-import {TaskDomain} from '@src/domain/task.domain';
-import {Task} from '@src/entities/task.entity';
-import {ICreateTaskUseCase} from '@src/interfaces/tasks/usecases/create.task.service.usecase';
-import {Connection, Repository} from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { TaskDomain } from '@src/domain/task.domain';
+import { Task } from '@src/entities/task.entity';
+import { ICreateTaskUseCase } from '@src/interfaces/tasks/usecases/create.task.service.usecase';
+import { Connection, Repository } from 'typeorm';
 
 @Injectable()
 export class CreateTaskService implements ICreateTaskUseCase {
+  /**
+   * コンストラクタ
+   * @param taskRepository - タスクリポジトリ
+   * @param connection - DB接続クラス
+   */
   constructor(
     @InjectRepository(Task) private taskRepository: Repository<Task>,
     @InjectConnection() private connection: Connection,

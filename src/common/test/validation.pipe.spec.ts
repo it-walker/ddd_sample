@@ -1,7 +1,7 @@
-import {BadRequestException, HttpException} from '@nestjs/common';
-import {IsEmail, IsString} from 'class-validator';
+import { BadRequestException, HttpException } from '@nestjs/common';
+import { IsEmail, IsString } from 'class-validator';
 
-import {ValidationPipe} from '@/common/validation.pipe';
+import { ValidationPipe } from '@/common/validation.pipe';
 
 export class TestDomain {
   @IsString()
@@ -64,7 +64,7 @@ describe('ValidationPipe', () => {
   describe('when no transform needed', () => {
     it('should get the data', async () => {
       validationPipe = new ValidationPipe();
-      const obj = {test: 'something'};
+      const obj = { test: 'something' };
       const value = await validationPipe.transform(obj, {
         data: '',
         type: 'body',

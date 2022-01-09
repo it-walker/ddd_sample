@@ -1,8 +1,8 @@
-import {routesV1} from '@config/app.routes';
-import {Controller, Delete, Param} from '@nestjs/common';
+import { routesV1 } from '@config/app.routes';
+import { Controller, Delete, Param } from '@nestjs/common';
 
-import {DeleteUserCommand} from './delete-user.command';
-import {DeleteUserService} from './delete-user.service';
+import { DeleteUserCommand } from './delete-user.command';
+import { DeleteUserService } from './delete-user.service';
 
 @Controller(routesV1.version)
 export class DeleteUserHttpController {
@@ -10,7 +10,7 @@ export class DeleteUserHttpController {
 
   @Delete(routesV1.user.delete)
   async deleteUser(@Param('id') id: string): Promise<void> {
-    const command = new DeleteUserCommand({userId: id});
+    const command = new DeleteUserCommand({ userId: id });
     await this.service.execute(command);
   }
 }

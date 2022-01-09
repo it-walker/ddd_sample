@@ -1,13 +1,13 @@
-import {NotFoundException} from '@nestjs/common';
-import {Test} from '@nestjs/testing';
+import { NotFoundException } from '@nestjs/common';
+import { Test } from '@nestjs/testing';
 
-import {UserDomain} from '@/domain/user.domain';
-import {TYPES} from '@/interfaces/types';
-import {GetUserApplication} from '@/users/applications/get.user.application';
+import { UserDomain } from '@/domain/user.domain';
+import { TYPES } from '@/interfaces/types';
+import { GetUserApplication } from '@/users/applications/get.user.application';
 
 const user: UserDomain = {
   name: 'Rafael Pezzetti',
-  mailAddresses: [{value: 'rafael@pezzetti.com'}],
+  mailAddresses: [ { value: 'rafael@pezzetti.com' } ],
 };
 const userId = 'xxx';
 

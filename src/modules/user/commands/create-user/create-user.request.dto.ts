@@ -1,6 +1,6 @@
-import {ArgsType, Field, InputType} from '@nestjs/graphql';
-import {ApiProperty} from '@nestjs/swagger';
-import {CreateUser} from '@src/interface-adapters/interfaces/user/create.user.interface';
+import { ArgsType, Field, InputType } from '@nestjs/graphql';
+import { ApiProperty } from '@nestjs/swagger';
+import { CreateUser } from '@src/interface-adapters/interfaces/user/create.user.interface';
 import {
   IsAlphanumeric,
   IsEmail,
@@ -23,7 +23,7 @@ export class CreateUserRequest implements CreateUser {
   @Field() // <- only if you are using graphql
   readonly email: string;
 
-  @ApiProperty({example: 'France', description: 'Country of residence'})
+  @ApiProperty({ example: 'France', description: 'Country of residence' })
   @MaxLength(50)
   @MinLength(4)
   @IsString()
@@ -31,14 +31,14 @@ export class CreateUserRequest implements CreateUser {
   @Field() // <- only if you are using graphql
   readonly country: string;
 
-  @ApiProperty({example: '28566', description: 'Postal code'})
+  @ApiProperty({ example: '28566', description: 'Postal code' })
   @MaxLength(10)
   @MinLength(4)
   @IsAlphanumeric()
   @Field() // <- only if you are using graphql
   readonly postalCode: string;
 
-  @ApiProperty({example: 'Grande Rue', description: 'Street'})
+  @ApiProperty({ example: 'Grande Rue', description: 'Street' })
   @MaxLength(50)
   @MinLength(5)
   @Matches(/^[a-zA-Z ]*$/)

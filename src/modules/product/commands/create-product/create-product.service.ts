@@ -1,16 +1,16 @@
-import {Result} from '@badrap/result';
-import {CommandHandler} from '@nestjs/cqrs';
-import {UnitOfWork} from '@src/infrastructure/database/unit-of-work/unit-of-work';
-import {CommandHandlerBase} from '@src/libs/ddd/domain/base-classes/command-handler.base';
-import {ID} from '@src/libs/ddd/domain/value-objects/id.value-object';
-import {ProductRepositoryPort} from '@src/modules/product/database/product.repository.port';
-import {ProductAlreadyExistsError} from '@src/modules/product/errors/product.error';
+import { Result } from '@badrap/result';
+import { CommandHandler } from '@nestjs/cqrs';
+import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work';
+import { CommandHandlerBase } from '@src/libs/ddd/domain/base-classes/command-handler.base';
+import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object';
+import { ProductRepositoryPort } from '@src/modules/product/database/product.repository.port';
+import { ProductAlreadyExistsError } from '@src/modules/product/errors/product.error';
 
-import {ProductEntity} from '../../domain/entities/product.entity';
-import {ProductDescription} from '../../domain/value-objects/product.description.value.object';
-import {ProductName} from '../../domain/value-objects/product.name.value.object';
-import {ProductPrice} from '../../domain/value-objects/product.price.value.object';
-import {CreateProductCommand} from './create-product.command';
+import { ProductEntity } from '../../domain/entities/product.entity';
+import { ProductDescription } from '../../domain/value-objects/product.description.value.object';
+import { ProductName } from '../../domain/value-objects/product.name.value.object';
+import { ProductPrice } from '../../domain/value-objects/product.price.value.object';
+import { CreateProductCommand } from './create-product.command';
 
 @CommandHandler(CreateProductCommand)
 export class CreateProductService extends CommandHandlerBase {

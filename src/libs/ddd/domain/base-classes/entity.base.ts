@@ -3,10 +3,10 @@ import {
   ArgumentNotProvidedException,
   ArgumentOutOfRangeException,
 } from '../../../exceptions';
-import {Guard} from '../guard';
-import {convertPropsToObject} from '../utils';
-import {DateVO} from '../value-objects/date.value-object';
-import {ID} from '../value-objects/id.value-object';
+import { Guard } from '../guard';
+import { convertPropsToObject } from '../utils';
+import { DateVO } from '../value-objects/date.value-object';
+import { ID } from '../value-objects/id.value-object';
 
 export interface BaseEntityProps {
   id: ID;

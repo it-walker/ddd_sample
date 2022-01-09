@@ -1,21 +1,21 @@
-import {Injectable, Logger, NotFoundException} from '@nestjs/common';
-import {InjectRepository} from '@nestjs/typeorm';
-import {QueryParams} from '@src/libs/ddd/domain/ports/repository.ports';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports';
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base';
-import {removeUndefinedProps} from '@src/libs/utils/remove-undefined-props.util';
+import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util';
 import {
   ProductEntity,
   ProductProps,
 } from '@src/modules/product/domain/entities/product.entity';
-import {Repository} from 'typeorm';
+import { Repository } from 'typeorm';
 
-import {FindProductsQuery} from '../queries/find-products/find-products.query';
-import {ProductOrmMapper} from './product.orm.mapper';
-import {ProductOrmEntity} from './product.orm-entity';
-import {ProductRepositoryPort} from './product.repository.port';
+import { FindProductsQuery } from '../queries/find-products/find-products.query';
+import { ProductOrmMapper } from './product.orm.mapper';
+import { ProductOrmEntity } from './product.orm-entity';
+import { ProductRepositoryPort } from './product.repository.port';
 
 @Injectable()
 export class ProductRepository
@@ -36,7 +36,7 @@ export class ProductRepository
 
   private async findOneById(id: string): Promise<ProductOrmEntity | undefined> {
     const product = await this.productRepository.findOne({
-      where: {id},
+      where: { id },
     });
 
     return product;
@@ -54,7 +54,7 @@ export class ProductRepository
       name: string,
   ): Promise<ProductOrmEntity | undefined> {
     const user = await this.productRepository.findOne({
-      where: {name: name},
+      where: { name: name },
     });
 
     return user;
@@ -78,7 +78,7 @@ export class ProductRepository
 
   async findProducts(query: FindProductsQuery): Promise<ProductEntity[]> {
     const where: QueryParams<ProductOrmEntity> = removeUndefinedProps(query);
-    const products = await this.repository.find({where});
+    const products = await this.repository.find({ where });
     return products.map((product) => this.mapper.toDomainEntity(product));
   }
 

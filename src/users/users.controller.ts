@@ -10,14 +10,22 @@ import {
   Res,
   UsePipes,
 } from '@nestjs/common';
-import {ValidationPipe} from '@src/common/validation.pipe';
-import {UserDomain} from '@src/domain/user.domain';
-import {TYPES} from '@src/interfaces/types';
-import {ICreateUserApplication} from '@src/interfaces/users/applications/create.user.application.interface';
-import {IGetUserApplication} from '@src/interfaces/users/applications/get.user.application.interface';
+import { ValidationPipe } from '@src/common/validation.pipe';
+import { UserDomain } from '@src/domain/user.domain';
+import { TYPES } from '@src/interfaces/types';
+import { ICreateUserApplication } from '@src/interfaces/users/applications/create.user.application.interface';
+import { IGetUserApplication } from '@src/interfaces/users/applications/get.user.application.interface';
 
 @Controller('users')
+/**
+ * ユーザーコントローラー
+ */
 export class UsersController {
+  /**
+   * コンストラクタ
+   * @param {ICreateUserApplication} createUserApp - create user アプリケーション
+   * @param {IGetUserApplication} getUserApp - get user アプリケーション
+   */
   constructor(
     @Inject(TYPES.applications.ICreateUserApplication)
     private createUserApp: ICreateUserApplication,

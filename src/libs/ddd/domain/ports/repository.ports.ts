@@ -1,6 +1,6 @@
-import {DeepPartial} from '../../../types';
-import {BaseEntityProps} from '../base-classes/entity.base';
-import {ID} from '../value-objects/id.value-object';
+import { DeepPartial } from '../../../types';
+import { BaseEntityProps } from '../base-classes/entity.base';
+import { ID } from '../value-objects/id.value-object';
 
 /*  Most of repositories will probably need generic
     save/find/delete operations, so it's easier

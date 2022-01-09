@@ -1,7 +1,7 @@
-import {Factory, Seeder} from 'typeorm-seeding';
+import { Factory, Seeder } from 'typeorm-seeding';
 
-import {UserOrmEntity} from '../user.orm-entity';
-import {userSeeds} from './user.seeds';
+import { UserOrmEntity } from '../user.orm-entity';
+import { userSeeds } from './user.seeds';
 
 export default class CreateUsers implements Seeder {
   public async run(factory: Factory): Promise<void> {

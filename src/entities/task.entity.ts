@@ -1,12 +1,12 @@
-import {TaskStatus} from '@src/common/taskStatus';
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import { TaskStatus } from '@src/common/taskStatus';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Task {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({length: 100})
+  @Column({ length: 100 })
   name: string;
 
   @Column()

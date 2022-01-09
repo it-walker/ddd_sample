@@ -33,4 +33,7 @@ const getUserService = {
   controllers: [UsersController],
   providers: [createUserApp, getUserApp, createUserService, getUserService],
 })
+/**
+ * ユーザーモジュール
+ */
 export class UsersModule {}

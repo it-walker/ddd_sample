@@ -1,14 +1,14 @@
-import {ValidationPipe} from '@nestjs/common';
-import {NestFactory} from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import {
   DocumentBuilder,
   SwaggerDocumentOptions,
   SwaggerModule,
 } from '@nestjs/swagger';
-import {AppModule} from '@src/app.module';
-import {AppConfigService} from '@src/config/app/config.service';
+import { AppModule } from '@src/app.module';
+import { AppConfigService } from '@src/config/app/config.service';
 
-import {ExceptionInterceptor} from './infrastructure/interceptors/exception.interceptor';
+import { ExceptionInterceptor } from './infrastructure/interceptors/exception.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

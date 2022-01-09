@@ -1,17 +1,17 @@
-import {AggregateRoot} from '@libs/ddd/domain/base-classes/aggregate-root.base';
-import {DomainEvents} from '@libs/ddd/domain/domain-events';
-import {Logger} from '@libs/ddd/domain/ports/logger.port';
-import {ID} from '@libs/ddd/domain/value-objects/id.value-object';
-import {FindConditions, ObjectLiteral, Repository} from 'typeorm';
+import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base';
+import { DomainEvents } from '@libs/ddd/domain/domain-events';
+import { Logger } from '@libs/ddd/domain/ports/logger.port';
+import { ID } from '@libs/ddd/domain/value-objects/id.value-object';
+import { FindConditions, ObjectLiteral, Repository } from 'typeorm';
 
-import {NotFoundException} from '../../../../exceptions';
+import { NotFoundException } from '../../../../exceptions';
 import {
   DataWithPaginationMeta,
   FindManyPaginatedParams,
   QueryParams,
   RepositoryPort,
 } from '../../../domain/ports/repository.ports';
-import {OrmMapper} from './orm-mapper.base';
+import { OrmMapper } from './orm-mapper.base';
 
 export type WhereCondition<OrmEntity> =
   | FindConditions<OrmEntity>[]
@@ -91,7 +91,7 @@ export abstract class TypeormRepositoryBase<
 
   async findOneByIdOrThrow(id: ID | string): Promise<Entity> {
     const found = await this.repository.findOne({
-      where: {id: id instanceof ID ? id.value : id},
+      where: { id: id instanceof ID ? id.value : id },
     });
     if (!found) {
       throw new NotFoundException();
@@ -115,7 +115,7 @@ export abstract class TypeormRepositoryBase<
   }: FindManyPaginatedParams<EntityProps>): Promise<
     DataWithPaginationMeta<Entity[]>
   > {
-    const [data, count] = await this.repository.findAndCount({
+    const [ data, count ] = await this.repository.findAndCount({
       skip: pagination?.skip,
       take: pagination?.limit,
       where: this.prepareQuery(params),
