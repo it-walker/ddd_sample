@@ -14,14 +14,17 @@ import configuration from './configuration';
     ConfigModule.forRoot({
       // envFilePath: `.env.${process.env.NODE_ENV}`,
       isGlobal: true,
-      load: [ configuration ],
+      load: [configuration],
       validationSchema: Joi.object({
         DATABASE_USER: Joi.string().default('root'),
         DATABASE_PASSWORD: Joi.string().default('password'),
       }),
     }),
   ],
-  providers: [ ConfigService, MysqlConfigService ],
-  exports: [ ConfigService, MysqlConfigService ],
+  providers: [ConfigService, MysqlConfigService],
+  exports: [ConfigService, MysqlConfigService],
 })
+/**
+ * MysqlConfigModule class
+ */
 export class MysqlConfigModule {}

@@ -3,7 +3,14 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { IdResponse } from '../dtos/id.response.dto';
 
+/**
+ * ResponseBaseクラス
+ */
 export class ResponseBase extends IdResponse {
+  /**
+   * コンストラクタ
+   * @param { BaseEntityProps } entity
+   */
   constructor(entity: BaseEntityProps) {
     super(entity.id.value);
     this.createdAt = entity.createdAt.value.toISOString();

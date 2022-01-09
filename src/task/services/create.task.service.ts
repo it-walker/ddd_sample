@@ -6,11 +6,14 @@ import { ICreateTaskUseCase } from '@src/interfaces/tasks/usecases/create.task.s
 import { Connection, Repository } from 'typeorm';
 
 @Injectable()
+/**
+ * CreateTaskService class
+ */
 export class CreateTaskService implements ICreateTaskUseCase {
   /**
-   * コンストラクタ
-   * @param taskRepository - タスクリポジトリ
-   * @param connection - DB接続クラス
+   * constructor
+   * @param {Repository<Task>} taskRepository - タスクリポジトリ
+   * @param {Connection} connection - DB接続クラス
    */
   constructor(
     @InjectRepository(Task) private taskRepository: Repository<Task>,
@@ -19,8 +22,9 @@ export class CreateTaskService implements ICreateTaskUseCase {
 
   /**
    * タスクを作成します
-   * @param task - タスクエンティティ
-   * @return 登録したタスク
+   * @param {string} name
+   * @param {Date} dueDate
+   * @return {Promise<TaskDomain>} 登録したタスク
    */
   async create(name: string, dueDate: Date): Promise<TaskDomain> {
     const task = TaskDomain.create(name, dueDate);

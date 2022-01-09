@@ -22,24 +22,24 @@ const httpControllers = [
   FindProductsHttpController,
 ];
 
-const messageControllers = [ CreateProductMessageController ];
+const messageControllers = [CreateProductMessageController];
 
-const cliControllers = [ CreateProductCliController ];
+const cliControllers = [CreateProductCliController];
 
 const graphqlResolvers = [
   CreateProductGraphqlResolver,
   FindProductsGraphqlResolver,
 ];
 
-const repositories = [ ProductRepository ];
+const repositories = [ProductRepository];
 
-const commandHandlers = [ CreateProductService, DeleteProductService ];
+const commandHandlers = [CreateProductService, DeleteProductService];
 
-const queryHandlers = [ FindProductsQueryHandler ];
+const queryHandlers = [FindProductsQueryHandler];
 
 @Module({
-  imports: [ TypeOrmModule.forFeature([ ProductOrmEntity ]), CqrsModule ],
-  controllers: [ ...httpControllers, ...messageControllers ],
+  imports: [TypeOrmModule.forFeature([ProductOrmEntity]), CqrsModule],
+  controllers: [...httpControllers, ...messageControllers],
   providers: [
     ...cliControllers,
     ...repositories,
@@ -49,4 +49,7 @@ const queryHandlers = [ FindProductsQueryHandler ];
     createProductCliLoggerProvider,
   ],
 })
+/**
+ * ProductModule class
+ */
 export class ProductModule {}

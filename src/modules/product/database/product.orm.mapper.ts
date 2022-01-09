@@ -6,19 +6,26 @@ import {
 } from '@src/libs/ddd/infrastructure/database/base-classes/orm-mapper.base';
 import { ProductEntity } from '@src/modules/product/domain/entities/product.entity';
 import { ProductProps } from '@src/modules/product/domain/entities/product.entity';
-import { description } from 'joi';
 
 import { ProductDescription } from '../domain/value-objects/product.description.value.object';
 import { ProductName } from '../domain/value-objects/product.name.value.object';
 import { ProductPrice } from '../domain/value-objects/product.price.value.object';
 import { ProductOrmEntity } from './product.orm-entity';
 
+/**
+ * ProductOrmMapper class
+ */
 export class ProductOrmMapper extends OrmMapper<
   ProductEntity,
   ProductOrmEntity
 > {
+  /**
+   *
+   * @param {ProductEntity} entity
+   * @return {OrmEntityProps<ProductOrmEntity>}
+   */
   protected toOrmProps(
-      entity: ProductEntity,
+    entity: ProductEntity,
   ): OrmEntityProps<ProductOrmEntity> {
     const props = entity.getPropsCopy();
 
@@ -30,8 +37,13 @@ export class ProductOrmMapper extends OrmMapper<
     return ormProps;
   }
 
+  /**
+   *
+   * @param {ProductOrmEntity} ormEntity
+   * @return {EntityProps<ProductProps>}
+   */
   protected toDomainProps(
-      ormEntity: ProductOrmEntity,
+    ormEntity: ProductOrmEntity,
   ): EntityProps<ProductProps> {
     const id = new UUID(ormEntity.id);
     const props: ProductProps = {

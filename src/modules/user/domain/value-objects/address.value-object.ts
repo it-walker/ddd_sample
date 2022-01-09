@@ -14,15 +14,27 @@ export interface AddressProps {
   street: string;
 }
 
+/**
+ * Address class
+ */
 export class Address extends ValueObject<AddressProps> {
+  /**
+   *
+   */
   get country(): string {
     return this.props.country;
   }
 
+  /**
+   *
+   */
   get postalCode(): string {
     return this.props.postalCode;
   }
 
+  /**
+   *
+   */
   get street(): string {
     return this.props.street;
   }
@@ -30,6 +42,7 @@ export class Address extends ValueObject<AddressProps> {
   /**
    * Note: This is a very simplified example of validation,
    * real world projects will have stricter rules
+   * @param {AddressProps} props
    */
   protected validate(props: AddressProps): void {
     if (!Guard.lengthIsBetween(props.country, 2, 50)) {

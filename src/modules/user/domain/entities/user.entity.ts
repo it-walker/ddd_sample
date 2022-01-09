@@ -17,9 +17,17 @@ export interface UserProps extends CreateUserProps {
   role: UserRoles;
 }
 
+/**
+ * UserEntity class
+ */
 export class UserEntity extends AggregateRoot<UserProps> {
   protected readonly _id: UUID;
 
+  /**
+   *
+   * @param {CreateUserProps} create
+   * @return {UserEntity}
+   */
   static create(create: CreateUserProps): UserEntity {
     const id = UUID.generate();
     /* Setting a default role since we are not accepting it during creation. */
@@ -29,35 +37,40 @@ export class UserEntity extends AggregateRoot<UserProps> {
     eventually so an event handler somewhere may receive it and do an
     appropriate action */
     user.addEvent(
-        new UserCreatedDomainEvent({
-          aggregateId: id.value,
-          email: props.email.getRawProps(),
-          ...props.address.getRawProps(),
-        }),
+      new UserCreatedDomainEvent({
+        aggregateId: id.value,
+        email: props.email.getRawProps(),
+        ...props.address.getRawProps(),
+      }),
     );
     return user;
   }
 
-  /* You can create getters only for the properties that you need to access and leave the rest of the properties private to keep entity
-  encapsulated. To get all entity properties (for saving it to a
-  database or mapping a response) use .getPropsCopy() method
-  defined in a EntityBase parent class */
+  /**
+   *
+   */
   get role(): UserRoles {
     return this.props.role;
   }
 
+  /**
+   *
+   */
   makeAdmin(): void {
     this.props.role = UserRoles.admin;
   }
 
+  /**
+   *
+   */
   makeModerator(): void {
     this.props.role = UserRoles.moderator;
   }
 
-  /* Update method only changes properties that we allow, in this
-   case only address. This prevents from illegal actions,
-   for example setting email from outside by doing something
-   like user.email = otherEmail */
+  /**
+   *
+   * @param {UpdateUserAddressProps} props
+   */
   updateAddress(props: UpdateUserAddressProps): void {
     this.props.address = new Address({
       ...this.props.address,
@@ -67,10 +80,16 @@ export class UserEntity extends AggregateRoot<UserProps> {
     // Note: AddressUpdatedDomainEvent can be emitted here if needed.
   }
 
+  /**
+   *
+   */
   someBusinessLogic(): void {
     // TODO: add example business logic
   }
 
+  /**
+   *
+   */
   validate(): void {
     // TODO: example
     // entity business rules validation to protect it's invariant

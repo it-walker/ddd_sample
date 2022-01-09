@@ -1,7 +1,13 @@
 import { Query } from '@libs/ddd/domain/base-classes/query-handler.base';
 
-// Query is a plain object with properties
+/**
+ * Query is a plain object with properties
+ */
 export class FindUsersQuery extends Query {
+  /**
+   * constructor
+   * @param {FindUsersQuery} props
+   */
   constructor(props: FindUsersQuery) {
     super();
     this.country = props.country;

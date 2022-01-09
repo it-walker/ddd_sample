@@ -22,21 +22,21 @@ const httpControllers = [
   FindUsersHttpController,
 ];
 
-const messageControllers = [ CreateUserMessageController ];
+const messageControllers = [CreateUserMessageController];
 
-const cliControllers = [ CreateUserCliController ];
+const cliControllers = [CreateUserCliController];
 
-const graphqlResolvers = [ CreateUserGraphqlResolver, FindUsersGraphqlResolver ];
+const graphqlResolvers = [CreateUserGraphqlResolver, FindUsersGraphqlResolver];
 
-const repositories = [ UserRepository ];
+const repositories = [UserRepository];
 
-const commandHandlers = [ CreateUserService, DeleteUserService ];
+const commandHandlers = [CreateUserService, DeleteUserService];
 
-const queryHandlers = [ FindUsersQueryHandler ];
+const queryHandlers = [FindUsersQueryHandler];
 
 @Module({
-  imports: [ TypeOrmModule.forFeature([ UserOrmEntity ]), CqrsModule ],
-  controllers: [ ...httpControllers, ...messageControllers ],
+  imports: [TypeOrmModule.forFeature([UserOrmEntity]), CqrsModule],
+  controllers: [...httpControllers, ...messageControllers],
   providers: [
     ...cliControllers,
     ...repositories,
@@ -46,4 +46,7 @@ const queryHandlers = [ FindUsersQueryHandler ];
     createUserCliLoggerProvider,
   ],
 })
+/**
+ * UserModule class
+ */
 export class UserModule {}

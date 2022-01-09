@@ -5,7 +5,14 @@ import { ApiProperty } from '@nestjs/swagger';
 import { User } from '@src/interface-adapters/interfaces/user/user.interface';
 
 @ObjectType() // only if you are using graphql
+/**
+ * UserResponse class
+ */
 export class UserResponse extends ResponseBase implements User {
+  /**
+   * constructor
+   * @param {UserEntity} user
+   */
   constructor(user: UserEntity) {
     super(user);
     /* Whitelisting returned data to avoid leaks.
@@ -51,4 +58,7 @@ export class UserResponse extends ResponseBase implements User {
   street: string;
 }
 
+/**
+ * UserHttpResponse class
+ */
 export class UserHttpResponse extends UserResponse implements User {}

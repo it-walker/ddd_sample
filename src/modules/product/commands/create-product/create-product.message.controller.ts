@@ -7,10 +7,20 @@ import { CreateProductCommand } from './create-product.command';
 import { CreateProductMessageRequest } from './create-product.request.dto';
 
 @Controller()
+/**
+ * CreateProductMessageController class
+ */
 export class CreateProductMessageController {
+  /**
+   * constructor
+   * @param {CommandBus} commandBus
+   */
   constructor(private readonly commandBus: CommandBus) {}
 
   @MessagePattern('product.create')
+  /**
+   *
+   */
   async create(message: CreateProductMessageRequest): Promise<IdResponse> {
     const command = new CreateProductCommand(message);
 

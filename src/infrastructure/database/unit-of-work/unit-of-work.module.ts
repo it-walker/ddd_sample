@@ -12,7 +12,10 @@ const unitOfWorkSingletonProvider = {
 @Global()
 @Module({
   imports: [],
-  providers: [ unitOfWorkSingletonProvider ],
-  exports: [ UnitOfWork ],
+  providers: [unitOfWorkSingletonProvider],
+  exports: [UnitOfWork],
 })
+/**
+ * UnitOfWorkModule class
+ */
 export class UnitOfWorkModule {}

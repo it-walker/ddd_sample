@@ -6,16 +6,26 @@ import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-wo
 
 import { WalletEntity } from '../../domain/entities/wallet.entity';
 
+/**
+ * CreateWalletWhenUserIsCreatedDomainEventHandler class
+ */
 export class CreateWalletWhenUserIsCreatedDomainEventHandler extends DomainEventHandler {
+  /**
+   * constructor
+   * @param {UnitOfWork} unitOfWork
+   */
   constructor(private readonly unitOfWork: UnitOfWork) {
     super(UserCreatedDomainEvent);
   }
 
-  // Handle a Domain Event by perform changes to other aggregates (inside the same Domain).
+  /**
+   * Handle a Domain Event by perform changes to other aggregates (inside the same Domain).
+   * @param {UserCreatedDomainEvent} event
+   * @return {Promise<void>}
+   */
   async handle(event: UserCreatedDomainEvent): Promise<void> {
-    const walletRepo: WalletRepositoryPort = this.unitOfWork.getWalletRepository(
-        event.correlationId,
-    );
+    const walletRepo: WalletRepositoryPort =
+      this.unitOfWork.getWalletRepository(event.correlationId);
     const wallet = WalletEntity.create({
       userId: new UUID(event.aggregateId),
     });

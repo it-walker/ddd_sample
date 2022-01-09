@@ -7,14 +7,24 @@ import { UserEntity } from '../../domain/entities/user.entity';
 import { FindUsersQuery } from './find-users.query';
 
 @QueryHandler(FindUsersQuery)
+/**
+ * FindUsersQueryHandler class
+ */
 export class FindUsersQueryHandler extends QueryHandlerBase {
+  /**
+   * constructor
+   * @param {UserRepository} userRepo
+   */
   constructor(private readonly userRepo: UserRepository) {
     super();
   }
 
-  /* Since this is a simple query with no additional business
-     logic involved, it bypasses application's core completely
-     and retrieves users directly from a repository.
+  /**
+   * Since this is a simple query with no additional business
+   * logic involved, it bypasses application's core completely
+   * and retrieves users directly from a repository.
+   * @param {FindUsersQuery} query
+   * @return {Promise<Result<UserEntity[]>>}
    */
   async handle(query: FindUsersQuery): Promise<Result<UserEntity[]>> {
     const users = await this.userRepo.findUsers(query);

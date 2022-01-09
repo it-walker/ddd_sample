@@ -5,12 +5,24 @@ import { IPostponeTaskUseCase } from '@src/interfaces/tasks/usecases/postpone.ta
 import { TYPES } from '@src/interfaces/types';
 
 @Injectable()
+/**
+ * PostponeTaskApplication
+ */
 export class PostponeTaskApplication implements IPostponeTaskApplication {
+  /**
+   * constructor
+   * @param {IPostponeTaskUseCase} postponeTaskService
+   */
   constructor(
     @Inject(TYPES.services.IPostponeTaskService)
     private postponeTaskService: IPostponeTaskUseCase,
   ) {}
 
+  /**
+   *
+   * @param {string} id
+   * @return {Promise<TaskDomain>}
+   */
   async postpone(id: string): Promise<TaskDomain> {
     return this.postponeTaskService.postpone(id);
   }

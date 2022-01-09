@@ -13,25 +13,37 @@ import { WalletOrmMapper } from './wallet.orm-mapper';
 import { WalletRepositoryPort } from './wallet.repository.port';
 
 @Injectable()
+/**
+ *
+ */
 export class WalletRepository
   extends TypeormRepositoryBase<WalletEntity, WalletProps, WalletOrmEntity>
-  implements WalletRepositoryPort {
+  implements WalletRepositoryPort
+{
   protected relations: string[] = [];
 
+  /**
+   * constructor
+   * @param {WalletOrmEntity} walletRepository
+   */
   constructor(
     @InjectRepository(WalletOrmEntity)
     private readonly walletRepository: Repository<WalletOrmEntity>,
   ) {
     super(
-        walletRepository,
-        new WalletOrmMapper(WalletEntity, WalletOrmEntity),
-        new Logger('WalletRepository'),
+      walletRepository,
+      new WalletOrmMapper(WalletEntity, WalletOrmEntity),
+      new Logger('WalletRepository'),
     );
   }
 
-  // Used to construct a query
+  /**
+   *
+   * @param {QueryParams<WalletProps>} params
+   * @return {WhereCondition<WalletOrmEntity>}
+   */
   protected prepareQuery(
-      params: QueryParams<WalletProps>,
+    params: QueryParams<WalletProps>,
   ): WhereCondition<WalletOrmEntity> {
     const where: QueryParams<WalletOrmEntity> = {};
     if (params.id) {

@@ -11,7 +11,15 @@ import { CreateUserCommand } from './create-user.command';
   command: 'new',
   description: 'A command to create a user',
 })
+/**
+ * CreateUserCliController class
+ */
 export class CreateUserCliController {
+  /**
+   *
+   * @param {CommandBus} commandBus
+   * @param {Logger} logger
+   */
   constructor(
     private readonly commandBus: CommandBus,
     @Inject(createUserCliLoggerSymbol)
@@ -22,11 +30,18 @@ export class CreateUserCliController {
     command: 'user <email> <country> <postalCode> <street>',
     description: 'Create a user',
   })
+  /**
+   *
+   * @param {string} email
+   * @param {string} country
+   * @param {string} postalCode
+   * @param {string} street
+   */
   async createUser(
-      email: string,
-      country: string,
-      postalCode: string,
-      street: string,
+    email: string,
+    country: string,
+    postalCode: string,
+    street: string,
   ): Promise<void> {
     const command = new CreateUserCommand({
       email,

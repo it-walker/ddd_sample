@@ -7,10 +7,22 @@ import { CreateUserCommand } from './create-user.command';
 import { CreateUserMessageRequest } from './create-user.request.dto';
 
 @Controller()
+/**
+ * CreateUserMessageController
+ */
 export class CreateUserMessageController {
+  /**
+   * constructor
+   * @param {CommandBus} commandBus
+   */
   constructor(private readonly commandBus: CommandBus) {}
 
   @MessagePattern('user.create') // <- Subscribe to a microservice message
+  /**
+   *
+   * @param {CreateUserMessageRequest} message
+   * @return {Promise<IdResponse>}
+   */
   async create(message: CreateUserMessageRequest): Promise<IdResponse> {
     const command = new CreateUserCommand(message);
 

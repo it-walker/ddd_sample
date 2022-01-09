@@ -13,17 +13,28 @@ import { ProductPrice } from '../../domain/value-objects/product.price.value.obj
 import { CreateProductCommand } from './create-product.command';
 
 @CommandHandler(CreateProductCommand)
+/**
+ * CreateProductService class
+ */
 export class CreateProductService extends CommandHandlerBase {
+  /**
+   * constructor
+   * @param {UnitOfWork} unitOrWork
+   */
   constructor(protected readonly unitOrWork: UnitOfWork) {
     super(unitOrWork);
   }
 
+  /**
+   *
+   * @param {CreateProductCommand} command
+   * @return {Promise<Result<ID, ProductAlreadyExistsError>>}
+   */
   async handle(
-      command: CreateProductCommand,
+    command: CreateProductCommand,
   ): Promise<Result<ID, ProductAlreadyExistsError>> {
-    const productRepository: ProductRepositoryPort = this.unitOrWork.getProductRepository(
-        command.correlationId,
-    );
+    const productRepository: ProductRepositoryPort =
+      this.unitOrWork.getProductRepository(command.correlationId);
 
     if (await productRepository.exists(command.name)) {
       return Result.err(new ProductAlreadyExistsError());

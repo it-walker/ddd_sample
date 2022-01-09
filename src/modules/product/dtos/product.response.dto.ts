@@ -6,7 +6,14 @@ import { ResponseBase } from '@src/libs/ddd/interface-adapters/base-classes/resp
 import { ProductEntity } from '../domain/entities/product.entity';
 
 @ObjectType()
+/**
+ * ProductResponse class
+ */
 export class ProductResponse extends ResponseBase implements Product {
+  /**
+   * constructor
+   * @param {ProductEntity} product
+   */
   constructor(product: ProductEntity) {
     super(product);
 
@@ -22,4 +29,7 @@ export class ProductResponse extends ResponseBase implements Product {
   name: string;
 }
 
+/**
+ * ProductHttpResponse class
+ */
 export class ProductHttpResponse extends ProductResponse implements Product {}

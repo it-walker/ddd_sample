@@ -3,6 +3,9 @@ import { IsEmail, IsString } from 'class-validator';
 
 import { ValidationPipe } from '@/common/validation.pipe';
 
+/**
+ * TestDomain class
+ */
 export class TestDomain {
   @IsString()
   readonly fullName: string;
@@ -54,7 +57,7 @@ describe('ValidationPipe', () => {
       } catch (error) {
         expect(error.response.message).toEqual('Invalid Payload');
         expect(error.response.errors.emailisEmail).toEqual(
-            'email must be an email',
+          'email must be an email',
         );
         expect(error).toBeInstanceOf(HttpException);
       }

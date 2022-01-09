@@ -17,7 +17,14 @@ import { CreateProductCommand } from './create-product.command';
 import { CreateProductHttpRequest } from './create-product.request.dto';
 
 @Controller(routesV1.version)
+/**
+ * CreateProductHttpController class
+ */
 export class CreateProductHttpController {
+  /**
+   * constructor
+   * @param {CommandBus} commandBus
+   */
   constructor(private readonly commandBus: CommandBus) {}
 
   @Post(routesV1.product.root)
@@ -33,22 +40,23 @@ export class CreateProductHttpController {
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
   })
+  /**
+   *
+   */
   async create(@Body() body: CreateProductHttpRequest): Promise<IdResponse> {
     const command = new CreateProductCommand(body);
 
-    const result: Result<
-      ID,
-      ProductAlreadyExistsError
-    > = await this.commandBus.execute(command);
+    const result: Result<ID, ProductAlreadyExistsError> =
+      await this.commandBus.execute(command);
 
     return result.unwrap(
-        (id) => new IdResponse(id.value),
-        (error) => {
-          if (error instanceof ProductAlreadyExistsError) {
-            throw new ConflictException(error.message);
-          }
-          throw error;
-        },
+      (id) => new IdResponse(id.value),
+      (error) => {
+        if (error instanceof ProductAlreadyExistsError) {
+          throw new ConflictException(error.message);
+        }
+        throw error;
+      },
     );
   }
 }

@@ -12,6 +12,9 @@ import {
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType() // <- only if you are using GraphQL
+/**
+ * CreateUserRequest class
+ */
 export class CreateUserRequest implements CreateUser {
   @ApiProperty({
     example: 'john@gmail.com',
@@ -46,8 +49,16 @@ export class CreateUserRequest implements CreateUser {
   readonly street: string;
 }
 
-export class CreateUserHttpRequest extends CreateUserRequest
+/**
+ * CreateUserHttpRequest class
+ */
+export class CreateUserHttpRequest
+  extends CreateUserRequest
   implements CreateUser {}
 
-export class CreateUserMessageRequest extends CreateUserRequest
+/**
+ * CreateUserMessageRequest class
+ */
+export class CreateUserMessageRequest
+  extends CreateUserRequest
   implements CreateUser {}

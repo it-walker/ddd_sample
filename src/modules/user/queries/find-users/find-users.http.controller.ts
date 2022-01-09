@@ -10,7 +10,14 @@ import { FindUsersQuery } from './find-users.query';
 import { FindUsersHttpRequest } from './find-users.request.dto';
 
 @Controller(routesV1.version)
+/**
+ * FindUsersHttpController class
+ */
 export class FindUsersHttpController {
+  /**
+   * constructor
+   * @param {QueryBus} queryBys
+   */
   constructor(private readonly queryBys: QueryBus) {}
 
   @Get(routesV1.user.root)
@@ -19,6 +26,9 @@ export class FindUsersHttpController {
     status: HttpStatus.OK,
     type: UserHttpResponse,
   })
+  /**
+   *
+   */
   async findUsers(
     @Body() request: FindUsersHttpRequest,
   ): Promise<UserHttpResponse[]> {

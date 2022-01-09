@@ -12,19 +12,31 @@ import { UserAlreadyExistsError } from '../../errors/user.errors';
 import { CreateUserCommand } from './create-user.command';
 
 @CommandHandler(CreateUserCommand)
+/**
+ * CreateUserService class
+ */
 export class CreateUserService extends CommandHandlerBase {
+  /**
+   * constructor
+   * @param {UnitOfWorkModule} unitOfWork
+   */
   constructor(protected readonly unitOfWork: UnitOfWork) {
     super(unitOfWork);
   }
 
+  /**
+   *
+   * @param {CreateUserCommand} command
+   * @return {Promise<Result<ID, UserAlreadyExistsError>>}
+   */
   async handle(
-      command: CreateUserCommand,
+    command: CreateUserCommand,
   ): Promise<Result<ID, UserAlreadyExistsError>> {
     /* Use a repository provided by UnitOfWork to include everything
        (including changes caused by Domain Events) into one
        atomic database transaction */
     const userRepo: UserRepositoryPort = this.unitOfWork.getUserRepository(
-        command.correlationId,
+      command.correlationId,
     );
     // user uniqueness guard
     if (await userRepo.exists(command.email)) {

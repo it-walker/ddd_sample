@@ -16,7 +16,15 @@ import { CreateTaskDto } from './dto/create.task.dto';
 import { PostponeTaskDto } from './dto/postpone.task.dto';
 
 @Controller('task')
+/**
+ * TaskController class
+ */
 export class TaskController {
+  /**
+   *
+   * @param {ICreateTaskApplication} createTaskApp
+   * @param {IPostponeTaskApplication} postponeTaskApp
+   */
   constructor(
     @Inject(TYPES.applications.ICreateTaskApplication)
     private createTaskApp: ICreateTaskApplication,
@@ -26,12 +34,18 @@ export class TaskController {
 
   @UsePipes(new ValidationPipe())
   @Post('/create')
+  /**
+   *
+   */
   async create(@Res() res, @Body() createTaskDto: CreateTaskDto) {
     const stock = await this.createTaskApp.create(createTaskDto);
     return res.status(HttpStatus.OK).json(stock);
   }
 
   @Post('/postpone')
+  /**
+   *
+   */
   async postpone(@Res() res, @Body() postponeTaskDto: PostponeTaskDto) {
     const task = await this.postponeTaskApp.postpone(postponeTaskDto.id);
     return res.status(HttpStatus.OK).json(task);
