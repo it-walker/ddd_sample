@@ -17,7 +17,15 @@ import { ICreateUserApplication } from '@src/interfaces/users/applications/creat
 import { IGetUserApplication } from '@src/interfaces/users/applications/get.user.application.interface';
 
 @Controller('users')
+/**
+ * ユーザーコントローラー
+ */
 export class UsersController {
+  /**
+   * コンストラクタ
+   * @param {ICreateUserApplication} createUserApp - create user アプリケーション
+   * @param {IGetUserApplication} getUserApp - get user アプリケーション
+   */
   constructor(
     @Inject(TYPES.applications.ICreateUserApplication)
     private createUserApp: ICreateUserApplication,

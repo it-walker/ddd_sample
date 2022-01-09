@@ -7,6 +7,11 @@ import { Connection, Repository } from 'typeorm';
 
 @Injectable()
 export class CreateTaskService implements ICreateTaskUseCase {
+  /**
+   * コンストラクタ
+   * @param taskRepository - タスクリポジトリ
+   * @param connection - DB接続クラス
+   */
   constructor(
     @InjectRepository(Task) private taskRepository: Repository<Task>,
     @InjectConnection() private connection: Connection,
