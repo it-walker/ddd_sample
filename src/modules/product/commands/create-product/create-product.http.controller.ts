@@ -5,23 +5,23 @@ import {
   HttpStatus,
   Post,
 } from '@nestjs/common';
-import {CommandBus} from '@nestjs/cqrs';
-import {ApiOperation, ApiResponse} from '@nestjs/swagger';
-import {routesV1} from '@src/infrastructure/configs/app.routes';
-import {Result} from '@src/libs/ddd/domain/utils/result.util';
-import {ID} from '@src/libs/ddd/domain/value-objects/id.value-object';
-import {IdResponse} from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
-import {ProductAlreadyExistsError} from '@src/modules/product/errors/product.error';
+import { CommandBus } from '@nestjs/cqrs';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { routesV1 } from '@src/infrastructure/configs/app.routes';
+import { Result } from '@src/libs/ddd/domain/utils/result.util';
+import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object';
+import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
+import { ProductAlreadyExistsError } from '@src/modules/product/errors/product.error';
 
-import {CreateProductCommand} from './create-product.command';
-import {CreateProductHttpRequest} from './create-product.request.dto';
+import { CreateProductCommand } from './create-product.command';
+import { CreateProductHttpRequest } from './create-product.request.dto';
 
 @Controller(routesV1.version)
 export class CreateProductHttpController {
   constructor(private readonly commandBus: CommandBus) {}
 
   @Post(routesV1.product.root)
-  @ApiOperation({summary: 'Create a product'})
+  @ApiOperation({ summary: 'Create a product' })
   @ApiResponse({
     status: HttpStatus.OK,
     type: IdResponse,

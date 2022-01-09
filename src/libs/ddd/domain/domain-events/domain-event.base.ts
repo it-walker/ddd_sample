@@ -1,5 +1,5 @@
-import {ArgumentNotProvidedException} from '../../../exceptions';
-import {Guard} from '../guard';
+import { ArgumentNotProvidedException } from '../../../exceptions';
+import { Guard } from '../guard';
 
 export type DomainEventProps<T> = Omit<T, 'correlationId' | 'dateOccurred'> &
   Omit<DomainEvent, 'correlationId' | 'dateOccurred'> & {

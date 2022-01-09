@@ -1,7 +1,7 @@
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 
-import {ArgumentNotProvidedException} from '../../../exceptions';
-import {Guard} from '../guard';
+import { ArgumentNotProvidedException } from '../../../exceptions';
+import { Guard } from '../guard';
 
 export type CommandProps<T> = Omit<T, 'correlationId'> & Partial<Command>;
 

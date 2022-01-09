@@ -1,4 +1,4 @@
-import {Result} from '../utils/result.util';
+import { Result } from '../utils/result.util';
 
 export abstract class Query {}
 

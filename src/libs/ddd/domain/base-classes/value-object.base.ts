@@ -1,6 +1,6 @@
-import {ArgumentNotProvidedException} from '../../../exceptions';
-import {Guard} from '../guard';
-import {convertPropsToObject} from '../utils';
+import { ArgumentNotProvidedException } from '../../../exceptions';
+import { Guard } from '../guard';
+import { convertPropsToObject } from '../utils';
 
 export type Primitives = string | number | boolean;
 export interface DomainPrimitive<T extends Primitives | Date> {

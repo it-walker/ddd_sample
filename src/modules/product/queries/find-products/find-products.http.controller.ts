@@ -1,20 +1,20 @@
-import {routesV1} from '@config/app.routes';
-import {Body, Controller, Get, HttpStatus} from '@nestjs/common';
-import {QueryBus} from '@nestjs/cqrs';
-import {ApiOperation, ApiResponse} from '@nestjs/swagger';
-import {Result} from '@src/libs/ddd/domain/utils/result.util';
+import { routesV1 } from '@config/app.routes';
+import { Body, Controller, Get, HttpStatus } from '@nestjs/common';
+import { QueryBus } from '@nestjs/cqrs';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Result } from '@src/libs/ddd/domain/utils/result.util';
 
-import {ProductEntity} from '../../domain/entities/product.entity';
-import {ProductHttpResponse} from '../../dtos/product.response.dto';
-import {FindProductsQuery} from './find-products.query';
-import {FindProductsHttpRequest} from './find-products.request.dto';
+import { ProductEntity } from '../../domain/entities/product.entity';
+import { ProductHttpResponse } from '../../dtos/product.response.dto';
+import { FindProductsQuery } from './find-products.query';
+import { FindProductsHttpRequest } from './find-products.request.dto';
 
 @Controller(routesV1.version)
 export class FindProductsHttpController {
   constructor(private readonly queryBys: QueryBus) {}
 
   @Get(routesV1.product.root)
-  @ApiOperation({summary: 'Find products'})
+  @ApiOperation({ summary: 'Find products' })
   @ApiResponse({
     status: HttpStatus.OK,
     type: ProductHttpResponse,

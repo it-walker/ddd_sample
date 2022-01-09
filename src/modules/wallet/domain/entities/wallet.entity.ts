@@ -1,9 +1,9 @@
-import {AggregateRoot} from '@libs/ddd/domain/base-classes/aggregate-root.base';
-import {UUID} from '@libs/ddd/domain/value-objects/uuid.value-object';
-import {ArgumentOutOfRangeException} from '@libs/exceptions';
-import {Result} from '@src/libs/ddd/domain/utils/result.util';
+import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base';
+import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object';
+import { ArgumentOutOfRangeException } from '@libs/exceptions';
+import { Result } from '@src/libs/ddd/domain/utils/result.util';
 
-import {WalletNotEnoughBalanceError} from '../../errors/wallet.errors';
+import { WalletNotEnoughBalanceError } from '../../errors/wallet.errors';
 
 export interface CreateWalletProps {
   userId: UUID;
@@ -19,8 +19,8 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
   static create(create: CreateWalletProps): WalletEntity {
     const id = UUID.generate();
     // Setting a default role since it is not accepted during creation
-    const props: WalletProps = {...create, balance: 0};
-    const wallet = new WalletEntity({id, props});
+    const props: WalletProps = { ...create, balance: 0 };
+    const wallet = new WalletEntity({ id, props });
 
     return wallet;
   }

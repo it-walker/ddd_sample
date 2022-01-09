@@ -1,12 +1,12 @@
-import {UUID} from '@libs/ddd/domain/value-objects/uuid.value-object';
+import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object';
 import {
   EntityProps,
   OrmEntityProps,
   OrmMapper,
 } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base';
 
-import {WalletEntity, WalletProps} from '../domain/entities/wallet.entity';
-import {WalletOrmEntity} from './wallet.orm-entity';
+import { WalletEntity, WalletProps } from '../domain/entities/wallet.entity';
+import { WalletOrmEntity } from './wallet.orm-entity';
 
 export class WalletOrmMapper extends OrmMapper<WalletEntity, WalletOrmEntity> {
   protected toOrmProps(entity: WalletEntity): OrmEntityProps<WalletOrmEntity> {
@@ -27,6 +27,6 @@ export class WalletOrmMapper extends OrmMapper<WalletEntity, WalletOrmEntity> {
       userId: new UUID(ormEntity.userId),
       balance: ormEntity.balance,
     };
-    return {id, props};
+    return { id, props };
   }
 }

@@ -1,6 +1,6 @@
-import {UnitOfWorkPort} from '../ports/unit-of-work.port';
-import {Result} from '../utils/result.util';
-import {Command} from './command.base';
+import { UnitOfWorkPort } from '../ports/unit-of-work.port';
+import { Result } from '../utils/result.util';
+import { Command } from './command.base';
 
 export abstract class CommandHandlerBase<
   CommandHandlerReturnType = unknown,

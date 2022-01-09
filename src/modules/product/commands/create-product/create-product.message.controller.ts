@@ -1,10 +1,10 @@
-import {Controller} from '@nestjs/common';
-import {CommandBus} from '@nestjs/cqrs';
-import {MessagePattern} from '@nestjs/microservices';
-import {IdResponse} from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
+import { Controller } from '@nestjs/common';
+import { CommandBus } from '@nestjs/cqrs';
+import { MessagePattern } from '@nestjs/microservices';
+import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
 
-import {CreateProductCommand} from './create-product.command';
-import {CreateProductMessageRequest} from './create-product.request.dto';
+import { CreateProductCommand } from './create-product.command';
+import { CreateProductMessageRequest } from './create-product.request.dto';
 
 @Controller()
 export class CreateProductMessageController {

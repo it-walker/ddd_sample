@@ -1,7 +1,7 @@
-import {TypeOrmModuleOptions} from '@nestjs/typeorm';
-import {UserOrmEntity} from '@src/modules/user/database/user.orm-entity';
-import {config} from 'dotenv';
-import {get} from 'env-var';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { UserOrmEntity } from '@src/modules/user/database/user.orm-entity';
+import { config } from 'dotenv';
+import { get } from 'env-var';
 
 // https://github.com/Sairyss/backend-best-practices#configuration
 

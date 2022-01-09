@@ -1,8 +1,8 @@
-import {NonFunctionProperties} from '@libs/types';
-import {UserRoles} from '@modules/user/domain/entities/user.types';
-import {createdAtUpdatedAtMock} from '@src/libs/test-utils/mocks/generic-model-props.mock';
+import { NonFunctionProperties } from '@libs/types';
+import { UserRoles } from '@modules/user/domain/entities/user.types';
+import { createdAtUpdatedAtMock } from '@src/libs/test-utils/mocks/generic-model-props.mock';
 
-import {UserOrmEntity} from '../user.orm-entity';
+import { UserOrmEntity } from '../user.orm-entity';
 
 /**
  * Seeding database with dummy data

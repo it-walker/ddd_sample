@@ -1,10 +1,10 @@
-import {Inject} from '@nestjs/common';
-import {CommandBus} from '@nestjs/cqrs';
-import {Logger} from '@src/libs/ddd/domain/ports/logger.port';
-import {Command, Console} from 'nestjs-console';
+import { Inject } from '@nestjs/common';
+import { CommandBus } from '@nestjs/cqrs';
+import { Logger } from '@src/libs/ddd/domain/ports/logger.port';
+import { Command, Console } from 'nestjs-console';
 
-import {createProductCliLoggerSymbol} from '../../product.provider';
-import {CreateProductCommand} from './create-product.command';
+import { createProductCliLoggerSymbol } from '../../product.provider';
+import { CreateProductCommand } from './create-product.command';
 
 @Console({
   command: 'new',

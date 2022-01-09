@@ -29,8 +29,8 @@ const getUserService = {
 };
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, UserMailAddress])],
-  controllers: [UsersController],
-  providers: [createUserApp, getUserApp, createUserService, getUserService],
+  imports: [ TypeOrmModule.forFeature([ User, UserMailAddress ]) ],
+  controllers: [ UsersController ],
+  providers: [ createUserApp, getUserApp, createUserService, getUserService ],
 })
 export class UsersModule {}

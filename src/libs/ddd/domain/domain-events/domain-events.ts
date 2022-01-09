@@ -1,8 +1,8 @@
-import {final} from '../../../decorators/final.decorator';
-import {AggregateRoot} from '../base-classes/aggregate-root.base';
-import {Logger} from '../ports/logger.port';
-import {ID} from '../value-objects/id.value-object';
-import {DomainEvent, DomainEventHandler} from '.';
+import { final } from '../../../decorators/final.decorator';
+import { AggregateRoot } from '../base-classes/aggregate-root.base';
+import { Logger } from '../ports/logger.port';
+import { ID } from '../value-objects/id.value-object';
+import { DomainEvent, DomainEventHandler } from '.';
 
 type EventName = string;
 

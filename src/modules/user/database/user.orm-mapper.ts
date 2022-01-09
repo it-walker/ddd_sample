@@ -1,14 +1,14 @@
-import {UUID} from '@libs/ddd/domain/value-objects/uuid.value-object';
+import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object';
 import {
   EntityProps,
   OrmEntityProps,
   OrmMapper,
 } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base';
 
-import {UserEntity, UserProps} from '../domain/entities/user.entity';
-import {Address} from '../domain/value-objects/address.value-object';
-import {Email} from '../domain/value-objects/email.value-object';
-import {UserOrmEntity} from './user.orm-entity';
+import { UserEntity, UserProps } from '../domain/entities/user.entity';
+import { Address } from '../domain/value-objects/address.value-object';
+import { Email } from '../domain/value-objects/email.value-object';
+import { UserOrmEntity } from './user.orm-entity';
 
 export class UserOrmMapper extends OrmMapper<UserEntity, UserOrmEntity> {
   protected toOrmProps(entity: UserEntity): OrmEntityProps<UserOrmEntity> {
@@ -35,6 +35,6 @@ export class UserOrmMapper extends OrmMapper<UserEntity, UserOrmEntity> {
         country: ormEntity.country,
       }),
     };
-    return {id, props};
+    return { id, props };
   }
 }

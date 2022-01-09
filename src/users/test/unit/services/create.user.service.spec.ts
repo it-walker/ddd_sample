@@ -1,11 +1,11 @@
-import {Test} from '@nestjs/testing';
-import {getRepositoryToken} from '@nestjs/typeorm';
-import {Repository} from 'typeorm';
+import { Test } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import {UserDomain} from '@/domain/user.domain';
-import {User} from '@/entities/user.entity';
-import {UserMailAddress} from '@/entities/userMailAddress.entity';
-import {CreateUserService} from '@/users/services/create.user.service';
+import { UserDomain } from '@/domain/user.domain';
+import { User } from '@/entities/user.entity';
+import { UserMailAddress } from '@/entities/userMailAddress.entity';
+import { CreateUserService } from '@/users/services/create.user.service';
 
 describe('CreateUserService', () => {
   let service: CreateUserService;
@@ -52,7 +52,7 @@ describe('CreateUserService', () => {
       m.value = mail;
       const u = new User();
       u.name = userDomain.name;
-      u.mailAddresses = [m];
+      u.mailAddresses = [ m ];
       jest.spyOn(userRepositoryMock, 'save').mockResolvedValueOnce(u);
       jest
           .spyOn(userMailAddressRepositoryMock, 'save')

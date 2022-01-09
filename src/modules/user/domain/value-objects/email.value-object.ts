@@ -2,7 +2,7 @@ import {
   DomainPrimitive,
   ValueObject,
 } from '@libs/ddd/domain/base-classes/value-object.base';
-import {Guard} from '@libs/ddd/domain/guard';
+import { Guard } from '@libs/ddd/domain/guard';
 import {
   ArgumentInvalidException,
   ArgumentOutOfRangeException,
@@ -10,7 +10,7 @@ import {
 
 export class Email extends ValueObject<string> {
   constructor(value: string) {
-    super({value});
+    super({ value });
     this.props.value = Email.format(value);
   }
 
@@ -31,7 +31,7 @@ export class Email extends ValueObject<string> {
    * Note: This is a very simplified example of validation,
    * real world projects will have stricter rules
    */
-  protected validate({value}: DomainPrimitive<string>): void {
+  protected validate({ value }: DomainPrimitive<string>): void {
     if (!Guard.lengthIsBetween(value, 5, 320)) {
       throw new ArgumentOutOfRangeException('Email');
     }

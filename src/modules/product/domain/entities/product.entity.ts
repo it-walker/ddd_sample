@@ -1,10 +1,10 @@
-import {AggregateRoot} from '@src/libs/ddd/domain/base-classes/aggregate-root.base';
-import {UUID} from '@src/libs/ddd/domain/value-objects/uuid.value-object';
+import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base';
+import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object';
 
-import {ProductCreatedDomainEvent} from '../events/product.created.domain.event';
-import {ProductDescription} from '../value-objects/product.description.value.object';
-import {ProductName} from '../value-objects/product.name.value.object';
-import {ProductPrice} from '../value-objects/product.price.value.object';
+import { ProductCreatedDomainEvent } from '../events/product.created.domain.event';
+import { ProductDescription } from '../value-objects/product.description.value.object';
+import { ProductName } from '../value-objects/product.name.value.object';
+import { ProductPrice } from '../value-objects/product.price.value.object';
 
 export interface CreateProductProps {
   name: ProductName;
@@ -19,8 +19,8 @@ export class ProductEntity extends AggregateRoot<ProductProps> {
 
   static create(create: CreateProductProps): ProductEntity {
     const id = UUID.generate();
-    const props: ProductProps = {...create};
-    const product = new ProductEntity({id, props});
+    const props: ProductProps = { ...create };
+    const product = new ProductEntity({ id, props });
 
     product.addEvent(
         new ProductCreatedDomainEvent({

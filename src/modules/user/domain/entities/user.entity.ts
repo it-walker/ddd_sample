@@ -1,10 +1,10 @@
-import {AggregateRoot} from '@libs/ddd/domain/base-classes/aggregate-root.base';
-import {UUID} from '@libs/ddd/domain/value-objects/uuid.value-object';
+import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base';
+import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object';
 
-import {UserCreatedDomainEvent} from '../events/user-created.domain-event';
-import {Address, AddressProps} from '../value-objects/address.value-object';
-import {Email} from '../value-objects/email.value-object';
-import {UpdateUserAddressProps, UserRoles} from './user.types';
+import { UserCreatedDomainEvent } from '../events/user-created.domain-event';
+import { Address, AddressProps } from '../value-objects/address.value-object';
+import { Email } from '../value-objects/email.value-object';
+import { UpdateUserAddressProps, UserRoles } from './user.types';
 
 // Properties that are needed for a user creation
 export interface CreateUserProps {
@@ -23,8 +23,8 @@ export class UserEntity extends AggregateRoot<UserProps> {
   static create(create: CreateUserProps): UserEntity {
     const id = UUID.generate();
     /* Setting a default role since we are not accepting it during creation. */
-    const props: UserProps = {...create, role: UserRoles.guest};
-    const user = new UserEntity({id, props});
+    const props: UserProps = { ...create, role: UserRoles.guest };
+    const user = new UserEntity({ id, props });
     /* adding "UserCreated" Domain Event that will be published
     eventually so an event handler somewhere may receive it and do an
     appropriate action */

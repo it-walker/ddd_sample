@@ -1,13 +1,13 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import {UserMailAddress} from './userMailAddress.entity';
+import { UserMailAddress } from './userMailAddress.entity';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({length: 100})
+  @Column({ length: 100 })
   name: string;
 
   @Column()

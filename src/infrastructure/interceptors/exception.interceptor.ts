@@ -11,8 +11,8 @@ import {
   NestInterceptor,
   NotFoundException as NestNotFoundException,
 } from '@nestjs/common';
-import {Observable, throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export class ExceptionInterceptor implements NestInterceptor {
   intercept(

@@ -1,4 +1,4 @@
-import {DomainEvent, DomainEventProps} from '@libs/ddd/domain/domain-events';
+import { DomainEvent, DomainEventProps } from '@libs/ddd/domain/domain-events';
 
 // DomainEvent is a plain object with properties
 export class UserCreatedDomainEvent extends DomainEvent {

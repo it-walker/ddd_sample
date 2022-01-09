@@ -1,4 +1,4 @@
-import {registerAs} from '@nestjs/config';
+import { registerAs } from '@nestjs/config';
 
 const CONFIG_KEY_DATABASE = 'database';
 export default registerAs(CONFIG_KEY_DATABASE, () => ({

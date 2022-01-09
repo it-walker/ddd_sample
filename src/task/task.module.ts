@@ -1,13 +1,13 @@
-import {Module} from '@nestjs/common';
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {Task} from '@src/entities/task.entity';
-import {TYPES} from '@src/interfaces/types';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Task } from '@src/entities/task.entity';
+import { TYPES } from '@src/interfaces/types';
 
-import {CreateTaskApplication} from './applications/create.task.application';
-import {PostponeTaskApplication} from './applications/postpone.task.application';
-import {CreateTaskService} from './services/create.task.service';
-import {PostponeTaskService} from './services/postpone.task.service';
-import {TaskController} from './task.controller';
+import { CreateTaskApplication } from './applications/create.task.application';
+import { PostponeTaskApplication } from './applications/postpone.task.application';
+import { CreateTaskService } from './services/create.task.service';
+import { PostponeTaskService } from './services/postpone.task.service';
+import { TaskController } from './task.controller';
 
 const createTaskApp = {
   provide: TYPES.applications.ICreateTaskApplication,
@@ -28,8 +28,8 @@ const postponeTaskService = {
 };
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Task])],
-  controllers: [TaskController],
+  imports: [ TypeOrmModule.forFeature([ Task ]) ],
+  controllers: [ TaskController ],
   providers: [
     createTaskApp,
     postponeTaskApp,
