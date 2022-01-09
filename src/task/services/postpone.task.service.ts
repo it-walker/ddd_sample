@@ -6,12 +6,25 @@ import { IPostponeTaskUseCase } from '@src/interfaces/tasks/usecases/postpone.ta
 import { Connection, Repository } from 'typeorm';
 
 @Injectable()
+/**
+ * PostponeTaskService class
+ */
 export class PostponeTaskService implements IPostponeTaskUseCase {
+  /**
+   * constructor
+   * @param {Repository<Task>} taskRepository
+   * @param {Connection} connection
+   */
   constructor(
     @InjectRepository(Task) private taskRepository: Repository<Task>,
     @InjectConnection() private connection: Connection,
   ) {}
 
+  /**
+   *
+   * @param {string} id
+   * @return {Promise<TaskDomain>}
+   */
   async postpone(id: string): Promise<TaskDomain> {
     return this.connection.transaction(async (manager) => {
       const taskRepository = manager.getRepository(Task);

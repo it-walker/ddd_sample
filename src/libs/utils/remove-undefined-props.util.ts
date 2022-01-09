@@ -3,6 +3,8 @@
 
 /**
  * Remove undefined properties from an object
+ * @param {any} item -
+ * @return {any} -
  */
 export function removeUndefinedProps(item: any): any {
   // TODO: make recursive for nested objects

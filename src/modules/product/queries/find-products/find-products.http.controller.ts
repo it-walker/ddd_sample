@@ -10,7 +10,14 @@ import { FindProductsQuery } from './find-products.query';
 import { FindProductsHttpRequest } from './find-products.request.dto';
 
 @Controller(routesV1.version)
+/**
+ * FindProductsHttpController
+ */
 export class FindProductsHttpController {
+  /**
+   *
+   * @param {QueryBus} queryBys
+   */
   constructor(private readonly queryBys: QueryBus) {}
 
   @Get(routesV1.product.root)
@@ -19,6 +26,10 @@ export class FindProductsHttpController {
     status: HttpStatus.OK,
     type: ProductHttpResponse,
   })
+  /**
+   * @param {FindProductsHttpRequest} request
+   * @return {Promise<ProductHttpResponse[]>}
+   */
   async findProducts(
     @Body() request: FindProductsHttpRequest,
   ): Promise<ProductHttpResponse[]> {

@@ -4,7 +4,14 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Id } from '../interfaces/id.interface';
 
 @ObjectType() // <- only if you are using GraphQL
+/**
+ * IdResponseクラス
+ */
 export class IdResponse implements Id {
+  /**
+   * コンストラクタ
+   * @param {string} id - ID
+   */
   constructor(id: string) {
     this.id = id;
   }

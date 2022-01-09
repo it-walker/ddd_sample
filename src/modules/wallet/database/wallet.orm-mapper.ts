@@ -8,7 +8,15 @@ import {
 import { WalletEntity, WalletProps } from '../domain/entities/wallet.entity';
 import { WalletOrmEntity } from './wallet.orm-entity';
 
+/**
+ *
+ */
 export class WalletOrmMapper extends OrmMapper<WalletEntity, WalletOrmEntity> {
+  /**
+   *
+   * @param {WalletEntity}entity
+   * @return {OrmEntityProps<WalletOrmEntity>}
+   */
   protected toOrmProps(entity: WalletEntity): OrmEntityProps<WalletOrmEntity> {
     const props = entity.getPropsCopy();
 
@@ -19,8 +27,13 @@ export class WalletOrmMapper extends OrmMapper<WalletEntity, WalletOrmEntity> {
     return ormProps;
   }
 
+  /**
+   *
+   * @param {WalletOrmEntity} ormEntity
+   * @return {EntityProps<WalletProps>}
+   */
   protected toDomainProps(
-      ormEntity: WalletOrmEntity,
+    ormEntity: WalletOrmEntity,
   ): EntityProps<WalletProps> {
     const id = new UUID(ormEntity.id);
     const props: WalletProps = {

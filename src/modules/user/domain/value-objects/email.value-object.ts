@@ -8,7 +8,14 @@ import {
   ArgumentOutOfRangeException,
 } from '@libs/exceptions';
 
+/**
+ * Email class
+ */
 export class Email extends ValueObject<string> {
+  /**
+   * constructor
+   * @param {string} value
+   */
   constructor(value: string) {
     super({ value });
     this.props.value = Email.format(value);
@@ -23,6 +30,9 @@ export class Email extends ValueObject<string> {
   Protected 'props' and a getter prevents that behavior and makes types
   with the same structure incompatible.
   https://www.typescriptlang.org/docs/handbook/type-compatibility.html#private-and-protected-members-in-classes  */
+  /**
+   *
+   */
   get value(): string {
     return this.props.value;
   }
@@ -30,6 +40,10 @@ export class Email extends ValueObject<string> {
   /**
    * Note: This is a very simplified example of validation,
    * real world projects will have stricter rules
+   */
+  /**
+   *
+   * @param {DomainPrimitive<string>} param0
    */
   protected validate({ value }: DomainPrimitive<string>): void {
     if (!Guard.lengthIsBetween(value, 5, 320)) {
@@ -40,6 +54,11 @@ export class Email extends ValueObject<string> {
     }
   }
 
+  /**
+   *
+   * @param {string} email
+   * @return {string}
+   */
   static format(email: string): string {
     return email.trim().toLowerCase();
   }

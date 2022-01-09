@@ -5,6 +5,9 @@ import { MaxLength, MinLength } from 'class-validator';
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType() // <- only if you are using GraphQL
+/**
+ * CreateProductRequest class
+ */
 export class CreateProductRequest implements CreateProduct {
   @ApiProperty({
     example: 'product A',
@@ -33,8 +36,16 @@ export class CreateProductRequest implements CreateProduct {
   readonly price: number;
 }
 
-export class CreateProductHttpRequest extends CreateProductRequest
+/**
+ * CreateProductHttpRequest class
+ */
+export class CreateProductHttpRequest
+  extends CreateProductRequest
   implements CreateProduct {}
 
-export class CreateProductMessageRequest extends CreateProductRequest
+/**
+ * CreateProductMessageRequest class
+ */
+export class CreateProductMessageRequest
+  extends CreateProductRequest
   implements CreateProduct {}

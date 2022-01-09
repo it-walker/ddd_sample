@@ -13,9 +13,17 @@ export interface WalletProps extends CreateWalletProps {
   balance: number;
 }
 
+/**
+ * WalletEntity class
+ */
 export class WalletEntity extends AggregateRoot<WalletProps> {
   protected readonly _id: UUID;
 
+  /**
+   *
+   * @param {CreateWalletProps} create
+   * @return {WalletEntity}
+   */
   static create(create: CreateWalletProps): WalletEntity {
     const id = UUID.generate();
     // Setting a default role since it is not accepted during creation
@@ -25,10 +33,19 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
     return wallet;
   }
 
+  /**
+   *
+   * @param {number} amount
+   */
   deposit(amount: number): void {
     this.props.balance += amount;
   }
 
+  /**
+   *
+   * @param {number} amount
+   * @return {Result<null, WalletNotEnoughBalanceError>}
+   */
   withdraw(amount: number): Result<null, WalletNotEnoughBalanceError> {
     if (this.props.balance - amount < 0) {
       return Result.err(new WalletNotEnoughBalanceError());
@@ -45,7 +62,7 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
   public validate(): void {
     if (this.props.balance < 0) {
       throw new ArgumentOutOfRangeException(
-          'Wallet balance cannot be less than 0',
+        'Wallet balance cannot be less than 0',
       );
     }
   }

@@ -7,7 +7,16 @@ import { ICreateUserUseCase } from '@src/interfaces/users/usecases/create.user.s
 import { Connection, Repository } from 'typeorm';
 
 @Injectable()
+/**
+ * CreateUserService class
+ */
 export class CreateUserService implements ICreateUserUseCase {
+  /**
+   * constructor
+   * @param {Repository<User>} usersRepository
+   * @param {UserMailAddress} userMailAddressRepository
+   * @param {Connection} connection
+   */
   constructor(
     @InjectRepository(User) private usersRepository: Repository<User>,
     @InjectRepository(UserMailAddress)
@@ -18,8 +27,8 @@ export class CreateUserService implements ICreateUserUseCase {
 
   /**
    * ユーザーを作成します
-   * @param user - ユーザーエンティティ
-   * @return 登録したユーザー
+   * @param {UserDomain} user - ユーザーエンティティ
+   * @return {Promise<UserDomain>} 登録したユーザー
    */
   async create(user: UserDomain): Promise<UserDomain> {
     return this.connection.transaction(async (manager) => {

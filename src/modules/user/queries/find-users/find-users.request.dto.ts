@@ -11,6 +11,9 @@ import {
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType()
+/**
+ * FindUsersRequest class
+ */
 export class FindUsersRequest implements FindUsers {
   @ApiProperty({ example: 'France', description: 'Country of residence' })
   @MaxLength(50)
@@ -35,5 +38,9 @@ export class FindUsersRequest implements FindUsers {
   readonly street: string;
 }
 
-export class FindUsersHttpRequest extends FindUsersRequest
+/**
+ * FindUsersHttpRequest class
+ */
+export class FindUsersHttpRequest
+  extends FindUsersRequest
   implements FindUsers {}

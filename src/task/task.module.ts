@@ -28,8 +28,8 @@ const postponeTaskService = {
 };
 
 @Module({
-  imports: [ TypeOrmModule.forFeature([ Task ]) ],
-  controllers: [ TaskController ],
+  imports: [TypeOrmModule.forFeature([Task])],
+  controllers: [TaskController],
   providers: [
     createTaskApp,
     postponeTaskApp,
@@ -37,4 +37,7 @@ const postponeTaskService = {
     postponeTaskService,
   ],
 })
+/**
+ * TaskModule class
+ */
 export class TaskModule {}

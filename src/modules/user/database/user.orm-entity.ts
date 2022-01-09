@@ -4,7 +4,14 @@ import { Column, Entity } from 'typeorm';
 import { UserRoles } from '../domain/entities/user.types';
 
 @Entity('user')
+/**
+ * user orm entity class
+ */
 export class UserOrmEntity extends TypeormEntityBase {
+  /**
+   * constructor
+   * @param {UserOrmEntity} props - user entity property
+   */
   constructor(props?: UserOrmEntity) {
     super(props);
   }

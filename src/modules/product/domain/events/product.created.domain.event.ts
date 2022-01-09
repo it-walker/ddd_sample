@@ -3,7 +3,14 @@ import {
   DomainEventProps,
 } from '@src/libs/ddd/domain/domain-events';
 
+/**
+ * ProductCreatedDomainEvent class
+ */
 export class ProductCreatedDomainEvent extends DomainEvent {
+  /**
+   * constructor
+   * @param {DomainEventProps<ProductCreatedDomainEvent>} props
+   */
   constructor(props: DomainEventProps<ProductCreatedDomainEvent>) {
     super(props);
     this.name = props.name;

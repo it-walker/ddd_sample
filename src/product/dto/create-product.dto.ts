@@ -1,5 +1,8 @@
 import { IsString } from 'class-validator';
 
+/**
+ * CreateProductDto class
+ */
 export class CreateProductDto {
   @IsString()
   name: string;

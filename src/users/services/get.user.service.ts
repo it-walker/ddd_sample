@@ -6,11 +6,23 @@ import { IGetUserUseCase } from '@src/interfaces/users/usecases/get.user.service
 import { Repository } from 'typeorm';
 
 @Injectable()
+/**
+ * GetUserService class
+ */
 export class GetUserService implements IGetUserUseCase {
+  /**
+   * constructor
+   * @param {Repository<User>} usersRepository
+   */
   constructor(
     @InjectRepository(User) private usersRepository: Repository<User>,
   ) {}
 
+  /**
+   *
+   * @param {string} userId
+   * @return {Promise<UserDomain>}
+   */
   async getById(userId: string): Promise<UserDomain> {
     return this.usersRepository.findOne({ id: userId });
   }

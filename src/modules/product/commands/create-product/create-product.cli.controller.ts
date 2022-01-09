@@ -10,7 +10,15 @@ import { CreateProductCommand } from './create-product.command';
   command: 'new',
   description: 'A command to create a product',
 })
+/**
+ * CreateProductCliController class
+ */
 export class CreateProductCliController {
+  /**
+   *
+   * @param {CommandBus} commandBus
+   * @param {Logger} logger
+   */
   constructor(
     private readonly commandBus: CommandBus,
     @Inject(createProductCliLoggerSymbol)
@@ -21,10 +29,17 @@ export class CreateProductCliController {
     command: 'product <name>',
     description: 'Create a product',
   })
+  /**
+   *
+   * @param {string} name
+   * @param {string} description
+   * @param {number} practices
+   * @return {Promise<void>}
+   */
   async createProduct(
-      name: string,
-      description: string,
-      price: number,
+    name: string,
+    description: string,
+    price: number,
   ): Promise<void> {
     const command = new CreateProductCommand({
       name,

@@ -35,12 +35,19 @@ export class UsersController {
 
   @UsePipes(new ValidationPipe())
   @Post('/create')
+  /**
+   * @param {any} res
+   * @param {any} userDomain
+   */
   async create(@Res() res, @Body() userDomain: UserDomain) {
     const stock = await this.createUserApp.create(userDomain);
     return res.status(HttpStatus.OK).json(stock);
   }
 
   @Get(':id')
+  /**
+   * @params {any} id - request
+   */
   async findOne(@Param('id', new ParseUUIDPipe()) id) {
     const user = await this.getUserApp.getById(id);
     return user;

@@ -6,8 +6,11 @@ import { WalletRepository } from './database/wallet.repository';
 import { createWalletWhenUserIsCreatedProvider } from './wallet.providers';
 
 @Module({
-  imports: [ TypeOrmModule.forFeature([ WalletOrmEntity ]) ],
+  imports: [TypeOrmModule.forFeature([WalletOrmEntity])],
   controllers: [],
-  providers: [ WalletRepository, createWalletWhenUserIsCreatedProvider ],
+  providers: [WalletRepository, createWalletWhenUserIsCreatedProvider],
 })
+/**
+ * WalletModule class
+ */
 export class WalletModule {}

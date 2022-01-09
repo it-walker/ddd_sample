@@ -1,7 +1,13 @@
 import { DomainEvent, DomainEventProps } from '@libs/ddd/domain/domain-events';
 
-// DomainEvent is a plain object with properties
+/**
+ * DomainEvent is a plain object with properties
+ */
 export class UserCreatedDomainEvent extends DomainEvent {
+  /**
+   * constructor
+   * @param {DomainEventProps<UserCreatedDomainEvent>} props
+   */
   constructor(props: DomainEventProps<UserCreatedDomainEvent>) {
     super(props);
     this.email = props.email;

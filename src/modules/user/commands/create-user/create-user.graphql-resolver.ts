@@ -8,10 +8,20 @@ import { CreateUserRequest } from './create-user.request.dto';
 // If you are Using GraphQL you'll need a Resolver instead of a Controller
 
 @Resolver()
+/**
+ * CreateUserGraphqlResolver class
+ */
 export class CreateUserGraphqlResolver {
+  /**
+   * constructor
+   * @param {CommandBus} commandBus
+   */
   constructor(private readonly commandBus: CommandBus) {}
 
   @Mutation(() => IdResponse)
+  /**
+   *
+   */
   async create(@Args('input') input: CreateUserRequest): Promise<IdResponse> {
     const command = new CreateUserCommand(input);
 

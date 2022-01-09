@@ -2,7 +2,14 @@ import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-cl
 import { Column, Entity } from 'typeorm';
 
 @Entity('product')
+/**
+ * ProductOrmEntity class
+ */
 export class ProductOrmEntity extends TypeormEntityBase {
+  /**
+   * constructor
+   * @param {ProductOrmEntity} props
+   */
   constructor(props?: ProductOrmEntity) {
     super(props);
   }

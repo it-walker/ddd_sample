@@ -10,7 +10,15 @@ import { Address } from '../domain/value-objects/address.value-object';
 import { Email } from '../domain/value-objects/email.value-object';
 import { UserOrmEntity } from './user.orm-entity';
 
+/**
+ * UserOrmMapper class
+ */
 export class UserOrmMapper extends OrmMapper<UserEntity, UserOrmEntity> {
+  /**
+   *
+   * @param {UserEntity} entity
+   * @return {OrmEntityProps<UserOrmEntity>}
+   */
   protected toOrmProps(entity: UserEntity): OrmEntityProps<UserOrmEntity> {
     const props = entity.getPropsCopy();
 
@@ -24,6 +32,11 @@ export class UserOrmMapper extends OrmMapper<UserEntity, UserOrmEntity> {
     return ormProps;
   }
 
+  /**
+   *
+   * @param {UserOrmEntity} ormEntity
+   * @return {EntityProps<UserProps>}
+   */
   protected toDomainProps(ormEntity: UserOrmEntity): EntityProps<UserProps> {
     const id = new UUID(ormEntity.id);
     const props: UserProps = {

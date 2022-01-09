@@ -13,13 +13,29 @@ const user: UserDomain = {
   ],
 };
 
+/**
+ * CreateUserApplicationMock class
+ */
 class CreateUserApplicationMock {
+  /**
+   *
+   * @param {any} obj
+   * @return {any}
+   */
   create(obj) {
     return user;
   }
 }
 
+/**
+ * GetUserApplicationMock
+ */
 class GetUserApplicationMock {
+  /**
+   *
+   * @param {any} id
+   * @return {any}
+   */
   getById(id) {
     return user;
   }
@@ -36,7 +52,7 @@ describe('Users Controller', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ UsersController ],
+      controllers: [UsersController],
       providers: [
         {
           provide: TYPES.applications.ICreateUserApplication,

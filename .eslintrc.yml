@@ -55,6 +55,7 @@ rules:
         - Resolver
         - Query
         - Args
+        - Command
         - CommandHandler
         - QueryHandler
         - ObjectType
@@ -62,6 +63,13 @@ rules:
         - IsEmail
         - Mutation
         - IsArray
+        - OneToMany
+        - ManyToOne
+        - JoinColumn
+        - MessagePattern
+        - Console
+        - PrimaryGeneratedColumn
+        - Global
   simple-import-sort/imports: error
   '@typescript-eslint/interface-name-prefix': off
   '@typescript-eslint/explicit-function-return-type': off

@@ -5,6 +5,9 @@ import { IsOptional, IsString, MaxLength } from 'class-validator';
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType()
+/**
+ * FindProductsRequest class
+ */
 export class FindProductsRequest implements FindProducts {
   @ApiProperty({ example: 'Product', description: '商品名' })
   @MaxLength(50)
@@ -14,5 +17,9 @@ export class FindProductsRequest implements FindProducts {
   readonly name: string;
 }
 
-export class FindProductsHttpRequest extends FindProductsRequest
+/**
+ * FindProductsHttpRequest class
+ */
+export class FindProductsHttpRequest
+  extends FindProductsRequest
   implements FindProducts {}

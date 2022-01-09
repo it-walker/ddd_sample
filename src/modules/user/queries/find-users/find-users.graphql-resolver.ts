@@ -6,10 +6,20 @@ import { FindUsersQuery } from './find-users.query';
 import { FindUsersRequest } from './find-users.request.dto';
 
 @Resolver()
+/**
+ * FindUsersGraphqlResolver class
+ */
 export class FindUsersGraphqlResolver {
+  /**
+   * constructor
+   * @param {UserRepository} userRepo
+   */
   constructor(private readonly userRepo: UserRepository) {}
 
-  @Query(() => [ UserResponse ])
+  @Query(() => [UserResponse])
+  /**
+   *
+   */
   async findUsers(
     @Args('input') input: FindUsersRequest,
   ): Promise<UserResponse[]> {

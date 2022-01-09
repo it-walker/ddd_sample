@@ -10,14 +10,17 @@ import { AppConfigService } from '@src/config/app/config.service';
 
 import { ExceptionInterceptor } from './infrastructure/interceptors/exception.interceptor';
 
+/**
+ *
+ */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-      .setTitle('task manager')
-      .setDescription('The task manager API description')
-      .setVersion('1.0')
-      .addTag('task')
-      .build();
+    .setTitle('task manager')
+    .setDescription('The task manager API description')
+    .setVersion('1.0')
+    .addTag('task')
+    .build();
   const options: SwaggerDocumentOptions = {
     operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
   };

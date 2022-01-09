@@ -41,6 +41,7 @@ export abstract class ExceptionBase extends Error {
    * to external processes. This method is a workaround.
    * Keep in mind not to return a stack trace to user when in production.
    * https://iaincollins.medium.com/error-handling-in-javascript-a6172ccdf9af
+   * @return {SerializedException}
    */
   toJSON(): SerializedException {
     return {

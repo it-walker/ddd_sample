@@ -14,29 +14,43 @@ export interface CreateProductProps {
 
 export type ProductProps = CreateProductProps;
 
+/**
+ * ProductEntity class
+ */
 export class ProductEntity extends AggregateRoot<ProductProps> {
   protected readonly _id: UUID;
 
+  /**
+   *
+   * @param {CreateProductProps} create
+   * @return {ProductEntity}
+   */
   static create(create: CreateProductProps): ProductEntity {
     const id = UUID.generate();
     const props: ProductProps = { ...create };
     const product = new ProductEntity({ id, props });
 
     product.addEvent(
-        new ProductCreatedDomainEvent({
-          aggregateId: id.value,
-          name: props.name.getRawProps(),
-          description: props.description.getRawProps(),
-          price: props.price.getRawProps(),
-        }),
+      new ProductCreatedDomainEvent({
+        aggregateId: id.value,
+        name: props.name.getRawProps(),
+        description: props.description.getRawProps(),
+        price: props.price.getRawProps(),
+      }),
     );
     return product;
   }
 
+  /**
+   *
+   */
   someBusinessLogic(): void {
     // TODO: add example business logic
   }
 
+  /**
+   *
+   */
   validate(): void {
     // TODO: example
     // entity business rules validation to protect it's invariant

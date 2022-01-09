@@ -7,14 +7,24 @@ import { ProductEntity } from '../../domain/entities/product.entity';
 import { FindProductsQuery } from './find-products.query';
 
 @QueryHandler(FindProductsQuery)
+/**
+ * FindProductsQueryHandler
+ */
 export class FindProductsQueryHandler extends QueryHandlerBase {
+  /**
+   * constructor
+   * @param {ProductResponse} productRepo
+   */
   constructor(private readonly productRepo: ProductRepository) {
     super();
   }
 
-  /* Since this is a simple query with no additional business
-     logic involved, it bypasses application's core completely
-     and retrieves users directly from a repository.
+  /**
+   * Since this is a simple query with no additional business
+   * logic involved, it bypasses application's core completely
+   * and retrieves users directly from a repository.
+   * @param {FindProductsQuery} query
+   * @return {Promise<Result<ProductEntity[]>>}
    */
   async handle(query: FindProductsQuery): Promise<Result<ProductEntity[]>> {
     const users = await this.productRepo.findProducts(query);

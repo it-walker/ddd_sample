@@ -10,7 +10,16 @@ import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
 @Injectable()
+/**
+ * ValidationPipe class
+ */
 export class ValidationPipe implements PipeTransform<any> {
+  /**
+   *
+   * @param {any} value
+   * @param {ArgumentMetadata} metadata
+   * @return {any}
+   */
   async transform(value, metadata: ArgumentMetadata) {
     if (!value) {
       throw new BadRequestException('No data submitted');
@@ -29,13 +38,18 @@ export class ValidationPipe implements PipeTransform<any> {
     });
     if (errors.length > 0) {
       throw new HttpException(
-          { message: 'Invalid Payload', errors: this.buildError(errors) },
-          HttpStatus.BAD_REQUEST,
+        { message: 'Invalid Payload', errors: this.buildError(errors) },
+        HttpStatus.BAD_REQUEST,
       );
     }
     return value;
   }
 
+  /**
+   *
+   * @param {any} errors
+   * @return {any}
+   */
   private buildError(errors) {
     const result = {};
     errors.forEach((el) => {
@@ -47,8 +61,13 @@ export class ValidationPipe implements PipeTransform<any> {
     return result;
   }
 
+  /**
+   *
+   * @param {any} metatype
+   * @return {boolean}
+   */
   private toValidate(metatype): boolean {
-    const types = [ String, Boolean, Number, Array, Object ];
+    const types = [String, Boolean, Number, Array, Object];
     return !types.find((type) => metatype === type);
   }
 }

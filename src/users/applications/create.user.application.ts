@@ -5,12 +5,24 @@ import { ICreateUserApplication } from '@src/interfaces/users/applications/creat
 import { ICreateUserUseCase } from '@src/interfaces/users/usecases/create.user.service.usecase';
 
 @Injectable()
+/**
+ * CreateUserApplication class
+ */
 export class CreateUserApplication implements ICreateUserApplication {
+  /**
+   * constructor
+   * @param {ICreateUserUseCase} userService
+   */
   constructor(
     @Inject(TYPES.services.ICreateUserService)
     private userService: ICreateUserUseCase,
   ) {}
 
+  /**
+   *
+   * @param {UserDomain} user
+   * @return {Promise<UserDomain>}
+   */
   async create(user: UserDomain): Promise<UserDomain> {
     return this.userService.create(user);
   }

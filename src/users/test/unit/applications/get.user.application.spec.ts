@@ -7,11 +7,19 @@ import { GetUserApplication } from '@/users/applications/get.user.application';
 
 const user: UserDomain = {
   name: 'Rafael Pezzetti',
-  mailAddresses: [ { value: 'rafael@pezzetti.com' } ],
+  mailAddresses: [{ value: 'rafael@pezzetti.com' }],
 };
 const userId = 'xxx';
 
+/**
+ * GetUserService class
+ */
 class GetUserService {
+  /**
+   *
+   * @param {any} userId
+   * @return {any}
+   */
   getById(userId) {
     return user;
   }
