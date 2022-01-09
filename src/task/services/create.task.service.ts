@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
-import { TaskDomain } from '@src/domain/task.domain';
-import { Task } from '@src/entities/task.entity';
-import { ICreateTaskUseCase } from '@src/interfaces/tasks/usecases/create.task.service.usecase';
-import { Connection, Repository } from 'typeorm';
+import {Injectable} from '@nestjs/common';
+import {InjectConnection, InjectRepository} from '@nestjs/typeorm';
+import {TaskDomain} from '@src/domain/task.domain';
+import {Task} from '@src/entities/task.entity';
+import {ICreateTaskUseCase} from '@src/interfaces/tasks/usecases/create.task.service.usecase';
+import {Connection, Repository} from 'typeorm';
 
 @Injectable()
 export class CreateTaskService implements ICreateTaskUseCase {
@@ -15,7 +15,7 @@ export class CreateTaskService implements ICreateTaskUseCase {
   /**
    * タスクを作成します
    * @param task - タスクエンティティ
-   * @returns 登録したタスク
+   * @return 登録したタスク
    */
   async create(name: string, dueDate: Date): Promise<TaskDomain> {
     const task = TaskDomain.create(name, dueDate);

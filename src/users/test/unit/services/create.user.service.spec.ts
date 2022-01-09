@@ -1,11 +1,11 @@
-import { Test } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import {Test} from '@nestjs/testing';
+import {getRepositoryToken} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
 
-import { UserDomain } from '@/domain/user.domain';
-import { User } from '@/entities/user.entity';
-import { UserMailAddress } from '@/entities/userMailAddress.entity';
-import { CreateUserService } from '@/users/services/create.user.service';
+import {UserDomain} from '@/domain/user.domain';
+import {User} from '@/entities/user.entity';
+import {UserMailAddress} from '@/entities/userMailAddress.entity';
+import {CreateUserService} from '@/users/services/create.user.service';
 
 describe('CreateUserService', () => {
   let service: CreateUserService;
@@ -31,7 +31,7 @@ describe('CreateUserService', () => {
     service = app.get<CreateUserService>(CreateUserService);
     userRepositoryMock = app.get<Repository<User>>(getRepositoryToken(User));
     userMailAddressRepositoryMock = app.get<Repository<UserMailAddress>>(
-      getRepositoryToken(UserMailAddress),
+        getRepositoryToken(UserMailAddress),
     );
   });
 
@@ -55,8 +55,8 @@ describe('CreateUserService', () => {
       u.mailAddresses = [m];
       jest.spyOn(userRepositoryMock, 'save').mockResolvedValueOnce(u);
       jest
-        .spyOn(userMailAddressRepositoryMock, 'save')
-        .mockResolvedValueOnce(m);
+          .spyOn(userMailAddressRepositoryMock, 'save')
+          .mockResolvedValueOnce(m);
       const result = await service.create(userDomain);
       expect(result).toMatchObject(userDomain);
       expect(userRepositoryMock.save).toBeCalled();

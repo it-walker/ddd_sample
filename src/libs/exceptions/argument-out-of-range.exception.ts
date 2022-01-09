@@ -1,5 +1,5 @@
-import { ExceptionBase } from './exception.base';
-import { ExceptionCodes } from './exception.codes';
+import {ExceptionBase} from './exception.base';
+import {ExceptionCodes} from './exception.codes';
 
 /**
  * Used to indicate that an argument is out of allowed range

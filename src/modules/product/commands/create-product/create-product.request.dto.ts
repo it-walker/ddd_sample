@@ -1,7 +1,7 @@
-import { ArgsType, Field, InputType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { MaxLength, MinLength } from 'class-validator';
-import { CreateProduct } from '@src/interface-adapters/interfaces/product/create.product.interface';
+import {ArgsType, Field, InputType} from '@nestjs/graphql';
+import {ApiProperty} from '@nestjs/swagger';
+import {CreateProduct} from '@src/interface-adapters/interfaces/product/create.product.interface';
+import {MaxLength, MinLength} from 'class-validator';
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType() // <- only if you are using GraphQL
@@ -33,10 +33,8 @@ export class CreateProductRequest implements CreateProduct {
   readonly price: number;
 }
 
-export class CreateProductHttpRequest
-  extends CreateProductRequest
+export class CreateProductHttpRequest extends CreateProductRequest
   implements CreateProduct {}
 
-export class CreateProductMessageRequest
-  extends CreateProductRequest
+export class CreateProductMessageRequest extends CreateProductRequest
   implements CreateProduct {}

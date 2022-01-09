@@ -5,12 +5,12 @@ import {
 
 export abstract class ID extends ValueObject<string> {
   constructor(value: string) {
-    super({ value });
+    super({value});
   }
 
   public get value(): string {
     return this.props.value;
   }
 
-  protected abstract validate({ value }: DomainPrimitive<string>): void;
+  protected abstract validate({value}: DomainPrimitive<string>): void;
 }

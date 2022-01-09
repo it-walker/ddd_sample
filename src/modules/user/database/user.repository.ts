@@ -1,28 +1,27 @@
-import { QueryParams } from '@libs/ddd/domain/ports/repository.ports';
+import {QueryParams} from '@libs/ddd/domain/ports/repository.ports';
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@libs/ddd/infrastructure/database/base-classes/typeorm.repository.base';
-import { NotFoundException } from '@libs/exceptions';
+import {NotFoundException} from '@libs/exceptions';
 import {
   UserEntity,
   UserProps,
 } from '@modules/user/domain/entities/user.entity';
-import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util';
-import { Repository } from 'typeorm';
+import {Injectable, Logger} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {removeUndefinedProps} from '@src/libs/utils/remove-undefined-props.util';
+import {Repository} from 'typeorm';
 
-import { FindUsersQuery } from '../queries/find-users/find-users.query';
-import { UserOrmEntity } from './user.orm-entity';
-import { UserOrmMapper } from './user.orm-mapper';
-import { UserRepositoryPort } from './user.repository.port';
+import {FindUsersQuery} from '../queries/find-users/find-users.query';
+import {UserOrmEntity} from './user.orm-entity';
+import {UserOrmMapper} from './user.orm-mapper';
+import {UserRepositoryPort} from './user.repository.port';
 
 @Injectable()
 export class UserRepository
   extends TypeormRepositoryBase<UserEntity, UserProps, UserOrmEntity>
-  implements UserRepositoryPort
-{
+  implements UserRepositoryPort {
   protected relations: string[] = [];
 
   constructor(
@@ -30,15 +29,15 @@ export class UserRepository
     private readonly userRepository: Repository<UserOrmEntity>,
   ) {
     super(
-      userRepository,
-      new UserOrmMapper(UserEntity, UserOrmEntity),
-      new Logger('UserRepository'),
+        userRepository,
+        new UserOrmMapper(UserEntity, UserOrmEntity),
+        new Logger('UserRepository'),
     );
   }
 
   private async findOneById(id: string): Promise<UserOrmEntity | undefined> {
     const user = await this.userRepository.findOne({
-      where: { id },
+      where: {id},
     });
 
     return user;
@@ -53,10 +52,10 @@ export class UserRepository
   }
 
   private async findOneByEmail(
-    email: string,
+      email: string,
   ): Promise<UserOrmEntity | undefined> {
     const user = await this.userRepository.findOne({
-      where: { email },
+      where: {email},
     });
 
     return user;
@@ -80,13 +79,13 @@ export class UserRepository
 
   async findUsers(query: FindUsersQuery): Promise<UserEntity[]> {
     const where: QueryParams<UserOrmEntity> = removeUndefinedProps(query);
-    const users = await this.repository.find({ where });
+    const users = await this.repository.find({where});
     return users.map((user) => this.mapper.toDomainEntity(user));
   }
 
   // Used to construct a query
   protected prepareQuery(
-    params: QueryParams<UserProps>,
+      params: QueryParams<UserProps>,
   ): WhereCondition<UserOrmEntity> {
     const where: QueryParams<UserOrmEntity> = {};
     if (params.id) {

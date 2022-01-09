@@ -5,9 +5,9 @@ import {
   Injectable,
   PipeTransform,
 } from '@nestjs/common';
-import { HttpException } from '@nestjs/common/exceptions/http.exception';
-import { plainToClass } from 'class-transformer';
-import { validate } from 'class-validator';
+import {HttpException} from '@nestjs/common/exceptions/http.exception';
+import {plainToClass} from 'class-transformer';
+import {validate} from 'class-validator';
 
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
@@ -16,7 +16,7 @@ export class ValidationPipe implements PipeTransform<any> {
       throw new BadRequestException('No data submitted');
     }
 
-    const { metatype } = metadata;
+    const {metatype} = metadata;
     if (!metatype || !this.toValidate(metatype)) {
       return value;
     }
@@ -29,8 +29,8 @@ export class ValidationPipe implements PipeTransform<any> {
     });
     if (errors.length > 0) {
       throw new HttpException(
-        { message: 'Invalid Payload', errors: this.buildError(errors) },
-        HttpStatus.BAD_REQUEST,
+          {message: 'Invalid Payload', errors: this.buildError(errors)},
+          HttpStatus.BAD_REQUEST,
       );
     }
     return value;

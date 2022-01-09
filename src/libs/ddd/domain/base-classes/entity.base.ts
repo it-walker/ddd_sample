@@ -3,10 +3,10 @@ import {
   ArgumentNotProvidedException,
   ArgumentOutOfRangeException,
 } from '../../../exceptions';
-import { Guard } from '../guard';
-import { convertPropsToObject } from '../utils';
-import { DateVO } from '../value-objects/date.value-object';
-import { ID } from '../value-objects/id.value-object';
+import {Guard} from '../guard';
+import {convertPropsToObject} from '../utils';
+import {DateVO} from '../value-objects/date.value-object';
+import {ID} from '../value-objects/id.value-object';
 
 export interface BaseEntityProps {
   id: ID;
@@ -132,7 +132,7 @@ export abstract class Entity<EntityProps> {
 
     if (Guard.isEmpty(props)) {
       throw new ArgumentNotProvidedException(
-        'Entity props should not be empty',
+          'Entity props should not be empty',
       );
     }
     if (typeof props !== 'object') {
@@ -140,7 +140,7 @@ export abstract class Entity<EntityProps> {
     }
     if (Object.keys(props).length > maxProps) {
       throw new ArgumentOutOfRangeException(
-        `Entity props should not have more than ${maxProps} properties`,
+          `Entity props should not have more than ${maxProps} properties`,
       );
     }
   }

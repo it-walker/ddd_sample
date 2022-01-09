@@ -1,5 +1,5 @@
-import { ArgumentNotProvidedException } from '../../../exceptions';
-import { Guard } from '../guard';
+import {ArgumentNotProvidedException} from '../../../exceptions';
+import {Guard} from '../guard';
 
 export type DomainEventProps<T> = Omit<T, 'correlationId' | 'dateOccurred'> &
   Omit<DomainEvent, 'correlationId' | 'dateOccurred'> & {
@@ -22,7 +22,7 @@ export abstract class DomainEvent {
   constructor(props: DomainEventProps<unknown>) {
     if (Guard.isEmpty(props)) {
       throw new ArgumentNotProvidedException(
-        'DomainEvent props should not be empty',
+          'DomainEvent props should not be empty',
       );
     }
     this.aggregateId = props.aggregateId;

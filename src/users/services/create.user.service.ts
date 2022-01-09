@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
-import { UserDomain } from '@src/domain/user.domain';
-import { User } from '@src/entities/user.entity';
-import { UserMailAddress } from '@src/entities/userMailAddress.entity';
-import { ICreateUserUseCase } from '@src/interfaces/users/usecases/create.user.service.usecase';
-import { Connection, Repository } from 'typeorm';
+import {Injectable} from '@nestjs/common';
+import {InjectConnection, InjectRepository} from '@nestjs/typeorm';
+import {UserDomain} from '@src/domain/user.domain';
+import {User} from '@src/entities/user.entity';
+import {UserMailAddress} from '@src/entities/userMailAddress.entity';
+import {ICreateUserUseCase} from '@src/interfaces/users/usecases/create.user.service.usecase';
+import {Connection, Repository} from 'typeorm';
 
 @Injectable()
 export class CreateUserService implements ICreateUserUseCase {
@@ -19,7 +19,7 @@ export class CreateUserService implements ICreateUserUseCase {
   /**
    * ユーザーを作成します
    * @param user - ユーザーエンティティ
-   * @returns 登録したユーザー
+   * @return 登録したユーザー
    */
   async create(user: UserDomain): Promise<UserDomain> {
     return this.connection.transaction(async (manager) => {

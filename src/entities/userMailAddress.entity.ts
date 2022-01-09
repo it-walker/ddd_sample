@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { User } from './user.entity';
+import {User} from './user.entity';
 
 @Entity()
 export class UserMailAddress extends BaseEntity {

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
-import { Entity } from '../base-classes/entity.base';
-import { ValueObject } from '../base-classes/value-object.base';
+import {Entity} from '../base-classes/entity.base';
+import {ValueObject} from '../base-classes/value-object.base';
 
 function isEntity(obj: unknown): obj is Entity<unknown> {
   /**
@@ -31,7 +31,7 @@ function convertToPlainObject(item: any): any {
  * @param props
  */
 export function convertPropsToObject(props: any): any {
-  const propsCopy = { ...props };
+  const propsCopy = {...props};
 
   // eslint-disable-next-line guard-for-in
   for (const prop in propsCopy) {

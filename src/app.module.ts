@@ -32,4 +32,7 @@ import { WalletModule } from './modules/wallet/wallet.module';
   controllers: [],
   providers: [],
 })
+/**
+ * アプリケーションモジュール
+ */
 export class AppModule {}

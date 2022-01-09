@@ -2,7 +2,7 @@ import {
   DomainPrimitive,
   ValueObject,
 } from '@libs/ddd/domain/base-classes/value-object.base';
-import { Guard } from '@libs/ddd/domain/guard';
+import {Guard} from '@libs/ddd/domain/guard';
 import {
   ArgumentInvalidException,
   ArgumentOutOfRangeException,
@@ -10,7 +10,7 @@ import {
 
 export class Email extends ValueObject<string> {
   constructor(value: string) {
-    super({ value });
+    super({value});
     this.props.value = Email.format(value);
   }
 
@@ -19,9 +19,9 @@ export class Email extends ValueObject<string> {
   Object that also has only "value" property and both of those are public
   (their structures are equal), this means that TypeScript will treat those two different value objects as a same type (will let you assign
   'Email' value object to a 'Country' value object, because both of them
-  only have 1 public 'value' property, so their structure is the same). 
+  only have 1 public 'value' property, so their structure is the same).
   Protected 'props' and a getter prevents that behavior and makes types
-  with the same structure incompatible. 
+  with the same structure incompatible.
   https://www.typescriptlang.org/docs/handbook/type-compatibility.html#private-and-protected-members-in-classes  */
   get value(): string {
     return this.props.value;
@@ -31,7 +31,7 @@ export class Email extends ValueObject<string> {
    * Note: This is a very simplified example of validation,
    * real world projects will have stricter rules
    */
-  protected validate({ value }: DomainPrimitive<string>): void {
+  protected validate({value}: DomainPrimitive<string>): void {
     if (!Guard.lengthIsBetween(value, 5, 320)) {
       throw new ArgumentOutOfRangeException('Email');
     }

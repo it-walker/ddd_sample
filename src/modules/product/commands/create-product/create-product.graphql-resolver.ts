@@ -1,8 +1,9 @@
-import { CommandBus } from '@nestjs/cqrs';
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
-import { CreateProductCommand } from './create-product.command';
-import { CreateProductRequest } from './create-product.request.dto';
+import {CommandBus} from '@nestjs/cqrs';
+import {Args, Mutation, Resolver} from '@nestjs/graphql';
+import {IdResponse} from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
+
+import {CreateProductCommand} from './create-product.command';
+import {CreateProductRequest} from './create-product.request.dto';
 
 @Resolver()
 export class CreateProductGraphqlResolver {

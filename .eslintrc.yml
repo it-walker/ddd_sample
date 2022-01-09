@@ -1,0 +1,70 @@
+env:
+  browser: true
+  commonjs: true
+  es2021: true
+  node: true
+extends:
+  - google
+  - prettier
+  - prettier/@typescript-eslint
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 13
+  project: 'tsconfig.json'
+  sourceType: 'module'
+  loggerFn: false
+plugins:
+  - '@typescript-eslint'
+  - 'simple-import-sort'
+root: true
+rules:
+  sort-imports:
+    - error
+    - ignoreDeclarationSort: true
+  # new-cap: ["error", { "capIsNewExceptions": ["Person"] }]
+  new-cap:
+    - error
+    - capIsNewExceptions:
+        - Module
+        - Controller
+        - Inject
+        - UsePipes
+        - Post
+        - Get
+        - Res
+        - Body
+        - Param
+        - InjectRepository
+        - Injectable
+        - InjectConnection
+        - IsNotEmpty
+        - IsString
+        - Column
+        - Entity
+        - ArgsType
+        - InputType
+        - ApiProperty
+        - MinLength
+        - MaxLength
+        - IsOptional
+        - Matches
+        - Field
+        - IsAlphanumeric
+        - ApiOperation
+        - ApiResponse
+        - Resolver
+        - Query
+        - Args
+        - CommandHandler
+        - QueryHandler
+        - ObjectType
+        - Delete
+        - IsEmail
+        - Mutation
+        - IsArray
+  'simple-import-sort/imports': 'error'
+  '@typescript-eslint/interface-name-prefix': 'off'
+  '@typescript-eslint/explicit-function-return-type': 'off'
+  '@typescript-eslint/explicit-module-boundary-types': 'off'
+  '@typescript-eslint/no-explicit-any': 'off'
+  'quotes': ['error', 'single']

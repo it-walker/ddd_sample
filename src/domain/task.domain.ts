@@ -1,7 +1,7 @@
-import { TASK_POSTPONE_MAX_COUNT } from '@src/common/constants';
-import { TaskStatus } from '@src/common/taskStatus';
-import { Task } from '@src/entities/task.entity';
-import { IsDate, IsInt, IsString } from 'class-validator';
+import {TASK_POSTPONE_MAX_COUNT} from '@src/common/constants';
+import {TaskStatus} from '@src/common/taskStatus';
+import {Task} from '@src/entities/task.entity';
+import {IsDate, IsInt, IsString} from 'class-validator';
 
 export class TaskDomain {
   @IsString()
@@ -22,18 +22,18 @@ export class TaskDomain {
 
   static reconstruct(task: Task): TaskDomain {
     return new TaskDomain(
-      task.name,
-      task.dueDate,
-      task.postponeCount,
-      task.status,
+        task.name,
+        task.dueDate,
+        task.postponeCount,
+        task.status,
     );
   }
 
   private constructor(
-    name: string,
-    dueDate: Date,
-    postponeCount = 0,
-    status: TaskStatus = TaskStatus.Incomplete,
+      name: string,
+      dueDate: Date,
+      postponeCount = 0,
+      status: TaskStatus = TaskStatus.Incomplete,
   ) {
     if (name === null) {
       throw new Error('必須項目が設定されていません');

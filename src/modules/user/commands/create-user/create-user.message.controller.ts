@@ -1,10 +1,10 @@
-import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto';
-import { Controller } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
-import { MessagePattern } from '@nestjs/microservices';
+import {IdResponse} from '@libs/ddd/interface-adapters/dtos/id.response.dto';
+import {Controller} from '@nestjs/common';
+import {CommandBus} from '@nestjs/cqrs';
+import {MessagePattern} from '@nestjs/microservices';
 
-import { CreateUserCommand } from './create-user.command';
-import { CreateUserMessageRequest } from './create-user.request.dto';
+import {CreateUserCommand} from './create-user.command';
+import {CreateUserMessageRequest} from './create-user.request.dto';
 
 @Controller()
 export class CreateUserMessageController {

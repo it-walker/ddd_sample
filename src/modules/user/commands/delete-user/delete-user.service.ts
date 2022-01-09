@@ -1,9 +1,9 @@
-import { UserRepositoryPort } from '@modules/user/database/user.repository.port';
-import { Inject } from '@nestjs/common';
-import { CommandHandler } from '@nestjs/cqrs';
+import {UserRepositoryPort} from '@modules/user/database/user.repository.port';
+import {Inject} from '@nestjs/common';
+import {CommandHandler} from '@nestjs/cqrs';
 
-import { UserRepository } from '../../database/user.repository';
-import { DeleteUserCommand } from './delete-user.command';
+import {UserRepository} from '../../database/user.repository';
+import {DeleteUserCommand} from './delete-user.command';
 
 @CommandHandler(DeleteUserCommand)
 export class DeleteUserService {

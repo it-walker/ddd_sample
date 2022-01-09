@@ -1,7 +1,7 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { UserOrmEntity } from '@src/modules/user/database/user.orm-entity';
-import { config } from 'dotenv';
-import { get } from 'env-var';
+import {TypeOrmModuleOptions} from '@nestjs/typeorm';
+import {UserOrmEntity} from '@src/modules/user/database/user.orm-entity';
+import {config} from 'dotenv';
+import {get} from 'env-var';
 
 // https://github.com/Sairyss/backend-best-practices#configuration
 
@@ -18,16 +18,16 @@ class DatabaseConfig {
   public static readonly DB_NAME: string = get('DB_NAME').required().asString();
 
   public static readonly DB_PORT: number = get('DB_PORT')
-    .required()
-    .asIntPositive();
+      .required()
+      .asIntPositive();
 
   public static readonly DB_USERNAME: string = get('DB_USERNAME')
-    .required()
-    .asString();
+      .required()
+      .asString();
 
   public static readonly DB_PASSWORD: string = get('DB_PASSWORD')
-    .required()
-    .asString();
+      .required()
+      .asString();
 }
 
 export const typeormConfig: TypeOrmModuleOptions = {

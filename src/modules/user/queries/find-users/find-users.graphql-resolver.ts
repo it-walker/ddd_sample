@@ -1,9 +1,9 @@
-import { UserRepository } from '@modules/user/database/user.repository';
-import { UserResponse } from '@modules/user/dtos/user.response.dto';
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import {UserRepository} from '@modules/user/database/user.repository';
+import {UserResponse} from '@modules/user/dtos/user.response.dto';
+import {Args, Query, Resolver} from '@nestjs/graphql';
 
-import { FindUsersQuery } from './find-users.query';
-import { FindUsersRequest } from './find-users.request.dto';
+import {FindUsersQuery} from './find-users.query';
+import {FindUsersRequest} from './find-users.request.dto';
 
 @Resolver()
 export class FindUsersGraphqlResolver {

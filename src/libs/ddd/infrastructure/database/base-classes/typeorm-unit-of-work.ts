@@ -1,8 +1,8 @@
-import { UnitOfWorkPort } from '@src/libs/ddd/domain/ports/unit-of-work.port';
-import { Result } from '@src/libs/ddd/domain/utils/result.util';
-import { Logger } from 'src/libs/ddd/domain/ports/logger.port';
-import { EntityTarget, QueryRunner,Repository,getConnection } from 'typeorm';
-import { IsolationLevel } from 'typeorm/driver/types/IsolationLevel';
+import {UnitOfWorkPort} from '@src/libs/ddd/domain/ports/unit-of-work.port';
+import {Result} from '@src/libs/ddd/domain/utils/result.util';
+import {Logger} from 'src/libs/ddd/domain/ports/logger.port';
+import {EntityTarget, getConnection,QueryRunner,Repository} from 'typeorm';
+import {IsolationLevel} from 'typeorm/driver/types/IsolationLevel';
 
 /**
  * Keep in mind that this is a naive implementation
@@ -25,15 +25,15 @@ export class TypeormUnitOfWork implements UnitOfWorkPort {
     const queryRunner = this.queryRunners.get(correlationId);
     if (!queryRunner) {
       throw new Error(
-        'Query runner not found. Incorrect correlationId or transaction is not started. To start a transaction wrap operations in a "execute" method.',
+          'Query runner not found. Incorrect correlationId or transaction is not started. To start a transaction wrap operations in a "execute" method.',
       );
     }
     return queryRunner;
   }
 
   getOrmRepository<Entity>(
-    entity: EntityTarget<Entity>,
-    correlationId: string,
+      entity: EntityTarget<Entity>,
+      correlationId: string,
   ): Repository<Entity> {
     const queryRunner = this.getQueryRunner(correlationId);
     return queryRunner.manager.getRepository(entity);
@@ -46,9 +46,9 @@ export class TypeormUnitOfWork implements UnitOfWorkPort {
    * saved (including changes done by Domain Events) or nothing at all.
    */
   async execute<T>(
-    correlationId: string,
-    callback: () => Promise<T>,
-    options?: { isolationLevel: IsolationLevel },
+      correlationId: string,
+      callback: () => Promise<T>,
+      options?: { isolationLevel: IsolationLevel },
   ): Promise<T> {
     if (!correlationId) {
       throw new Error('Correlation ID must be provided');
@@ -62,10 +62,10 @@ export class TypeormUnitOfWork implements UnitOfWorkPort {
     let result: T | Result<T>;
     try {
       result = await callback();
-      if ((result as unknown as Result<T>)?.isErr) {
+      if (((result as unknown) as Result<T>)?.isErr) {
         await this.rollbackTransaction<T>(
-          correlationId,
-          (result as unknown as Result.Err<T, Error>).error,
+            correlationId,
+            ((result as unknown) as Result.Err<T, Error>).error,
         );
         return result;
       }
@@ -89,7 +89,7 @@ export class TypeormUnitOfWork implements UnitOfWorkPort {
     try {
       await queryRunner.rollbackTransaction();
       this.logger.debug(
-        `[Transaction rolled back] ${(error as Error).message}`,
+          `[Transaction rolled back] ${(error as Error).message}`,
       );
     } finally {
       await this.finish(correlationId);

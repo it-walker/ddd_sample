@@ -1,4 +1,4 @@
-import { ExceptionBase } from '@src/libs/exceptions';
+import {ExceptionBase} from '@src/libs/exceptions';
 
 export class ProductAlreadyExistsError extends ExceptionBase {
   static readonly message: 'Product already exists';

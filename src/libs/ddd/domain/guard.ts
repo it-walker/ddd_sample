@@ -34,19 +34,19 @@ export class Guard {
    * Checks length range of a provided number/string/array
    */
   static lengthIsBetween(
-    value: number | string | Array<unknown>,
-    min: number,
-    max: number,
+      value: number | string | Array<unknown>,
+      min: number,
+      max: number,
   ): boolean {
     if (Guard.isEmpty(value)) {
       throw new Error(
-        'Cannot check length of a value. Provided value is empty',
+          'Cannot check length of a value. Provided value is empty',
       );
     }
     const valueLength =
-      typeof value === 'number'
-        ? Number(value).toString().length
-        : value.length;
+      typeof value === 'number' ?
+        Number(value).toString().length :
+        value.length;
     if (valueLength >= min && valueLength <= max) {
       return true;
     }

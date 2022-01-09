@@ -1,10 +1,10 @@
-import { UnitOfWorkPort } from '../ports/unit-of-work.port';
-import { Result } from '../utils/result.util';
-import { Command } from './command.base';
+import {UnitOfWorkPort} from '../ports/unit-of-work.port';
+import {Result} from '../utils/result.util';
+import {Command} from './command.base';
 
 export abstract class CommandHandlerBase<
   CommandHandlerReturnType = unknown,
-  CommandHandlerError extends Error = Error,
+  CommandHandlerError extends Error = Error
 > {
   constructor(protected readonly unitOfWork: UnitOfWorkPort) {}
 
@@ -18,7 +18,7 @@ export abstract class CommandHandlerBase<
    * everything in a single atomic database transaction
    */
   execute(
-    command: Command,
+      command: Command,
   ): Promise<Result<CommandHandlerReturnType, CommandHandlerError>> {
     return this.unitOfWork.execute(command.correlationId, async () =>
       this.handle(command),

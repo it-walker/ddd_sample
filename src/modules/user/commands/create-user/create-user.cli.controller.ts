@@ -1,10 +1,10 @@
-import { Logger } from '@libs/ddd/domain/ports/logger.port';
-import { createUserCliLoggerSymbol } from '@modules/user/user.providers';
-import { Inject } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
-import { Command, Console } from 'nestjs-console';
+import {Logger} from '@libs/ddd/domain/ports/logger.port';
+import {createUserCliLoggerSymbol} from '@modules/user/user.providers';
+import {Inject} from '@nestjs/common';
+import {CommandBus} from '@nestjs/cqrs';
+import {Command, Console} from 'nestjs-console';
 
-import { CreateUserCommand } from './create-user.command';
+import {CreateUserCommand} from './create-user.command';
 
 // Allows creating a user using CLI (Command Line Interface)
 @Console({
@@ -23,10 +23,10 @@ export class CreateUserCliController {
     description: 'Create a user',
   })
   async createUser(
-    email: string,
-    country: string,
-    postalCode: string,
-    street: string,
+      email: string,
+      country: string,
+      postalCode: string,
+      street: string,
   ): Promise<void> {
     const command = new CreateUserCommand({
       email,

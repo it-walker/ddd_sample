@@ -1,7 +1,7 @@
-import { Logger, Provider } from '@nestjs/common';
+import {Logger, Provider} from '@nestjs/common';
 
 export const createProductCliLoggerSymbol = Symbol(
-  'createProductCliLoggerSymbol',
+    'createProductCliLoggerSymbol',
 );
 
 export const createProductCliLoggerProvider: Provider = {

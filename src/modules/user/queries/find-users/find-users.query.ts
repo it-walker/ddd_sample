@@ -1,4 +1,4 @@
-import { Query } from '@libs/ddd/domain/base-classes/query-handler.base';
+import {Query} from '@libs/ddd/domain/base-classes/query-handler.base';
 
 // Query is a plain object with properties
 export class FindUsersQuery extends Query {

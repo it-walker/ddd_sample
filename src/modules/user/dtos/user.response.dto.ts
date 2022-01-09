@@ -1,8 +1,8 @@
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base';
-import { UserEntity } from '@modules/user/domain/entities/user.entity';
-import { Field, ObjectType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { User } from '@src/interface-adapters/interfaces/user/user.interface';
+import {ResponseBase} from '@libs/ddd/interface-adapters/base-classes/response.base';
+import {UserEntity} from '@modules/user/domain/entities/user.entity';
+import {Field, ObjectType} from '@nestjs/graphql';
+import {ApiProperty} from '@nestjs/swagger';
+import {User} from '@src/interface-adapters/interfaces/user/user.interface';
 
 @ObjectType() // only if you are using graphql
 export class UserResponse extends ResponseBase implements User {
@@ -24,14 +24,14 @@ export class UserResponse extends ResponseBase implements User {
 
   @ApiProperty({
     example: 'joh-doe@gmail.com',
-    description: `User's email address`,
+    description: 'User\'s email address',
   })
   @Field() // <- only if you are using GraphQL
   email: string;
 
   @ApiProperty({
     example: 'France',
-    description: `User's country of residence`,
+    description: 'User\'s country of residence',
   })
   @Field() // <- only if you are using GraphQL
   country: string;

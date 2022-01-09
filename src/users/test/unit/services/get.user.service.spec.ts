@@ -1,10 +1,10 @@
-import { Test } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import {Test} from '@nestjs/testing';
+import {getRepositoryToken} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
 
-import { User } from '@/entities/user.entity';
-import { UserMailAddress } from '@/entities/userMailAddress.entity';
-import { GetUserService } from '@/users/services/get.user.service';
+import {User} from '@/entities/user.entity';
+import {UserMailAddress} from '@/entities/userMailAddress.entity';
+import {GetUserService} from '@/users/services/get.user.service';
 
 describe('GetUserService', () => {
   let service: GetUserService;

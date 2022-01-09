@@ -1,17 +1,17 @@
-import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base';
-import { DomainEvents } from '@libs/ddd/domain/domain-events';
-import { Logger } from '@libs/ddd/domain/ports/logger.port';
-import { ID } from '@libs/ddd/domain/value-objects/id.value-object';
-import { FindConditions, ObjectLiteral, Repository } from 'typeorm';
+import {AggregateRoot} from '@libs/ddd/domain/base-classes/aggregate-root.base';
+import {DomainEvents} from '@libs/ddd/domain/domain-events';
+import {Logger} from '@libs/ddd/domain/ports/logger.port';
+import {ID} from '@libs/ddd/domain/value-objects/id.value-object';
+import {FindConditions, ObjectLiteral, Repository} from 'typeorm';
 
-import { NotFoundException } from '../../../../exceptions';
+import {NotFoundException} from '../../../../exceptions';
 import {
   DataWithPaginationMeta,
   FindManyPaginatedParams,
   QueryParams,
   RepositoryPort,
 } from '../../../domain/ports/repository.ports';
-import { OrmMapper } from './orm-mapper.base';
+import {OrmMapper} from './orm-mapper.base';
 
 export type WhereCondition<OrmEntity> =
   | FindConditions<OrmEntity>[]
@@ -22,9 +22,8 @@ export type WhereCondition<OrmEntity> =
 export abstract class TypeormRepositoryBase<
   Entity extends AggregateRoot<unknown>,
   EntityProps,
-  OrmEntity,
-> implements RepositoryPort<Entity, EntityProps>
-{
+  OrmEntity
+> implements RepositoryPort<Entity, EntityProps> {
   protected constructor(
     protected readonly repository: Repository<OrmEntity>,
     protected readonly mapper: OrmMapper<Entity, OrmEntity>,
@@ -44,12 +43,12 @@ export abstract class TypeormRepositoryBase<
     const ormEntity = this.mapper.toOrmEntity(entity);
     const result = await this.repository.save(ormEntity);
     await DomainEvents.publishEvents(
-      entity.id,
-      this.logger,
-      this.correlationId,
+        entity.id,
+        this.logger,
+        this.correlationId,
     );
     this.logger.debug(
-      `[${entity.constructor.name}] persisted ${entity.id.value}`,
+        `[${entity.constructor.name}] persisted ${entity.id.value}`,
     );
     return this.mapper.toDomainEntity(result);
   }
@@ -61,18 +60,18 @@ export abstract class TypeormRepositoryBase<
     });
     const result = await this.repository.save(ormEntities);
     await Promise.all(
-      entities.map((entity) =>
-        DomainEvents.publishEvents(entity.id, this.logger, this.correlationId),
-      ),
+        entities.map((entity) =>
+          DomainEvents.publishEvents(entity.id, this.logger, this.correlationId),
+        ),
     );
     this.logger.debug(
-      `[${entities}]: persisted ${entities.map((entity) => entity.id)}`,
+        `[${entities}]: persisted ${entities.map((entity) => entity.id)}`,
     );
     return result.map((entity) => this.mapper.toDomainEntity(entity));
   }
 
   async findOne(
-    params: QueryParams<EntityProps> = {},
+      params: QueryParams<EntityProps> = {},
   ): Promise<Entity | undefined> {
     const where = this.prepareQuery(params);
     const found = await this.repository.findOne({
@@ -92,7 +91,7 @@ export abstract class TypeormRepositoryBase<
 
   async findOneByIdOrThrow(id: ID | string): Promise<Entity> {
     const found = await this.repository.findOne({
-      where: { id: id instanceof ID ? id.value : id },
+      where: {id: id instanceof ID ? id.value : id},
     });
     if (!found) {
       throw new NotFoundException();
@@ -138,12 +137,12 @@ export abstract class TypeormRepositoryBase<
     entity.validate();
     await this.repository.remove(this.mapper.toOrmEntity(entity));
     await DomainEvents.publishEvents(
-      entity.id,
-      this.logger,
-      this.correlationId,
+        entity.id,
+        this.logger,
+        this.correlationId,
     );
     this.logger.debug(
-      `[${entity.constructor.name}] deleted ${entity.id.value}`,
+        `[${entity.constructor.name}] deleted ${entity.id.value}`,
     );
     return entity;
   }

@@ -10,17 +10,17 @@ import {
   Res,
   UsePipes,
 } from '@nestjs/common';
-import { ValidationPipe } from '@src/common/validation.pipe';
-import { TaskDomain } from '@src/domain/task.domain';
-import { UserDomain } from '@src/domain/user.domain';
-import { ICreateTaskApplication } from '@src/interfaces/tasks/applications/create.task.application.interface';
-import { IPostponeTaskApplication } from '@src/interfaces/tasks/applications/postpone.task.application.interface';
-import { TYPES } from '@src/interfaces/types';
-import { ICreateUserApplication } from '@src/interfaces/users/applications/create.user.application.interface';
-import { IGetUserApplication } from '@src/interfaces/users/applications/get.user.application.interface';
+import {ValidationPipe} from '@src/common/validation.pipe';
+import {TaskDomain} from '@src/domain/task.domain';
+import {UserDomain} from '@src/domain/user.domain';
+import {ICreateTaskApplication} from '@src/interfaces/tasks/applications/create.task.application.interface';
+import {IPostponeTaskApplication} from '@src/interfaces/tasks/applications/postpone.task.application.interface';
+import {TYPES} from '@src/interfaces/types';
+import {ICreateUserApplication} from '@src/interfaces/users/applications/create.user.application.interface';
+import {IGetUserApplication} from '@src/interfaces/users/applications/get.user.application.interface';
 
-import { CreateTaskDto } from './dto/create.task.dto';
-import { PostponeTaskDto } from './dto/postpone.task.dto';
+import {CreateTaskDto} from './dto/create.task.dto';
+import {PostponeTaskDto} from './dto/postpone.task.dto';
 
 @Controller('task')
 export class TaskController {

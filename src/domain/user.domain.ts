@@ -1,6 +1,6 @@
-import { IsArray, IsString } from 'class-validator';
+import {IsArray, IsString} from 'class-validator';
 
-import { UserMailAddressDomain } from './user.mailAddress.domain';
+import {UserMailAddressDomain} from './user.mailAddress.domain';
 
 export class UserDomain {
   @IsString()
