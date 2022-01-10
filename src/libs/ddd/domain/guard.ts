@@ -1,6 +1,11 @@
+/**
+ * Guard class
+ */
 export class Guard {
   /**
    * Checks if value is empty. Accepts strings, numbers, booleans, objects and arrays.
+   * @param {unknown} value
+   * @return {boolean}
    */
   static isEmpty(value: unknown): boolean {
     if (typeof value === 'number' || typeof value === 'boolean') {
@@ -32,6 +37,10 @@ export class Guard {
 
   /**
    * Checks length range of a provided number/string/array
+   * @param {number | string | Array<unknown>} value
+   * @param {number} min
+   * @param {number} max
+   * @return {boolean}
    */
   static lengthIsBetween(
     value: number | string | Array<unknown>,
