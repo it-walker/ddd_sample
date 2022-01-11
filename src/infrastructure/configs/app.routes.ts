@@ -4,6 +4,7 @@
  */
 const usersRoot = '/users';
 const productsRoot = '/products';
+const tasksRoot = '/tasks';
 export const routesV1 = {
   version: 'v1',
   user: {
@@ -13,5 +14,9 @@ export const routesV1 = {
   product: {
     root: productsRoot,
     delete: `${productsRoot}/:id`,
+  },
+  task: {
+    root: tasksRoot,
+    delete: `${tasksRoot}/:id`,
   },
 };

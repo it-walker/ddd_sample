@@ -6,33 +6,31 @@ import { Guard } from '@src/libs/ddd/domain/guard';
 import { ArgumentOutOfRangeException } from '@src/libs/exceptions';
 
 /**
- * ProductName class
+ * TaskPostponeCount class
  */
-export class ProductName extends ValueObject<string> {
+export class TaskPostponeCount extends ValueObject<number> {
   /**
    * constructor
-   * @param {string} value
+   * @param {number} value
    */
-  constructor(value: string) {
+  constructor(value: number) {
     super({ value });
-    this.props.value = ProductName.format(value);
+    this.props.value = value;
   }
 
   /**
    *
    */
-  get value(): string {
+  get value(): number {
     return this.props.value;
   }
 
   /**
    *
    */
-  protected validate({ value }: DomainPrimitive<string>): void {
-    console.log(value);
-    if (!Guard.lengthIsBetween(value, 5, 200)) {
-      console.log('asdfafadfa');
-      throw new ArgumentOutOfRangeException('name is out of range');
+  protected validate({ value }: DomainPrimitive<number>): void {
+    if (!Guard.lengthIsBetween(value, 1, 1)) {
+      throw new ArgumentOutOfRangeException('postponeCount is out of range');
     }
   }
 

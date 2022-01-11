@@ -24,7 +24,7 @@
       "typeorm:migration:generate": "npx ts-node ./node_modules/typeorm/cli migration:generate -d src/migrations -n",
       "typeorm:migration:run": "npx ts-node ./node_modules/typeorm/cli migration:run",
       "typeorm": "npx ts-node ./node_modules/typeorm/cli --config src/infrastructure/configs/database.config",
-      "migration:generate": "yarn typeorm migration:generate",
+      "migration:generate": "yarn typeorm migration:generate -n ",
       "migration:revert": "yarn typeorm migration:revert",
       "migration:show": "yarn typeorm migration:show",
       "migration:run": "yarn typeorm migration:run",

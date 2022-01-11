@@ -8,6 +8,8 @@ import { MailaddressOrmEntity } from '@src/modules/mailaddress/database/mailaddr
 import { MailaddressRepository } from '@src/modules/mailaddress/database/mailaddress.repository';
 import { ProductOrmEntity } from '@src/modules/product/database/product.orm-entity';
 import { ProductRepository } from '@src/modules/product/database/product.repository';
+import { TaskOrmEntity } from '@src/modules/task/database/task.orm-entity';
+import { TaskRepository } from '@src/modules/task/database/task.repository';
 
 @Injectable()
 /**
@@ -55,6 +57,17 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getProductRepository(correlationId: string): ProductRepository {
     return new ProductRepository(
       this.getOrmRepository(ProductOrmEntity, correlationId),
+    ).setCorrelationId(correlationId);
+  }
+
+  /**
+   * get TaskRepository
+   * @param {string} correlationId
+   * @return {TaskRepository}
+   */
+  getTaskRepository(correlationId: string): TaskRepository {
+    return new TaskRepository(
+      this.getOrmRepository(TaskOrmEntity, correlationId),
     ).setCorrelationId(correlationId);
   }
 }

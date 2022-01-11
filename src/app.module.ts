@@ -1,3 +1,4 @@
+import { TaskModule } from '@modules/task/task.module';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -28,6 +29,7 @@ import { WalletModule } from './modules/wallet/wallet.module';
     UserModule,
     WalletModule,
     ProductModule,
+    TaskModule,
   ],
   controllers: [],
   providers: [],
