@@ -1,5 +1,6 @@
-import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity } from 'typeorm'
+
+import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base'
 
 @Entity('mailaddress')
 /**
@@ -11,7 +12,7 @@ export class MailaddressOrmEntity extends TypeormEntityBase {
    * @param {MailaddressOrmEntity} props
    */
   constructor(props?: MailaddressOrmEntity) {
-    super(props);
+    super(props)
   }
 
   @Column({ unique: true })

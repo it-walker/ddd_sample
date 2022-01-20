@@ -1,5 +1,5 @@
-import { ExceptionBase } from './exception.base';
-import { ExceptionCodes } from './exception.codes';
+import { ExceptionBase } from '@libs/exceptions/exception.base'
+import { ExceptionCodes } from '@libs/exceptions/exception.codes'
 
 /**
  * Conflict Exception

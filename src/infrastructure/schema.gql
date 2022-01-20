@@ -6,6 +6,22 @@ type IdResponse {
   id: String!
 }
 
+type ProductResponse {
+  name: String!
+}
+
+type TaskResponse {
+  name: String!
+  dueDate: DateTime!
+  postponeCount: Float!
+  status: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type UserResponse {
   email: String!
   country: String!
@@ -13,13 +29,10 @@ type UserResponse {
   street: String!
 }
 
-type ProductResponse {
-  name: String!
-}
-
 type Query {
   findUsers(input: FindUsersRequest!): [UserResponse!]!
   findProducts(input: FindProductsRequest!): [ProductResponse!]!
+  findTasks(input: FindTasksRequest!): [TaskResponse!]!
 }
 
 input FindUsersRequest {
@@ -32,12 +45,16 @@ input FindProductsRequest {
   name: String
 }
 
-type Mutation {
-  create(input: CreateProductRequest!): IdResponse!
+input FindTasksRequest {
+  name: String
+  dueDate: DateTime
+  postponeCount: Float
 }
 
-input CreateProductRequest {
+type Mutation {
+  create(input: CreateTaskRequest!): IdResponse!
+}
+
+input CreateTaskRequest {
   name: String!
-  description: String!
-  price: Float!
 }

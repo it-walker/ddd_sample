@@ -3,81 +3,181 @@ env:
   commonjs: true
   es2021: true
   node: true
+  jest: true
 extends:
-  - google
-  - prettier
-  - prettier/@typescript-eslint
-parser: '@typescript-eslint/parser'
+  - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  # - prettier
+  # - prettier/@typescript-eslint
+parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaVersion: 13
-  project: 'tsconfig.json'
-  sourceType: 'module'
+  project: "tsconfig.json"
+  sourceType: "module"
   loggerFn: false
 plugins:
-  - '@typescript-eslint'
-  - 'simple-import-sort'
+  - "@typescript-eslint"
+  # - "simple-import-sort"
+  # - import
 root: true
 rules:
-  sort-imports:
+  semi:
     - error
-    - ignoreDeclarationSort: true
-  # new-cap: ["error", { "capIsNewExceptions": ["Person"] }]
-  new-cap:
+    - never
+    - beforeStatementContinuationChars: never
+  semi-spacing:
     - error
-    - capIsNewExceptions:
-        - Module
-        - Controller
-        - Inject
-        - UsePipes
-        - Post
-        - Get
-        - Res
-        - Body
-        - Param
-        - InjectRepository
-        - Injectable
-        - InjectConnection
-        - IsNotEmpty
-        - IsString
-        - Column
-        - Entity
-        - ArgsType
-        - InputType
-        - ApiProperty
-        - MinLength
-        - MaxLength
-        - IsOptional
-        - Matches
-        - Field
-        - IsAlphanumeric
-        - ApiOperation
-        - ApiResponse
-        - Resolver
-        - Query
-        - Args
-        - Command
-        - CommandHandler
-        - QueryHandler
-        - ObjectType
-        - Delete
-        - IsEmail
-        - Mutation
-        - IsArray
-        - OneToMany
-        - ManyToOne
-        - JoinColumn
-        - MessagePattern
-        - Console
-        - PrimaryGeneratedColumn
-        - Global
-  simple-import-sort/imports: error
-  '@typescript-eslint/interface-name-prefix': off
-  '@typescript-eslint/explicit-function-return-type': off
-  '@typescript-eslint/explicit-module-boundary-types': off
-  '@typescript-eslint/no-explicit-any': off
+    - after: true # セミコロンの後ろはエラー
+      before: false # セミコロンの前は許容
+  semi-style:
+    - error
+    - first # セミコロンが行頭に来てはダメ
+  # 余計なセミコロン
+  no-extra-semi:
+    - error
+  # ?
+  no-unexpected-multiline:
+    - error
+  # ?
+  no-unreachable:
+    - error
+  # 1行の最大長さは無効
+  max-len:
+    - off
+  # jsdocを必須にしない
+  require-jsdoc:
+    - off
+  no-multiple-empty-lines:
+    - error
+    - max: 1 # 最大1行
+      maxBOF: 0
+      maxEOF: 0
   quotes:
     - error
     - single
-  object-curly-spacing:
+  no-unused-vars: off
+  import/order:
     - error
-    - always
+    - groups:
+        - "builtin"
+        - "external"
+        - "parent"
+        - "sibling"
+        - "index"
+        - "object"
+      pathGroups:
+        - pattern: "@libs/**"
+          group: "sibling"
+          position: "before"
+        - pattern: "@modules/**"
+          group: "sibling"
+          position: "before"
+        - pattern: "@configs/**"
+          group: "sibling"
+          position: "before"
+        - pattern: "@src/**"
+          group: "sibling"
+          position: "before"
+      alphabetize:
+        order: asc
+      newlines-between: always
+  import/no-absolute-path: off
+  import/extensions:
+    - error
+    - ignorePackages
+    - js: never
+      jsx: never
+      ts: never
+      tsx: never
+  no-restricted-imports:
+    - error
+    - patterns:
+        - "../*"
+        - "./*"
+        - "~/*"
+  # enum定義禁止
+  no-restricted-syntax:
+    - error
+    - selector: "TSEnumDeclaration"
+      message: "Don't declare enums"
+  "@typescript-eslint/no-redeclare":
+    - error
+    - ignoreDeclarationMerge: true
+
+  # sort-imports:
+  #   - error
+  #   - ignoreDeclarationSort: true
+  # new-cap: ["error", { "capIsNewExceptions": ["Person"] }]
+  # no-restricted-imports:
+  #   - error
+  #   - patterns:
+  #       - "./"
+  #       - "../"
+  # new-cap:
+  #   - error
+  #   - capIsNewExceptions:
+  #       - Module
+  #       - Controller
+  #       - Inject
+  #       - UsePipes
+  #       - Post
+  #       - Get
+  #       - Res
+  #       - Body
+  #       - Param
+  #       - InjectRepository
+  #       - Injectable
+  #       - InjectConnection
+  #       - IsNotEmpty
+  #       - IsString
+  #       - Column
+  #       - Entity
+  #       - ArgsType
+  #       - InputType
+  #       - ApiProperty
+  #       - MinLength
+  #       - MaxLength
+  #       - IsOptional
+  #       - Matches
+  #       - Field
+  #       - IsAlphanumeric
+  #       - ApiOperation
+  #       - ApiResponse
+  #       - Resolver
+  #       - Query
+  #       - Args
+  #       - Command
+  #       - CommandHandler
+  #       - QueryHandler
+  #       - ObjectType
+  #       - Delete
+  #       - IsEmail
+  #       - Mutation
+  #       - IsArray
+  #       - OneToMany
+  #       - ManyToOne
+  #       - JoinColumn
+  #       - MessagePattern
+  #       - Console
+  #       - PrimaryGeneratedColumn
+  #       - Global
+  #       - IsDate
+  #       - IsNumber
+  #       - IsDateString
+  #       - PrimaryColumn
+  #       - CreateDateColumn
+  #       - UpdateDateColumn
+  # simple-import-sort/imports: error
+  # "@typescript-eslint/interface-name-prefix": off
+  # "@typescript-eslint/explicit-function-return-type": off
+  # "@typescript-eslint/explicit-module-boundary-types": off
+  # "@typescript-eslint/no-explicit-any": off
+  # object-curly-spacing:
+  #   - error
+  #   - always
+settings:
+  import/resolver:
+    # - error
+    typescript:
+      project: "./"

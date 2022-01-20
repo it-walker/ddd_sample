@@ -1,9 +1,9 @@
-import * as Joi from '@hapi/joi';
-import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import * as Joi from '@hapi/joi'
+import { Module } from '@nestjs/common'
+import { ConfigModule, ConfigService } from '@nestjs/config'
 
-import { MysqlConfigService } from './config.service';
-import configuration from './configuration';
+import { MysqlConfigService } from '@src/config/database/mysql/config.service'
+import configuration from '@src/config/database/mysql/configuration'
 /**
  * Import and provide app configuration related classes.
  *
@@ -27,4 +27,4 @@ import configuration from './configuration';
 /**
  * MysqlConfigModule class
  */
-export class MysqlConfigModule {}
+export class MysqlConfigModule { }

@@ -1,8 +1,8 @@
-import { Test } from '@nestjs/testing';
+import { Test } from '@nestjs/testing'
 
-import { UserDomain } from '@/domain/user.domain';
-import { TYPES } from '@/interfaces/types';
-import { CreateUserApplication } from '@/users/applications/create.user.application';
+import { UserDomain } from '@src/domain/user.domain'
+import { TYPES } from '@src/interfaces/types'
+import { CreateUserApplication } from '@src/users/applications/create.user.application'
 
 /**
  * CreateUserService class
@@ -14,11 +14,11 @@ class CreateUserService {
    * @return {any}
    */
   create(user) {
-    return user;
+    return user
   }
 }
 describe('CreateUserApplication', () => {
-  let application: CreateUserApplication;
+  let application: CreateUserApplication
   beforeAll(async () => {
     const app = await Test.createTestingModule({
       providers: [
@@ -28,18 +28,18 @@ describe('CreateUserApplication', () => {
           useClass: CreateUserService,
         },
       ],
-    }).compile();
+    }).compile()
 
-    application = app.get<CreateUserApplication>(CreateUserApplication);
-  });
+    application = app.get<CreateUserApplication>(CreateUserApplication)
+  })
 
   describe('create', () => {
     it('should create user', async () => {
       const user: UserDomain = {
         name: 'Rafael Pezzetti',
         mailAddresses: [{ value: 'rafael@pezzetti.com' }],
-      };
-      expect(await application.create(user)).toEqual(user);
-    });
-  });
-});
+      }
+      expect(await application.create(user)).toEqual(user)
+    })
+  })
+})

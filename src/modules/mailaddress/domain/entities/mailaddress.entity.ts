@@ -1,5 +1,5 @@
-import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base';
-import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object';
+import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base'
+import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object'
 
 export interface CreateMailaddressProps {
   userId: UUID;
@@ -21,11 +21,11 @@ export class MailaddressEntity extends AggregateRoot<MailaddressProps> {
    * @return {MailaddressEntity}
    */
   static create(create: CreateMailaddressProps): MailaddressEntity {
-    const id = UUID.generate();
-    const props: MailaddressProps = { ...create, email: '' };
-    const mailaddress = new MailaddressEntity({ id, props });
+    const id = UUID.generate()
+    const props: MailaddressProps = { ...create, email: '' }
+    const mailaddress = new MailaddressEntity({ id, props })
 
-    return mailaddress;
+    return mailaddress
   }
 
   /**

@@ -1,4 +1,4 @@
-import { DomainEvent, DomainEventClass, DomainEvents } from '.';
+import { DomainEvent, DomainEventClass, DomainEvents } from '.'
 
 export abstract class DomainEventHandler {
   constructor(private readonly event: DomainEventClass) {}
@@ -6,6 +6,6 @@ export abstract class DomainEventHandler {
   abstract handle(event: DomainEvent): Promise<void>;
 
   public listen(): void {
-    DomainEvents.subscribe(this.event, this);
+    DomainEvents.subscribe(this.event, this)
   }
 }

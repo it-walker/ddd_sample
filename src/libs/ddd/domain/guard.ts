@@ -1,37 +1,46 @@
+/**
+ * Guard class
+ */
 export class Guard {
   /**
    * Checks if value is empty. Accepts strings, numbers, booleans, objects and arrays.
+   * @param {unknown} value
+   * @return {boolean}
    */
   static isEmpty(value: unknown): boolean {
     if (typeof value === 'number' || typeof value === 'boolean') {
-      return false;
+      return false
     }
     if (typeof value === 'undefined' || value === null) {
-      return true;
+      return true
     }
     if (value instanceof Date) {
-      return false;
+      return false
     }
     if (value instanceof Object && !Object.keys(value).length) {
-      return true;
+      return true
     }
     if (Array.isArray(value)) {
       if (value.length === 0) {
-        return true;
+        return true
       }
       if (value.every((item) => Guard.isEmpty(item))) {
-        return true;
+        return true
       }
     }
     if (value === '') {
-      return true;
+      return true
     }
 
-    return false;
+    return false
   }
 
   /**
    * Checks length range of a provided number/string/array
+   * @param {number | string | Array<unknown>} value
+   * @param {number} min
+   * @param {number} max
+   * @return {boolean}
    */
   static lengthIsBetween(
     value: number | string | Array<unknown>,
@@ -41,15 +50,15 @@ export class Guard {
     if (Guard.isEmpty(value)) {
       throw new Error(
         'Cannot check length of a value. Provided value is empty',
-      );
+      )
     }
     const valueLength =
       typeof value === 'number'
         ? Number(value).toString().length
-        : value.length;
+        : value.length
     if (valueLength >= min && valueLength <= max) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 }

@@ -1,6 +1,6 @@
-import { DeepPartial } from '../../../types';
-import { BaseEntityProps } from '../base-classes/entity.base';
-import { ID } from '../value-objects/id.value-object';
+import { BaseEntityProps } from '@libs/ddd/domain/base-classes/entity.base'
+import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
+import { DeepPartial } from '@libs/types'
 
 /*  Most of repositories will probably need generic
     save/find/delete operations, so it's easier
@@ -11,9 +11,8 @@ import { ID } from '../value-objects/id.value-object';
 
 export type QueryParams<EntityProps> = DeepPartial<
   BaseEntityProps & EntityProps
->;
-
-export interface Save<Entity> {
+>
+  ; export interface Save<Entity> {
   save(entity: Entity): Promise<Entity>;
 }
 
@@ -68,11 +67,11 @@ export interface DeleteOne<Entity> {
 
 export interface RepositoryPort<Entity, EntityProps>
   extends Save<Entity>,
-    FindOne<Entity, EntityProps>,
-    FindOneById<Entity>,
-    FindMany<Entity, EntityProps>,
-    FindManyPaginated<Entity, EntityProps>,
-    DeleteOne<Entity>,
-    SaveMultiple<Entity> {
+  FindOne<Entity, EntityProps>,
+  FindOneById<Entity>,
+  FindMany<Entity, EntityProps>,
+  FindManyPaginated<Entity, EntityProps>,
+  DeleteOne<Entity>,
+  SaveMultiple<Entity> {
   setCorrelationId(correlationId: string): this;
 }

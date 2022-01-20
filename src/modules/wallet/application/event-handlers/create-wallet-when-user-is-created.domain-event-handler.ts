@@ -1,10 +1,11 @@
-import { DomainEventHandler } from '@libs/ddd/domain/domain-events';
-import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object';
-import { UserCreatedDomainEvent } from '@modules/user/domain/events/user-created.domain-event';
-import { WalletRepositoryPort } from '@modules/wallet/database/wallet.repository.port';
-import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work';
+import { DomainEventHandler } from '@libs/ddd/domain/domain-events'
+import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
 
-import { WalletEntity } from '../../domain/entities/wallet.entity';
+import { UserCreatedDomainEvent } from '@modules/user/domain/events/user-created.domain-event'
+import { WalletRepositoryPort } from '@modules/wallet/database/wallet.repository.port'
+import { WalletEntity } from '@modules/wallet/domain/entities/wallet.entity'
+
+import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 
 /**
  * CreateWalletWhenUserIsCreatedDomainEventHandler class
@@ -15,7 +16,7 @@ export class CreateWalletWhenUserIsCreatedDomainEventHandler extends DomainEvent
    * @param {UnitOfWork} unitOfWork
    */
   constructor(private readonly unitOfWork: UnitOfWork) {
-    super(UserCreatedDomainEvent);
+    super(UserCreatedDomainEvent)
   }
 
   /**
@@ -25,10 +26,10 @@ export class CreateWalletWhenUserIsCreatedDomainEventHandler extends DomainEvent
    */
   async handle(event: UserCreatedDomainEvent): Promise<void> {
     const walletRepo: WalletRepositoryPort =
-      this.unitOfWork.getWalletRepository(event.correlationId);
+      this.unitOfWork.getWalletRepository(event.correlationId)
     const wallet = WalletEntity.create({
       userId: new UUID(event.aggregateId),
-    });
-    await walletRepo.save(wallet);
+    })
+    await walletRepo.save(wallet)
   }
 }

@@ -1,13 +1,17 @@
-import { UserOrmEntity } from '@modules/user/database/user.orm-entity';
-import { UserRepository } from '@modules/user/database/user.repository';
-import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity';
-import { WalletRepository } from '@modules/wallet/database/wallet.repository';
-import { Injectable } from '@nestjs/common';
-import { TypeormUnitOfWork } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm-unit-of-work';
-import { MailaddressOrmEntity } from '@src/modules/mailaddress/database/mailaddress.orm-entity';
-import { MailaddressRepository } from '@src/modules/mailaddress/database/mailaddress.repository';
-import { ProductOrmEntity } from '@src/modules/product/database/product.orm-entity';
-import { ProductRepository } from '@src/modules/product/database/product.repository';
+import { Injectable } from '@nestjs/common'
+
+import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
+import { UserRepository } from '@modules/user/database/user.repository'
+import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
+import { WalletRepository } from '@modules/wallet/database/wallet.repository'
+
+import { TypeormUnitOfWork } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm-unit-of-work'
+import { MailaddressOrmEntity } from '@src/modules/mailaddress/database/mailaddress.orm-entity'
+import { MailaddressRepository } from '@src/modules/mailaddress/database/mailaddress.repository'
+import { ProductOrmEntity } from '@src/modules/product/database/product.orm-entity'
+import { ProductRepository } from '@src/modules/product/database/product.repository'
+import { TaskOrmEntity } from '@src/modules/task/database/task.orm-entity'
+import { TaskRepository } from '@src/modules/task/database/task.repository'
 
 @Injectable()
 /**
@@ -22,7 +26,7 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getUserRepository(correlationId: string): UserRepository {
     return new UserRepository(
       this.getOrmRepository(UserOrmEntity, correlationId),
-    ).setCorrelationId(correlationId);
+    ).setCorrelationId(correlationId)
   }
 
   /**
@@ -33,7 +37,7 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getWalletRepository(correlationId: string): WalletRepository {
     return new WalletRepository(
       this.getOrmRepository(WalletOrmEntity, correlationId),
-    ).setCorrelationId(correlationId);
+    ).setCorrelationId(correlationId)
   }
 
   /**
@@ -44,7 +48,7 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getMailaddressRepository(correlationId: string): MailaddressRepository {
     return new MailaddressRepository(
       this.getOrmRepository(MailaddressOrmEntity, correlationId),
-    ).setCorrelationId(correlationId);
+    ).setCorrelationId(correlationId)
   }
 
   /**
@@ -55,6 +59,17 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getProductRepository(correlationId: string): ProductRepository {
     return new ProductRepository(
       this.getOrmRepository(ProductOrmEntity, correlationId),
-    ).setCorrelationId(correlationId);
+    ).setCorrelationId(correlationId)
+  }
+
+  /**
+   * get TaskRepository
+   * @param {string} correlationId
+   * @return {TaskRepository}
+   */
+  getTaskRepository(correlationId: string): TaskRepository {
+    return new TaskRepository(
+      this.getOrmRepository(TaskOrmEntity, correlationId),
+    ).setCorrelationId(correlationId)
   }
 }

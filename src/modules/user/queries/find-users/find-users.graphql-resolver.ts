@@ -1,9 +1,9 @@
-import { UserRepository } from '@modules/user/database/user.repository';
-import { UserResponse } from '@modules/user/dtos/user.response.dto';
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql'
 
-import { FindUsersQuery } from './find-users.query';
-import { FindUsersRequest } from './find-users.request.dto';
+import { UserRepository } from '@modules/user/database/user.repository'
+import { UserResponse } from '@modules/user/dtos/user.response.dto'
+import { FindUsersQuery } from '@modules/user/queries/find-users/find-users.query'
+import { FindUsersRequest } from '@modules/user/queries/find-users/find-users.request.dto'
 
 @Resolver()
 /**
@@ -14,7 +14,7 @@ export class FindUsersGraphqlResolver {
    * constructor
    * @param {UserRepository} userRepo
    */
-  constructor(private readonly userRepo: UserRepository) {}
+  constructor(private readonly userRepo: UserRepository) { }
 
   @Query(() => [UserResponse])
   /**
@@ -23,9 +23,9 @@ export class FindUsersGraphqlResolver {
   async findUsers(
     @Args('input') input: FindUsersRequest,
   ): Promise<UserResponse[]> {
-    const query = new FindUsersQuery(input);
-    const users = await this.userRepo.findUsers(query);
+    const query = new FindUsersQuery(input)
+    const users = await this.userRepo.findUsers(query)
 
-    return users.map((user) => new UserResponse(user));
+    return users.map((user) => new UserResponse(user))
   }
 }

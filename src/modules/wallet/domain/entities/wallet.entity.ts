@@ -1,9 +1,10 @@
-import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base';
-import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object';
-import { ArgumentOutOfRangeException } from '@libs/exceptions';
-import { Result } from '@src/libs/ddd/domain/utils/result.util';
+import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
+import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
+import { ArgumentOutOfRangeException } from '@libs/exceptions'
 
-import { WalletNotEnoughBalanceError } from '../../errors/wallet.errors';
+import { WalletNotEnoughBalanceError } from '@modules/wallet/errors/wallet.errors'
+
+import { Result } from '@src/libs/ddd/domain/utils/result.util'
 
 export interface CreateWalletProps {
   userId: UUID;
@@ -25,12 +26,12 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
    * @return {WalletEntity}
    */
   static create(create: CreateWalletProps): WalletEntity {
-    const id = UUID.generate();
+    const id = UUID.generate()
     // Setting a default role since it is not accepted during creation
-    const props: WalletProps = { ...create, balance: 0 };
-    const wallet = new WalletEntity({ id, props });
+    const props: WalletProps = { ...create, balance: 0 }
+    const wallet = new WalletEntity({ id, props })
 
-    return wallet;
+    return wallet
   }
 
   /**
@@ -38,7 +39,7 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
    * @param {number} amount
    */
   deposit(amount: number): void {
-    this.props.balance += amount;
+    this.props.balance += amount
   }
 
   /**
@@ -48,10 +49,10 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
    */
   withdraw(amount: number): Result<null, WalletNotEnoughBalanceError> {
     if (this.props.balance - amount < 0) {
-      return Result.err(new WalletNotEnoughBalanceError());
+      return Result.err(new WalletNotEnoughBalanceError())
     }
-    this.props.balance -= amount;
-    return Result.ok(null);
+    this.props.balance -= amount
+    return Result.ok(null)
   }
 
   /**
@@ -63,7 +64,7 @@ export class WalletEntity extends AggregateRoot<WalletProps> {
     if (this.props.balance < 0) {
       throw new ArgumentOutOfRangeException(
         'Wallet balance cannot be less than 0',
-      );
+      )
     }
   }
 }

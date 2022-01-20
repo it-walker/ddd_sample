@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { WalletOrmEntity } from './database/wallet.orm-entity';
-import { WalletRepository } from './database/wallet.repository';
-import { createWalletWhenUserIsCreatedProvider } from './wallet.providers';
+import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
+import { WalletRepository } from '@modules/wallet/database/wallet.repository'
+import { createWalletWhenUserIsCreatedProvider } from '@modules/wallet/wallet.providers'
 
 @Module({
   imports: [TypeOrmModule.forFeature([WalletOrmEntity])],
@@ -13,4 +13,4 @@ import { createWalletWhenUserIsCreatedProvider } from './wallet.providers';
 /**
  * WalletModule class
  */
-export class WalletModule {}
+export class WalletModule { }

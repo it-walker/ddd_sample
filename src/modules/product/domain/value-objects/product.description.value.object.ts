@@ -1,9 +1,9 @@
 import {
   DomainPrimitive,
   ValueObject,
-} from '@src/libs/ddd/domain/base-classes/value-object.base';
-import { Guard } from '@src/libs/ddd/domain/guard';
-import { ArgumentOutOfRangeException } from '@src/libs/exceptions';
+} from '@src/libs/ddd/domain/base-classes/value-object.base'
+import { Guard } from '@src/libs/ddd/domain/guard'
+import { ArgumentOutOfRangeException } from '@src/libs/exceptions'
 
 /**
  * ProductDescription
@@ -14,15 +14,15 @@ export class ProductDescription extends ValueObject<string> {
    * @param {string} value
    */
   constructor(value: string) {
-    super({ value });
-    this.props.value = ProductDescription.format(value);
+    super({ value })
+    this.props.value = ProductDescription.format(value)
   }
 
   /**
    *
    */
   get value(): string {
-    return this.props.value;
+    return this.props.value
   }
 
   /**
@@ -31,7 +31,7 @@ export class ProductDescription extends ValueObject<string> {
    */
   protected validate({ value }: DomainPrimitive<string>): void {
     if (!Guard.lengthIsBetween(value, 0, 200)) {
-      throw new ArgumentOutOfRangeException('description is out of range');
+      throw new ArgumentOutOfRangeException('description is out of range')
     }
   }
 
@@ -41,6 +41,6 @@ export class ProductDescription extends ValueObject<string> {
    * @return {string}
    */
   static format(value: string): string {
-    return value.trim().toLowerCase();
+    return value.trim().toLowerCase()
   }
 }

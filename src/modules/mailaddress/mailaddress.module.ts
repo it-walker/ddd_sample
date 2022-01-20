@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { MailaddressOrmEntity } from './database/mailaddress.orm-entity';
-import { MailaddressRepository } from './database/mailaddress.repository';
-import { createMailaddressWhenUserIsCreatedProvider } from './mailaddress.providers';
+import { MailaddressOrmEntity } from '@modules/mailaddress/database/mailaddress.orm-entity'
+import { MailaddressRepository } from '@modules/mailaddress/database/mailaddress.repository'
+import { createMailaddressWhenUserIsCreatedProvider } from '@modules/mailaddress/mailaddress.providers'
 
 @Module({
   imports: [TypeOrmModule.forFeature([MailaddressOrmEntity])],
@@ -16,4 +16,4 @@ import { createMailaddressWhenUserIsCreatedProvider } from './mailaddress.provid
 /**
  * MailaddressModule class
  */
-export class MailaddressModule {}
+export class MailaddressModule { }

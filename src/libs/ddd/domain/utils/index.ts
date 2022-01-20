@@ -1,1 +1,1 @@
-export * from './convert-props-to-object.util';
+export * from '@libs/ddd/domain/utils/convert-props-to-object.util'

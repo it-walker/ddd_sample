@@ -1,9 +1,9 @@
-import { Inject } from '@nestjs/common';
-import { CommandHandler } from '@nestjs/cqrs';
+import { Inject } from '@nestjs/common'
+import { CommandHandler } from '@nestjs/cqrs'
 
-import { ProductRepository } from '../../database/product.repository';
-import { ProductRepositoryPort } from '../../database/product.repository.port';
-import { DeleteProductCommand } from './delete-product.commands';
+import { DeleteProductCommand } from '@modules/product/commands/delete-product/delete-product.commands'
+import { ProductRepository } from '@modules/product/database/product.repository'
+import { ProductRepositoryPort } from '@modules/product/database/product.repository.port'
 
 @CommandHandler(DeleteProductCommand)
 /**
@@ -17,14 +17,14 @@ export class DeleteProductService {
   constructor(
     @Inject(ProductRepository)
     private readonly productRepo: ProductRepositoryPort,
-  ) {}
+  ) { }
 
   /**
    *
    * @param {DeleteProductCommand} command
    */
   async execute(command: DeleteProductCommand): Promise<void> {
-    const found = await this.productRepo.findOneByIdOrThrow(command.productId);
-    await this.productRepo.delete(found);
+    const found = await this.productRepo.findOneByIdOrThrow(command.productId)
+    await this.productRepo.delete(found)
   }
 }

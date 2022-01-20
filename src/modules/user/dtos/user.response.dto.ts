@@ -1,8 +1,11 @@
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base';
-import { UserEntity } from '@modules/user/domain/entities/user.entity';
-import { Field, ObjectType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { User } from '@src/interface-adapters/interfaces/user/user.interface';
+import { Field, ObjectType } from '@nestjs/graphql'
+import { ApiProperty } from '@nestjs/swagger'
+
+import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
+
+import { UserEntity } from '@modules/user/domain/entities/user.entity'
+
+import { User } from '@src/interface-adapters/interfaces/user/user.interface'
 
 @ObjectType() // only if you are using graphql
 /**
@@ -14,7 +17,7 @@ export class UserResponse extends ResponseBase implements User {
    * @param {UserEntity} user
    */
   constructor(user: UserEntity) {
-    super(user);
+    super(user)
     /* Whitelisting returned data to avoid leaks.
        If a new property is added, like password or a
        credit card number, it won't be returned
@@ -22,11 +25,11 @@ export class UserResponse extends ResponseBase implements User {
        (avoid blacklisting, which will return everything
         but blacklisted items, which can lead to a data leak).
     */
-    const props = user.getPropsCopy();
-    this.email = props.email.value;
-    this.country = props.address.country;
-    this.postalCode = props.address.postalCode;
-    this.street = props.address.street;
+    const props = user.getPropsCopy()
+    this.email = props.email.value
+    this.country = props.address.country
+    this.postalCode = props.address.postalCode
+    this.street = props.address.street
   }
 
   @ApiProperty({

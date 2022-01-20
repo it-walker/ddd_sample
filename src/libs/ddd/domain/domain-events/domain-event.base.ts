@@ -1,13 +1,12 @@
-import { ArgumentNotProvidedException } from '../../../exceptions';
-import { Guard } from '../guard';
+import { Guard } from '@libs/ddd/domain/guard'
+import { ArgumentNotProvidedException } from '@libs/exceptions'
 
 export type DomainEventProps<T> = Omit<T, 'correlationId' | 'dateOccurred'> &
   Omit<DomainEvent, 'correlationId' | 'dateOccurred'> & {
     correlationId?: string;
     dateOccurred?: number;
-  };
-
-export abstract class DomainEvent {
+  }
+  ; export abstract class DomainEvent {
   /** Aggregate ID where domain event occurred */
   public readonly aggregateId: string;
 
@@ -22,11 +21,11 @@ export abstract class DomainEvent {
   constructor(props: DomainEventProps<unknown>) {
     if (Guard.isEmpty(props)) {
       throw new ArgumentNotProvidedException(
-          'DomainEvent props should not be empty',
-      );
+        'DomainEvent props should not be empty',
+      )
     }
-    this.aggregateId = props.aggregateId;
-    this.dateOccurred = props.dateOccurred || Date.now();
-    if (props.correlationId) this.correlationId = props.correlationId;
+    this.aggregateId = props.aggregateId
+    this.dateOccurred = props.dateOccurred || Date.now()
+    if (props.correlationId) this.correlationId = props.correlationId
   }
 }

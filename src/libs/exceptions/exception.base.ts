@@ -29,8 +29,8 @@ export abstract class ExceptionBase extends Error {
    * info that may help with debugging.
    */
   constructor(readonly message: string, readonly metadata?: unknown) {
-    super(message);
-    Error.captureStackTrace(this, this.constructor);
+    super(message)
+    Error.captureStackTrace(this, this.constructor)
   }
 
   abstract code: string;
@@ -49,6 +49,6 @@ export abstract class ExceptionBase extends Error {
       code: this.code,
       stack: this.stack,
       metadata: this.metadata,
-    };
+    }
   }
 }

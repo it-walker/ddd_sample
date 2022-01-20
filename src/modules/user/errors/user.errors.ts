@@ -1,4 +1,4 @@
-import { ExceptionBase } from '@src/libs/exceptions';
+import { ExceptionBase } from '@src/libs/exceptions'
 
 /**
  * UserAlreadyExistsError class
@@ -13,6 +13,6 @@ export class UserAlreadyExistsError extends ExceptionBase {
    * @param {unknown} metadata
    */
   constructor(metadata?: unknown) {
-    super(UserAlreadyExistsError.message, metadata);
+    super(UserAlreadyExistsError.message, metadata)
   }
 }

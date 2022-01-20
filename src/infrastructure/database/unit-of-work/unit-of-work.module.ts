@@ -1,13 +1,13 @@
-import { Global, Logger, Module } from '@nestjs/common';
+import { Global, Logger, Module } from '@nestjs/common'
 
-import { UnitOfWork } from './unit-of-work';
+import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 
-const unitOfWorkSingleton = new UnitOfWork(new Logger());
+const unitOfWorkSingleton = new UnitOfWork(new Logger())
 
 const unitOfWorkSingletonProvider = {
   provide: UnitOfWork,
   useFactory: () => unitOfWorkSingleton,
-};
+}
 
 @Global()
 @Module({
@@ -18,4 +18,4 @@ const unitOfWorkSingletonProvider = {
 /**
  * UnitOfWorkModule class
  */
-export class UnitOfWorkModule {}
+export class UnitOfWorkModule { }

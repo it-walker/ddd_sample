@@ -5,9 +5,9 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-} from 'typeorm';
+} from 'typeorm'
 
-import { User } from './user.entity';
+import { User } from '@src/entities/user.entity'
 
 @Entity()
 export class UserMailAddress extends BaseEntity {
