@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
-import { Entity } from '../base-classes/entity.base';
-import { ValueObject } from '../base-classes/value-object.base';
+import { Entity } from '../base-classes/entity.base'
+import { ValueObject } from '../base-classes/value-object.base'
 
 function isEntity(obj: unknown): obj is Entity<unknown> {
   /**
@@ -12,17 +12,17 @@ function isEntity(obj: unknown): obj is Entity<unknown> {
     Object.prototype.hasOwnProperty.call(obj, 'toObject') &&
     Object.prototype.hasOwnProperty.call(obj, 'id') &&
     ValueObject.isValueObject((obj as Entity<unknown>).id)
-  );
+  )
 }
 
 function convertToPlainObject(item: any): any {
   if (ValueObject.isValueObject(item)) {
-    return item.getRawProps();
+    return item.getRawProps()
   }
   if (isEntity(item)) {
-    return item.toObject();
+    return item.toObject()
   }
-  return item;
+  return item
 }
 
 /**
@@ -31,17 +31,17 @@ function convertToPlainObject(item: any): any {
  * @param props
  */
 export function convertPropsToObject(props: any): any {
-  const propsCopy = { ...props };
+  const propsCopy = { ...props }
 
   // eslint-disable-next-line guard-for-in
   for (const prop in propsCopy) {
     if (Array.isArray(propsCopy[prop])) {
       propsCopy[prop] = (propsCopy[prop] as Array<unknown>).map((item) => {
-        return convertToPlainObject(item);
-      });
+        return convertToPlainObject(item)
+      })
     }
-    propsCopy[prop] = convertToPlainObject(propsCopy[prop]);
+    propsCopy[prop] = convertToPlainObject(propsCopy[prop])
   }
 
-  return propsCopy;
+  return propsCopy
 }

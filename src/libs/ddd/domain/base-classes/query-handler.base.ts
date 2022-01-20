@@ -1,9 +1,9 @@
-import { Result } from '../utils/result.util';
+import { Result } from '@libs/ddd/domain/utils/result.util'
 
 /**
  * Query class
  */
-export abstract class Query {}
+export abstract class Query { }
 
 /**
  * QueryHandlerBase class
@@ -22,6 +22,6 @@ export abstract class QueryHandlerBase {
    * @return {Promise<Result<unknown>>}
    */
   execute(query: Query): Promise<Result<unknown>> {
-    return this.handle(query);
+    return this.handle(query)
   }
 }

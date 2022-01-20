@@ -1,12 +1,12 @@
+import { Guard } from '@libs/ddd/domain/guard'
+import { convertPropsToObject } from '@libs/ddd/domain/utils'
+import { DateVO } from '@libs/ddd/domain/value-objects/date.value-object'
+import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
 import {
   ArgumentInvalidException,
   ArgumentNotProvidedException,
   ArgumentOutOfRangeException,
-} from '../../../exceptions';
-import { Guard } from '../guard';
-import { convertPropsToObject } from '../utils';
-import { DateVO } from '../value-objects/date.value-object';
-import { ID } from '../value-objects/id.value-object';
+} from '@libs/exceptions'
 
 export interface BaseEntityProps {
   id: ID;
@@ -28,13 +28,13 @@ export abstract class Entity<EntityProps> {
     updatedAt,
     props,
   }: CreateEntityProps<EntityProps>) {
-    this.setId(id);
-    this.validateProps(props);
-    const now = DateVO.now();
-    this._createdAt = createdAt || now;
-    this._updatedAt = updatedAt || now;
-    this.props = props;
-    this.validate();
+    this.setId(id)
+    this.validateProps(props)
+    const now = DateVO.now()
+    this._createdAt = createdAt || now
+    this._updatedAt = updatedAt || now
+    this.props = props
+    this.validate()
   }
 
   protected readonly props: EntityProps;
@@ -47,23 +47,23 @@ export abstract class Entity<EntityProps> {
   private _updatedAt: DateVO;
 
   get id(): ID {
-    return this._id;
+    return this._id
   }
 
   private setId(id: ID): void {
-    this._id = id;
+    this._id = id
   }
 
   get createdAt(): DateVO {
-    return this._createdAt;
+    return this._createdAt
   }
 
   get updatedAt(): DateVO {
-    return this._updatedAt;
+    return this._updatedAt
   }
 
   static isEntity(entity: unknown): entity is Entity<unknown> {
-    return entity instanceof Entity;
+    return entity instanceof Entity
   }
 
   /**
@@ -72,18 +72,18 @@ export abstract class Entity<EntityProps> {
    */
   public equals(object?: Entity<EntityProps>): boolean {
     if (object === null || object === undefined) {
-      return false;
+      return false
     }
 
     if (this === object) {
-      return true;
+      return true
     }
 
     if (!Entity.isEntity(object)) {
-      return false;
+      return false
     }
 
-    return this.id ? this.id.equals(object.id) : false;
+    return this.id ? this.id.equals(object.id) : false
   }
 
   /**
@@ -101,8 +101,8 @@ export abstract class Entity<EntityProps> {
       createdAt: this._createdAt,
       updatedAt: this._updatedAt,
       ...this.props,
-    };
-    return Object.freeze(propsCopy);
+    }
+    return Object.freeze(propsCopy)
   }
 
   /**
@@ -111,15 +111,15 @@ export abstract class Entity<EntityProps> {
    * useful when logging an entity during testing/debugging
    */
   public toObject(): unknown {
-    const plainProps = convertPropsToObject(this.props);
+    const plainProps = convertPropsToObject(this.props)
 
     const result = {
       id: this._id.value,
       createdAt: this._createdAt.value,
       updatedAt: this._updatedAt.value,
       ...plainProps,
-    };
-    return Object.freeze(result);
+    }
+    return Object.freeze(result)
   }
 
   /**
@@ -128,20 +128,20 @@ export abstract class Entity<EntityProps> {
   public abstract validate(): void;
 
   private validateProps(props: EntityProps): void {
-    const maxProps = 50;
+    const maxProps = 50
 
     if (Guard.isEmpty(props)) {
       throw new ArgumentNotProvidedException(
-          'Entity props should not be empty',
-      );
+        'Entity props should not be empty',
+      )
     }
     if (typeof props !== 'object') {
-      throw new ArgumentInvalidException('Entity props should be an object');
+      throw new ArgumentInvalidException('Entity props should be an object')
     }
     if (Object.keys(props).length > maxProps) {
       throw new ArgumentOutOfRangeException(
-          `Entity props should not have more than ${maxProps} properties`,
-      );
+        `Entity props should not have more than ${maxProps} properties`,
+      )
     }
   }
 }

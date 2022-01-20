@@ -1,11 +1,10 @@
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid'
 
-import { ArgumentNotProvidedException } from '../../../exceptions';
-import { Guard } from '../guard';
+import { Guard } from '@libs/ddd/domain/guard'
+import { ArgumentNotProvidedException } from '@libs/exceptions'
 
-export type CommandProps<T> = Omit<T, 'correlationId'> & Partial<Command>;
-
-export class Command {
+export type CommandProps<T> = Omit<T, 'correlationId'> & Partial<Command>
+  ; export class Command {
   /** ID for correlation purposes (for UnitOfWork, for commands that
    *  arrive from other microservices,logs correlation etc). */
   public readonly correlationId: string;
@@ -13,9 +12,9 @@ export class Command {
   constructor(props: CommandProps<unknown>) {
     if (Guard.isEmpty(props)) {
       throw new ArgumentNotProvidedException(
-          'Command props should not be empty',
-      );
+        'Command props should not be empty',
+      )
     }
-    this.correlationId = props.correlationId || nanoid(8);
+    this.correlationId = props.correlationId || nanoid(8)
   }
 }
