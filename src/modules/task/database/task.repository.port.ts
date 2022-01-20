@@ -1,6 +1,6 @@
-import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports';
+import { TaskEntity, TaskProps } from '@modules/task/domain/entities/task.entity'
 
-import { TaskEntity, TaskProps } from '../domain/entities/task.entity';
+import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports'
 
 export interface TaskRepositoryPort
   extends RepositoryPort<TaskEntity, TaskProps> {

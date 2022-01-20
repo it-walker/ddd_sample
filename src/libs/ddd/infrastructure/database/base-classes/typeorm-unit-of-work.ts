@@ -1,8 +1,9 @@
-import { UnitOfWorkPort } from '@src/libs/ddd/domain/ports/unit-of-work.port';
-import { Result } from '@src/libs/ddd/domain/utils/result.util';
-import { Logger } from 'src/libs/ddd/domain/ports/logger.port';
-import { EntityTarget, QueryRunner,Repository,getConnection } from 'typeorm';
-import { IsolationLevel } from 'typeorm/driver/types/IsolationLevel';
+import { EntityTarget, getConnection,QueryRunner,Repository } from 'typeorm'
+import { IsolationLevel } from 'typeorm/driver/types/IsolationLevel'
+
+import { Logger } from '@libs/ddd/domain/ports/logger.port'
+import { UnitOfWorkPort } from '@libs/ddd/domain/ports/unit-of-work.port'
+import { Result } from '@libs/ddd/domain/utils/result.util'
 
 /**
  * Keep in mind that this is a naive implementation
@@ -17,26 +18,26 @@ import { IsolationLevel } from 'typeorm/driver/types/IsolationLevel';
  * https://mikro-orm.io/docs/unit-of-work/.
  */
 export class TypeormUnitOfWork implements UnitOfWorkPort {
-  constructor(private readonly logger: Logger) {}
+  constructor(private readonly logger: Logger) { }
 
   private queryRunners: Map<string, QueryRunner> = new Map();
 
   getQueryRunner(correlationId: string): QueryRunner {
-    const queryRunner = this.queryRunners.get(correlationId);
+    const queryRunner = this.queryRunners.get(correlationId)
     if (!queryRunner) {
       throw new Error(
-          'Query runner not found. Incorrect correlationId or transaction is not started. To start a transaction wrap operations in a "execute" method.',
-      );
+        'Query runner not found. Incorrect correlationId or transaction is not started. To start a transaction wrap operations in a "execute" method.',
+      )
     }
-    return queryRunner;
+    return queryRunner
   }
 
   getOrmRepository<Entity>(
-      entity: EntityTarget<Entity>,
-      correlationId: string,
+    entity: EntityTarget<Entity>,
+    correlationId: string,
   ): Repository<Entity> {
-    const queryRunner = this.getQueryRunner(correlationId);
-    return queryRunner.manager.getRepository(entity);
+    const queryRunner = this.getQueryRunner(correlationId)
+    return queryRunner.manager.getRepository(entity)
   }
 
   /**
@@ -46,62 +47,62 @@ export class TypeormUnitOfWork implements UnitOfWorkPort {
    * saved (including changes done by Domain Events) or nothing at all.
    */
   async execute<T>(
-      correlationId: string,
-      callback: () => Promise<T>,
-      options?: { isolationLevel: IsolationLevel },
+    correlationId: string,
+    callback: () => Promise<T>,
+    options?: { isolationLevel: IsolationLevel },
   ): Promise<T> {
     if (!correlationId) {
-      throw new Error('Correlation ID must be provided');
+      throw new Error('Correlation ID must be provided')
     }
-    this.logger.setContext(`${this.constructor.name}:${correlationId}`);
-    const queryRunner = getConnection().createQueryRunner();
-    this.queryRunners.set(correlationId, queryRunner);
-    this.logger.debug('[Starting transaction]');
-    await queryRunner.startTransaction(options?.isolationLevel);
+    this.logger.setContext(`${this.constructor.name}:${correlationId}`)
+    const queryRunner = getConnection().createQueryRunner()
+    this.queryRunners.set(correlationId, queryRunner)
+    this.logger.debug('[Starting transaction]')
+    await queryRunner.startTransaction(options?.isolationLevel)
     // const queryRunner = this.getQueryRunner(correlationId);
-    let result: T | Result<T>;
+    let result: T | Result<T>
     try {
-      result = await callback();
+      result = await callback()
       if (((result as unknown) as Result<T>)?.isErr) {
         await this.rollbackTransaction<T>(
-            correlationId,
-            ((result as unknown) as Result.Err<T, Error>).error,
-        );
-        return result;
+          correlationId,
+          ((result as unknown) as Result.Err<T, Error>).error,
+        )
+        return result
       }
     } catch (error) {
-      await this.rollbackTransaction<T>(correlationId, error as Error);
-      throw error;
+      await this.rollbackTransaction<T>(correlationId, error as Error)
+      throw error
     }
     try {
-      await queryRunner.commitTransaction();
+      await queryRunner.commitTransaction()
     } finally {
-      await this.finish(correlationId);
+      await this.finish(correlationId)
     }
 
-    this.logger.debug('[Transaction committed]');
+    this.logger.debug('[Transaction committed]')
 
-    return result;
+    return result
   }
 
   private async rollbackTransaction<T>(correlationId: string, error: Error) {
-    const queryRunner = this.getQueryRunner(correlationId);
+    const queryRunner = this.getQueryRunner(correlationId)
     try {
-      await queryRunner.rollbackTransaction();
+      await queryRunner.rollbackTransaction()
       this.logger.debug(
-          `[Transaction rolled back] ${(error as Error).message}`,
-      );
+        `[Transaction rolled back] ${(error as Error).message}`,
+      )
     } finally {
-      await this.finish(correlationId);
+      await this.finish(correlationId)
     }
   }
 
   private async finish(correlationId: string): Promise<void> {
-    const queryRunner = this.getQueryRunner(correlationId);
+    const queryRunner = this.getQueryRunner(correlationId)
     try {
-      await queryRunner.release();
+      await queryRunner.release()
     } finally {
-      this.queryRunners.delete(correlationId);
+      this.queryRunners.delete(correlationId)
     }
   }
 }

@@ -1,6 +1,6 @@
-import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports';
+import { ProductEntity, ProductProps } from '@modules/product/domain/entities/product.entity'
 
-import { ProductEntity, ProductProps } from '../domain/entities/product.entity';
+import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports'
 
 export interface ProductRepositoryPort
   extends RepositoryPort<ProductEntity, ProductProps> {

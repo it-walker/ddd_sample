@@ -1,16 +1,17 @@
-import { QueryParams } from '@libs/ddd/domain/ports/repository.ports';
+import { Injectable, Logger } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+
+import { QueryParams } from '@libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
-} from '@libs/ddd/infrastructure/database/base-classes/typeorm.repository.base';
-import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+} from '@libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
 
-import { WalletEntity, WalletProps } from '../domain/entities/wallet.entity';
-import { WalletOrmEntity } from './wallet.orm-entity';
-import { WalletOrmMapper } from './wallet.orm-mapper';
-import { WalletRepositoryPort } from './wallet.repository.port';
+import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
+import { WalletOrmMapper } from '@modules/wallet/database/wallet.orm-mapper'
+import { WalletRepositoryPort } from '@modules/wallet/database/wallet.repository.port'
+import { WalletEntity, WalletProps } from '@modules/wallet/domain/entities/wallet.entity'
 
 @Injectable()
 /**
@@ -18,8 +19,7 @@ import { WalletRepositoryPort } from './wallet.repository.port';
  */
 export class WalletRepository
   extends TypeormRepositoryBase<WalletEntity, WalletProps, WalletOrmEntity>
-  implements WalletRepositoryPort
-{
+  implements WalletRepositoryPort {
   protected relations: string[] = [];
 
   /**
@@ -34,7 +34,7 @@ export class WalletRepository
       walletRepository,
       new WalletOrmMapper(WalletEntity, WalletOrmEntity),
       new Logger('WalletRepository'),
-    );
+    )
   }
 
   /**
@@ -45,13 +45,13 @@ export class WalletRepository
   protected prepareQuery(
     params: QueryParams<WalletProps>,
   ): WhereCondition<WalletOrmEntity> {
-    const where: QueryParams<WalletOrmEntity> = {};
+    const where: QueryParams<WalletOrmEntity> = {}
     if (params.id) {
-      where.id = params.id.value;
+      where.id = params.id.value
     }
     if (params.createdAt) {
-      where.createdAt = params.createdAt.value;
+      where.createdAt = params.createdAt.value
     }
-    return where;
+    return where
   }
 }

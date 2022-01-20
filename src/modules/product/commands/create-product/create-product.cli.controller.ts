@@ -1,10 +1,11 @@
-import { Inject } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
-import { Logger } from '@src/libs/ddd/domain/ports/logger.port';
-import { Command, Console } from 'nestjs-console';
+import { Inject } from '@nestjs/common'
+import { CommandBus } from '@nestjs/cqrs'
+import { Command, Console } from 'nestjs-console'
 
-import { createProductCliLoggerSymbol } from '../../product.provider';
-import { CreateProductCommand } from './create-product.command';
+import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
+import { createProductCliLoggerSymbol } from '@modules/product/product.provider'
+
+import { Logger } from '@src/libs/ddd/domain/ports/logger.port'
 
 @Console({
   command: 'new',
@@ -23,7 +24,7 @@ export class CreateProductCliController {
     private readonly commandBus: CommandBus,
     @Inject(createProductCliLoggerSymbol)
     private readonly logger: Logger,
-  ) {}
+  ) { }
 
   @Command({
     command: 'product <name>',
@@ -45,10 +46,10 @@ export class CreateProductCliController {
       name,
       description,
       price,
-    });
+    })
 
-    const id = await this.commandBus.execute(command);
+    const id = await this.commandBus.execute(command)
 
-    this.logger.log(`Product created: ${id.unwrap().value}`);
+    this.logger.log(`Product created: ${id.unwrap().value}`)
   }
 }

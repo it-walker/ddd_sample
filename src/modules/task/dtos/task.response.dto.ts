@@ -1,11 +1,12 @@
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base';
-import { UserEntity } from '@modules/user/domain/entities/user.entity';
-import { Field, ObjectType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { Task } from '@src/interface-adapters/interfaces/task/task.interface';
+import { Field, ObjectType } from '@nestjs/graphql'
+import { ApiProperty } from '@nestjs/swagger'
 
-import { TaskEntity } from '../domain/entities/task.entity';
-import { TaskStatus } from '../domain/entities/task.type';
+import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
+
+import { TaskEntity } from '@modules/task/domain/entities/task.entity'
+import { TaskStatus } from '@modules/task/domain/entities/task.type'
+
+import { Task } from '@src/interface-adapters/interfaces/task/task.interface'
 
 @ObjectType() // only if you are using graphql
 /**
@@ -17,12 +18,12 @@ export class TaskResponse extends ResponseBase implements Task {
    * @param {TaskEntity} task
    */
   constructor(task: TaskEntity) {
-    super(task);
-    const props = task.getPropsCopy();
-    this.name = props.name.value;
-    this.dueDate = props.dueDate.value;
-    this.postponeCount = props.postponeCount.value;
-    this.status = props.status;
+    super(task)
+    const props = task.getPropsCopy()
+    this.name = props.name.value
+    this.dueDate = props.dueDate.value
+    this.postponeCount = props.postponeCount.value
+    this.status = props.status
   }
 
   @ApiProperty({
@@ -57,4 +58,4 @@ export class TaskResponse extends ResponseBase implements Task {
 /**
  * TaskHttpResponse class
  */
-export class TaskHttpResponse extends TaskResponse implements Task {}
+export class TaskHttpResponse extends TaskResponse implements Task { }

@@ -1,9 +1,9 @@
-import { CreateDateColumn, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { CreateDateColumn, PrimaryColumn, UpdateDateColumn } from 'typeorm'
 
 export abstract class TypeormEntityBase {
   constructor(props?: unknown) {
     if (props) {
-      Object.assign(this, props);
+      Object.assign(this, props)
     }
   }
 

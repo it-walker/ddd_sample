@@ -1,7 +1,8 @@
-import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity } from 'typeorm'
 
-import { TaskStatus } from '../domain/entities/task.type';
+import { TaskStatus } from '@modules/task/domain/entities/task.type'
+
+import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base'
 
 @Entity('task')
 /**
@@ -13,7 +14,7 @@ export class TaskOrmEntity extends TypeormEntityBase {
    * @param {TaskOrmEntity} props
    */
   constructor(props?: TaskOrmEntity) {
-    super(props);
+    super(props)
   }
 
   @Column()

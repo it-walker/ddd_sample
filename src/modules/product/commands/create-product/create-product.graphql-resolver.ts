@@ -1,9 +1,10 @@
-import { CommandBus } from '@nestjs/cqrs';
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
+import { CommandBus } from '@nestjs/cqrs'
+import { Args, Mutation, Resolver } from '@nestjs/graphql'
 
-import { CreateProductCommand } from './create-product.command';
-import { CreateProductRequest } from './create-product.request.dto';
+import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
+import { CreateProductRequest } from '@modules/product/commands/create-product/create-product.request.dto'
+
+import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Resolver()
 /**
@@ -14,7 +15,7 @@ export class CreateProductGraphqlResolver {
    * constructor
    * @param {CommandBus} commandBus
    */
-  constructor(private readonly commandBus: CommandBus) {}
+  constructor(private readonly commandBus: CommandBus) { }
 
   @Mutation(() => IdResponse)
   /**
@@ -25,10 +26,10 @@ export class CreateProductGraphqlResolver {
   async create(
     @Args('input') input: CreateProductRequest,
   ): Promise<IdResponse> {
-    const command = new CreateProductCommand(input);
+    const command = new CreateProductCommand(input)
 
-    const id = await this.commandBus.execute(command);
+    const id = await this.commandBus.execute(command)
 
-    return new IdResponse(id.unwrap().value);
+    return new IdResponse(id.unwrap().value)
   }
 }

@@ -1,13 +1,14 @@
-import { ArgsType, Field, InputType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { FindUsers } from '@src/interface-adapters/interfaces/user/find-users.interface';
+import { ArgsType, Field, InputType } from '@nestjs/graphql'
+import { ApiProperty } from '@nestjs/swagger'
 import {
   IsAlphanumeric,
   IsOptional,
   IsString,
   Matches,
   MaxLength,
-} from 'class-validator';
+} from 'class-validator'
+
+import { FindUsers } from '@src/interface-adapters/interfaces/user/find-users.interface'
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType()

@@ -2,9 +2,9 @@
  * Application routes with its version
  * https://github.com/Sairyss/backend-best-practices#api-versioning
  */
-const usersRoot = '/users';
-const productsRoot = '/products';
-const tasksRoot = '/tasks';
+const usersRoot = '/users'
+const productsRoot = '/products'
+const tasksRoot = '/tasks'
 export const routesV1 = {
   version: 'v1',
   user: {
@@ -19,4 +19,4 @@ export const routesV1 = {
     root: tasksRoot,
     delete: `${tasksRoot}/:id`,
   },
-};
+}

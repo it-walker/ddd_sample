@@ -1,1 +1,1 @@
-export { Result } from '@badrap/result';
+export { Result } from '@badrap/result'

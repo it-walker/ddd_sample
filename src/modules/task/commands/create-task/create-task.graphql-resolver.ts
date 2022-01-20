@@ -1,9 +1,10 @@
-import { CommandBus } from '@nestjs/cqrs';
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
+import { CommandBus } from '@nestjs/cqrs'
+import { Args, Mutation, Resolver } from '@nestjs/graphql'
 
-import { CreateTaskCommand } from './create-task.command';
-import { CreateTaskRequest } from './create-task.request.dto';
+import { CreateTaskCommand } from '@modules/task/commands/create-task/create-task.command'
+import { CreateTaskRequest } from '@modules/task/commands/create-task/create-task.request.dto'
+
+import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Resolver()
 /**
@@ -14,7 +15,7 @@ export class CreateTaskGraphqlResolver {
    * constructor
    * @param {CommandBus} commandBus
    */
-  constructor(private readonly commandBus: CommandBus) {}
+  constructor(private readonly commandBus: CommandBus) { }
 
   @Mutation(() => IdResponse)
   /**
@@ -23,10 +24,10 @@ export class CreateTaskGraphqlResolver {
    * @return {Promise<IdResponse>}
    */
   async create(@Args('input') input: CreateTaskRequest): Promise<IdResponse> {
-    const command = new CreateTaskCommand(input);
+    const command = new CreateTaskCommand(input)
 
-    const id = await this.commandBus.execute(command);
+    const id = await this.commandBus.execute(command)
 
-    return new IdResponse(id.unwrap().value);
+    return new IdResponse(id.unwrap().value)
   }
 }

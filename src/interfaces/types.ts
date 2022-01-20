@@ -11,4 +11,4 @@ export const TYPES = {
     ICreateTaskApplication: 'ITaskCreateTaskApplication',
     IPostponeTaskApplication: 'ITaskPostponeTaskApplication',
   },
-};
+}

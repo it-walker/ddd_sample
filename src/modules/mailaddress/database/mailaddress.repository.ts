@@ -1,19 +1,20 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports';
-import {
-  TypeormRepositoryBase,
-  WhereCondition,
-} from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base';
-import { Repository } from 'typeorm';
+import { Injectable, Logger } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
 
+import { MailaddressOrmEntity } from '@modules/mailaddress/database/mailaddress.orm-entity'
+import { MailaddressOrmMapper } from '@modules/mailaddress/database/mailaddress.orm-mapper'
+import { MailaddressRepositoryPort } from '@modules/mailaddress/database/mailaddress.repository.port'
 import {
   MailaddressEntity,
   MailaddressProps,
-} from '../domain/entities/mailaddress.entity';
-import { MailaddressOrmEntity } from './mailaddress.orm-entity';
-import { MailaddressOrmMapper } from './mailaddress.orm-mapper';
-import { MailaddressRepositoryPort } from './mailaddress.repository.port';
+} from '@modules/mailaddress/domain/entities/mailaddress.entity'
+
+import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports'
+import {
+  TypeormRepositoryBase,
+  WhereCondition,
+} from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
 
 @Injectable()
 /**
@@ -21,12 +22,11 @@ import { MailaddressRepositoryPort } from './mailaddress.repository.port';
  */
 export class MailaddressRepository
   extends TypeormRepositoryBase<
-    MailaddressEntity,
-    MailaddressProps,
-    MailaddressOrmEntity
+  MailaddressEntity,
+  MailaddressProps,
+  MailaddressOrmEntity
   >
-  implements MailaddressRepositoryPort
-{
+  implements MailaddressRepositoryPort {
   protected relations: string[] = [];
 
   /**
@@ -41,7 +41,7 @@ export class MailaddressRepository
       mailaddressRepository,
       new MailaddressOrmMapper(MailaddressEntity, MailaddressOrmEntity),
       new Logger('MailaddressRepository'),
-    );
+    )
   }
 
   /**
@@ -52,13 +52,13 @@ export class MailaddressRepository
   protected prepareQuery(
     params: QueryParams<MailaddressProps>,
   ): WhereCondition<MailaddressOrmEntity> {
-    const where: QueryParams<MailaddressOrmEntity> = {};
+    const where: QueryParams<MailaddressOrmEntity> = {}
     if (params.id) {
-      where.id = params.id.value;
+      where.id = params.id.value
     }
     if (params.createdAt) {
-      where.createdAt = params.createdAt.value;
+      where.createdAt = params.createdAt.value
     }
-    return where;
+    return where
   }
 }

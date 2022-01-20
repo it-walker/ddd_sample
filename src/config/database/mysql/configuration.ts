@@ -1,6 +1,6 @@
-import { registerAs } from '@nestjs/config';
+import { registerAs } from '@nestjs/config'
 
-const CONFIG_KEY_DATABASE = 'database';
+const CONFIG_KEY_DATABASE = 'database'
 export default registerAs(CONFIG_KEY_DATABASE, () => ({
   type: process.env.DATABASE_TYPE,
   host: process.env.DATABASE_HOST,
@@ -11,4 +11,4 @@ export default registerAs(CONFIG_KEY_DATABASE, () => ({
   entities: [],
   autoLoadEntities: true,
   logging: true,
-}));
+}))

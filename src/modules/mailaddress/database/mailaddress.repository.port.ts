@@ -1,9 +1,9 @@
-import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports';
-
 import {
   MailaddressEntity,
   MailaddressProps,
-} from '../domain/entities/mailaddress.entity';
+} from '@modules/mailaddress/domain/entities/mailaddress.entity'
+
+import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports'
 
 export type MailaddressRepositoryPort = RepositoryPort<
   MailaddressEntity,

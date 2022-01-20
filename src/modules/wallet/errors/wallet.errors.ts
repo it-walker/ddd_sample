@@ -1,4 +1,4 @@
-import { ExceptionBase } from '@src/libs/exceptions';
+import { ExceptionBase } from '@src/libs/exceptions'
 
 /**
  * WalletNotEnoughBalanceError class
@@ -13,6 +13,6 @@ export class WalletNotEnoughBalanceError extends ExceptionBase {
    * @param {unknown} metadata
    */
   constructor(metadata?: unknown) {
-    super(WalletNotEnoughBalanceError.message, metadata);
+    super(WalletNotEnoughBalanceError.message, metadata)
   }
 }

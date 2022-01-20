@@ -1,4 +1,4 @@
-import { ExceptionBase } from '@src/libs/exceptions';
+import { ExceptionBase } from '@src/libs/exceptions'
 
 /**
  * ProductAlreadyExistsError class
@@ -13,6 +13,6 @@ export class ProductAlreadyExistsError extends ExceptionBase {
    * @param {unknown} metadata
    */
   constructor(metadata?: unknown) {
-    super(ProductAlreadyExistsError.message, metadata);
+    super(ProductAlreadyExistsError.message, metadata)
   }
 }

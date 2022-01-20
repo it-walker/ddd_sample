@@ -1,7 +1,7 @@
 import {
   DomainEvent,
   DomainEventProps,
-} from '@src/libs/ddd/domain/domain-events';
+} from '@src/libs/ddd/domain/domain-events'
 
 /**
  * TaskCreatedDomainEvent
@@ -12,10 +12,10 @@ export class TaskCreatedDomainEvent extends DomainEvent {
    * @param {DomainEventProps<TaskCreatedDomainEvent>} props
    */
   constructor(props: DomainEventProps<TaskCreatedDomainEvent>) {
-    super(props);
-    this.name = props.name;
-    this.dueDate = props.dueDate;
-    this.postponeCount = props.postponeCount;
+    super(props)
+    this.name = props.name
+    this.dueDate = props.dueDate
+    this.postponeCount = props.postponeCount
   }
 
   readonly name: string;

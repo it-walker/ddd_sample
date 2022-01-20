@@ -1,9 +1,9 @@
 import {
   DomainPrimitive,
   ValueObject,
-} from '@src/libs/ddd/domain/base-classes/value-object.base';
-import { Guard } from '@src/libs/ddd/domain/guard';
-import { ArgumentOutOfRangeException } from '@src/libs/exceptions';
+} from '@src/libs/ddd/domain/base-classes/value-object.base'
+import { Guard } from '@src/libs/ddd/domain/guard'
+import { ArgumentOutOfRangeException } from '@src/libs/exceptions'
 
 /**
  * TasktName class
@@ -14,15 +14,15 @@ export class TaskName extends ValueObject<string> {
    * @param {string} value
    */
   constructor(value: string) {
-    super({ value });
-    this.props.value = TaskName.format(value);
+    super({ value })
+    this.props.value = TaskName.format(value)
   }
 
   /**
    *
    */
   get value(): string {
-    return this.props.value;
+    return this.props.value
   }
 
   /**
@@ -30,7 +30,7 @@ export class TaskName extends ValueObject<string> {
    */
   protected validate({ value }: DomainPrimitive<string>): void {
     if (!Guard.lengthIsBetween(value, 5, 200)) {
-      throw new ArgumentOutOfRangeException('name is out of range');
+      throw new ArgumentOutOfRangeException('name is out of range')
     }
   }
 
@@ -40,6 +40,6 @@ export class TaskName extends ValueObject<string> {
    * @return {string}
    */
   static format(name: string): string {
-    return name.trim().toLowerCase();
+    return name.trim().toLowerCase()
   }
 }

@@ -1,10 +1,11 @@
-import { Controller } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
-import { MessagePattern } from '@nestjs/microservices';
-import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto';
+import { Controller } from '@nestjs/common'
+import { CommandBus } from '@nestjs/cqrs'
+import { MessagePattern } from '@nestjs/microservices'
 
-import { CreateProductCommand } from './create-product.command';
-import { CreateProductMessageRequest } from './create-product.request.dto';
+import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
+import { CreateProductMessageRequest } from '@modules/product/commands/create-product/create-product.request.dto'
+
+import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Controller()
 /**
@@ -15,17 +16,17 @@ export class CreateProductMessageController {
    * constructor
    * @param {CommandBus} commandBus
    */
-  constructor(private readonly commandBus: CommandBus) {}
+  constructor(private readonly commandBus: CommandBus) { }
 
   @MessagePattern('product.create')
   /**
    *
    */
   async create(message: CreateProductMessageRequest): Promise<IdResponse> {
-    const command = new CreateProductCommand(message);
+    const command = new CreateProductCommand(message)
 
-    const id = await this.commandBus.execute(command);
+    const id = await this.commandBus.execute(command)
 
-    return new IdResponse(id.unwrap().value);
+    return new IdResponse(id.unwrap().value)
   }
 }

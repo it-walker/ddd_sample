@@ -1,18 +1,19 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+
+import { TaskOrmEntity } from '@modules/task/database/task.orm-entity'
+import { TaskOrmMapper } from '@modules/task/database/task.orm-mapper'
+import { TaskRepositoryPort } from '@modules/task/database/task.repository.port'
+import { TaskEntity, TaskProps } from '@modules/task/domain/entities/task.entity'
+import { FindTasksQuery } from '@modules/task/queries/find-tasks/find-tasks.query'
+
+import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
-} from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base';
-import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util';
-import { Repository } from 'typeorm';
-
-import { TaskEntity, TaskProps } from '../domain/entities/task.entity';
-import { FindTasksQuery } from '../queries/find-tasks/find-tasks.query';
-import { TaskOrmEntity } from './task.orm-entity';
-import { TaskOrmMapper } from './task.orm-mapper';
-import { TaskRepositoryPort } from './task.repository.port';
+} from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
+import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util'
 
 @Injectable()
 /**
@@ -20,8 +21,7 @@ import { TaskRepositoryPort } from './task.repository.port';
  */
 export class TaskRepository
   extends TypeormRepositoryBase<TaskEntity, TaskProps, TaskOrmEntity>
-  implements TaskRepositoryPort
-{
+  implements TaskRepositoryPort {
   protected relations: string[] = [];
   /**
    * constructor
@@ -35,7 +35,7 @@ export class TaskRepository
       taskRepository,
       new TaskOrmMapper(TaskEntity, TaskOrmEntity),
       new Logger('TaskRepository'),
-    );
+    )
   }
 
   /**
@@ -46,9 +46,9 @@ export class TaskRepository
   private async findOneById(id: string): Promise<TaskOrmEntity | undefined> {
     const task = await this.taskRepository.findOne({
       where: { id },
-    });
+    })
 
-    return task;
+    return task
   }
 
   /**
@@ -57,11 +57,11 @@ export class TaskRepository
    * @return {Promise<TaskEntity>}
    */
   async findOneByIdOrThrow(id: string): Promise<TaskEntity> {
-    const task = await this.findOneById(id);
+    const task = await this.findOneById(id)
     if (!task) {
-      throw new NotFoundException(`Task with id '${id} not found`);
+      throw new NotFoundException(`Task with id '${id} not found`)
     }
-    return this.mapper.toDomainEntity(task);
+    return this.mapper.toDomainEntity(task)
   }
 
   /**
@@ -74,8 +74,8 @@ export class TaskRepository
   ): Promise<TaskOrmEntity | undefined> {
     const task = await this.taskRepository.findOne({
       where: { name },
-    });
-    return task;
+    })
+    return task
   }
 
   /**
@@ -84,11 +84,11 @@ export class TaskRepository
    * @return {Promise<TaskEntity>}
    */
   async findOneByTaskNameOrThrow(name: string): Promise<TaskEntity> {
-    const task = await this.findOneByTaskName(name);
+    const task = await this.findOneByTaskName(name)
     if (!task) {
-      throw new NotFoundException(`Task with name '${name}' not found`);
+      throw new NotFoundException(`Task with name '${name}' not found`)
     }
-    return this.mapper.toDomainEntity(task);
+    return this.mapper.toDomainEntity(task)
   }
 
   /**
@@ -97,11 +97,11 @@ export class TaskRepository
    * @return {Promise<boolean>}
    */
   async exists(name: string): Promise<boolean> {
-    const found = await this.findOneByTaskName(name);
+    const found = await this.findOneByTaskName(name)
     if (found) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
   /**
@@ -110,9 +110,9 @@ export class TaskRepository
    * @return {Promise<TaskEntity[]>}
    */
   async findTasks(query: FindTasksQuery): Promise<TaskEntity[]> {
-    const where: QueryParams<TaskOrmEntity> = removeUndefinedProps(query);
-    const users = await this.repository.find({ where });
-    return users.map((user) => this.mapper.toDomainEntity(user));
+    const where: QueryParams<TaskOrmEntity> = removeUndefinedProps(query)
+    const users = await this.repository.find({ where })
+    return users.map((user) => this.mapper.toDomainEntity(user))
   }
 
   /**
@@ -123,16 +123,16 @@ export class TaskRepository
   protected prepareQuery(
     params: QueryParams<TaskProps>,
   ): WhereCondition<TaskOrmEntity> {
-    const where: QueryParams<TaskOrmEntity> = {};
+    const where: QueryParams<TaskOrmEntity> = {}
     if (params.id) {
-      where.id = params.id.value;
+      where.id = params.id.value
     }
     if (params.createdAt) {
-      where.createdAt = params.createdAt.value;
+      where.createdAt = params.createdAt.value
     }
     if (params.dueDate) {
-      where.dueDate = params.dueDate.value;
+      where.dueDate = params.dueDate.value
     }
-    return where;
+    return where
   }
 }

@@ -1,17 +1,19 @@
-import { TaskModule } from '@modules/task/task.module';
-import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { NestEventModule } from 'nest-event';
-import { ConsoleModule } from 'nestjs-console';
-import { join } from 'path';
+import { join } from 'path'
 
-import { AppConfigModule } from './config/app/config.module';
-import { typeormConfig } from './infrastructure/configs/ormconfig';
-import { UnitOfWorkModule } from './infrastructure/database/unit-of-work/unit-of-work.module';
-import { ProductModule } from './modules/product/product.module';
-import { UserModule } from './modules/user/user.module';
-import { WalletModule } from './modules/wallet/wallet.module';
+import { Module } from '@nestjs/common'
+import { GraphQLModule } from '@nestjs/graphql'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { NestEventModule } from 'nest-event'
+import { ConsoleModule } from 'nestjs-console'
+
+import { ProductModule } from '@modules/product/product.module'
+import { TaskModule } from '@modules/task/task.module'
+import { UserModule } from '@modules/user/user.module'
+import { WalletModule } from '@modules/wallet/wallet.module'
+
+import { AppConfigModule } from '@src/config/app/config.module'
+import { typeormConfig } from '@src/infrastructure/configs/ormconfig'
+import { UnitOfWorkModule } from '@src/infrastructure/database/unit-of-work/unit-of-work.module'
 
 @Module({
   imports: [
@@ -37,4 +39,4 @@ import { WalletModule } from './modules/wallet/wallet.module';
 /**
  * アプリケーションモジュール
  */
-export class AppModule {}
+export class AppModule { }

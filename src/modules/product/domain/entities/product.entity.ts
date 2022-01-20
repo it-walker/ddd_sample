@@ -1,10 +1,10 @@
-import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base';
-import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object';
+import { ProductCreatedDomainEvent } from '@modules/product/domain/events/product.created.domain.event'
+import { ProductDescription } from '@modules/product/domain/value-objects/product.description.value.object'
+import { ProductName } from '@modules/product/domain/value-objects/product.name.value.object'
+import { ProductPrice } from '@modules/product/domain/value-objects/product.price.value.object'
 
-import { ProductCreatedDomainEvent } from '../events/product.created.domain.event';
-import { ProductDescription } from '../value-objects/product.description.value.object';
-import { ProductName } from '../value-objects/product.name.value.object';
-import { ProductPrice } from '../value-objects/product.price.value.object';
+import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base'
+import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object'
 
 export interface CreateProductProps {
   name: ProductName;
@@ -12,7 +12,7 @@ export interface CreateProductProps {
   price: ProductPrice;
 }
 
-export type ProductProps = CreateProductProps;
+export type ProductProps = CreateProductProps
 
 /**
  * ProductEntity class
@@ -26,9 +26,9 @@ export class ProductEntity extends AggregateRoot<ProductProps> {
    * @return {ProductEntity}
    */
   static create(create: CreateProductProps): ProductEntity {
-    const id = UUID.generate();
-    const props: ProductProps = { ...create };
-    const product = new ProductEntity({ id, props });
+    const id = UUID.generate()
+    const props: ProductProps = { ...create }
+    const product = new ProductEntity({ id, props })
 
     product.addEvent(
       new ProductCreatedDomainEvent({
@@ -37,8 +37,8 @@ export class ProductEntity extends AggregateRoot<ProductProps> {
         description: props.description.getRawProps(),
         price: props.price.getRawProps(),
       }),
-    );
-    return product;
+    )
+    return product
   }
 
   /**

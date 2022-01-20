@@ -7,7 +7,7 @@ export class DeleteProductCommand {
    * @param {DeleteProductCommand} props
    */
   constructor(props: DeleteProductCommand) {
-    this.productId = props.productId;
+    this.productId = props.productId
   }
 
   readonly productId: string;

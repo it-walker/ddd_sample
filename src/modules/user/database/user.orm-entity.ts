@@ -1,7 +1,8 @@
-import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity } from 'typeorm'
 
-import { UserRoles } from '../domain/entities/user.types';
+import { UserRoles } from '@modules/user/domain/entities/user.types'
+
+import { TypeormEntityBase } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.entity.base'
 
 @Entity('user')
 /**
@@ -13,7 +14,7 @@ export class UserOrmEntity extends TypeormEntityBase {
    * @param {UserOrmEntity} props - user entity property
    */
   constructor(props?: UserOrmEntity) {
-    super(props);
+    super(props)
   }
 
   @Column({ unique: true })

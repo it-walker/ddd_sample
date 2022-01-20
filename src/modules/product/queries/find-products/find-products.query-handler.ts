@@ -1,10 +1,12 @@
-import { Result } from '@libs/ddd/domain/utils/result.util';
-import { QueryHandler } from '@nestjs/cqrs';
-import { QueryHandlerBase } from '@src/libs/ddd/domain/base-classes/query-handler.base';
+import { QueryHandler } from '@nestjs/cqrs'
 
-import { ProductRepository } from '../../database/product.repository';
-import { ProductEntity } from '../../domain/entities/product.entity';
-import { FindProductsQuery } from './find-products.query';
+import { Result } from '@libs/ddd/domain/utils/result.util'
+
+import { ProductRepository } from '@modules/product/database/product.repository'
+import { ProductEntity } from '@modules/product/domain/entities/product.entity'
+import { FindProductsQuery } from '@modules/product/queries/find-products/find-products.query'
+
+import { QueryHandlerBase } from '@src/libs/ddd/domain/base-classes/query-handler.base'
 
 @QueryHandler(FindProductsQuery)
 /**
@@ -16,7 +18,7 @@ export class FindProductsQueryHandler extends QueryHandlerBase {
    * @param {ProductResponse} productRepo
    */
   constructor(private readonly productRepo: ProductRepository) {
-    super();
+    super()
   }
 
   /**
@@ -27,7 +29,7 @@ export class FindProductsQueryHandler extends QueryHandlerBase {
    * @return {Promise<Result<ProductEntity[]>>}
    */
   async handle(query: FindProductsQuery): Promise<Result<ProductEntity[]>> {
-    const users = await this.productRepo.findProducts(query);
-    return Result.ok(users);
+    const users = await this.productRepo.findProducts(query)
+    return Result.ok(users)
   }
 }

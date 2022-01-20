@@ -1,7 +1,7 @@
 /**
  * タスクステータス
  */
-export const TaskStatus = {
+export const TaskStatusType = {
   /**
    * 未完了
    */
@@ -10,11 +10,11 @@ export const TaskStatus = {
    * 完了
    */
   Completed: 'completed',
-} as const;
+} as const
 
-export type TaskStatus = typeof TaskStatus[keyof typeof TaskStatus];
+export type TaskStatus = typeof TaskStatusType[keyof typeof TaskStatusType]
 
 /**
  * タスクの最大延期回数
  */
-export const TASK_POSTPONE_MAX_COUNT = 3;
+export const TASK_POSTPONE_MAX_COUNT = 3

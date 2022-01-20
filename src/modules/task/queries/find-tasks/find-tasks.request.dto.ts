@@ -1,14 +1,15 @@
-import { ArgsType, Field, InputType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { FindTasks } from '@src/interface-adapters/interfaces/task/find-tasks.interface';
-import { TaskStatus } from '@src/modules/task/domain/entities/task.type';
+import { ArgsType, Field, InputType } from '@nestjs/graphql'
+import { ApiProperty } from '@nestjs/swagger'
 import {
   IsDate,
   IsNumber,
   IsOptional,
   IsString,
   MaxLength,
-} from 'class-validator';
+} from 'class-validator'
+
+import { FindTasks } from '@src/interface-adapters/interfaces/task/find-tasks.interface'
+import { TaskStatus } from '@src/modules/task/domain/entities/task.type'
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType()
@@ -46,4 +47,4 @@ export class FindTasksRequest implements FindTasks {
  */
 export class FindTasksHttpRequest
   extends FindTasksRequest
-  implements FindTasks {}
+  implements FindTasks { }

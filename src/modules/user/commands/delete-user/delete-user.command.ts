@@ -7,7 +7,7 @@ export class DeleteUserCommand {
    * @param {DeleteUserCommand} props
    */
   constructor(props: DeleteUserCommand) {
-    this.userId = props.userId;
+    this.userId = props.userId
   }
 
   readonly userId: string;

@@ -1,12 +1,12 @@
 import {
   DomainPrimitive,
   ValueObject,
-} from '@libs/ddd/domain/base-classes/value-object.base';
-import { Guard } from '@libs/ddd/domain/guard';
+} from '@libs/ddd/domain/base-classes/value-object.base'
+import { Guard } from '@libs/ddd/domain/guard'
 import {
   ArgumentInvalidException,
   ArgumentOutOfRangeException,
-} from '@libs/exceptions';
+} from '@libs/exceptions'
 
 /**
  * Email class
@@ -17,8 +17,8 @@ export class Email extends ValueObject<string> {
    * @param {string} value
    */
   constructor(value: string) {
-    super({ value });
-    this.props.value = Email.format(value);
+    super({ value })
+    this.props.value = Email.format(value)
   }
 
   /* Type compatibility in TypeScript is based on structural subtyping.
@@ -34,7 +34,7 @@ export class Email extends ValueObject<string> {
    *
    */
   get value(): string {
-    return this.props.value;
+    return this.props.value
   }
 
   /**
@@ -47,10 +47,10 @@ export class Email extends ValueObject<string> {
    */
   protected validate({ value }: DomainPrimitive<string>): void {
     if (!Guard.lengthIsBetween(value, 5, 320)) {
-      throw new ArgumentOutOfRangeException('Email');
+      throw new ArgumentOutOfRangeException('Email')
     }
     if (!value.includes('@')) {
-      throw new ArgumentInvalidException('Email has incorrect format');
+      throw new ArgumentInvalidException('Email has incorrect format')
     }
   }
 
@@ -60,6 +60,6 @@ export class Email extends ValueObject<string> {
    * @return {string}
    */
   static format(email: string): string {
-    return email.trim().toLowerCase();
+    return email.trim().toLowerCase()
   }
 }

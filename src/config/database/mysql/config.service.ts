@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 /**
  * Service dealing with app config based operations.
  *
@@ -20,41 +20,41 @@ export class MysqlConfigService {
    *
    */
   get type(): string {
-    return this.configService.get<string>('database.type');
+    return this.configService.get<string>('database.type')
   }
 
   /**
    *
    */
   get host(): string {
-    return this.configService.get<string>('database.host');
+    return this.configService.get<string>('database.host')
   }
 
   /**
    *
    */
   get port(): number {
-    return this.configService.get<number>('database.port');
+    return this.configService.get<number>('database.port')
   }
 
   /**
    *
    */
   get username(): string {
-    return this.configService.get<string>('database.username');
+    return this.configService.get<string>('database.username')
   }
 
   /**
    *
    */
   get password(): string {
-    return this.configService.get<string>('database.password');
+    return this.configService.get<string>('database.password')
   }
 
   /**
    *
    */
   get database(): string {
-    return this.configService.get<string>('database.database');
+    return this.configService.get<string>('database.database')
   }
 }

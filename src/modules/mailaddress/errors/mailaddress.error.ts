@@ -1,4 +1,4 @@
-import { ExceptionBase } from '@src/libs/exceptions';
+import { ExceptionBase } from '@src/libs/exceptions'
 
 /**
  * MailaddressNotEnoughError class
@@ -13,6 +13,6 @@ export class MailaddressNotEnoughError extends ExceptionBase {
    * @param {unknown} metadata
    */
   constructor(metadata?: unknown) {
-    super(MailaddressNotEnoughError.message, metadata);
+    super(MailaddressNotEnoughError.message, metadata)
   }
 }

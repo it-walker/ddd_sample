@@ -1,9 +1,11 @@
-import { Result } from '@libs/ddd/domain/utils/result.util';
-import { QueryHandler } from '@nestjs/cqrs';
-import { QueryHandlerBase } from '@src/libs/ddd/domain/base-classes/query-handler.base';
-import { TaskRepository } from '@src/modules/task/database/task.repository';
-import { TaskEntity } from '@src/modules/task/domain/entities/task.entity';
-import { FindTasksQuery } from '@src/modules/task/queries/find-tasks/find-tasks.query';
+import { QueryHandler } from '@nestjs/cqrs'
+
+import { Result } from '@libs/ddd/domain/utils/result.util'
+
+import { QueryHandlerBase } from '@src/libs/ddd/domain/base-classes/query-handler.base'
+import { TaskRepository } from '@src/modules/task/database/task.repository'
+import { TaskEntity } from '@src/modules/task/domain/entities/task.entity'
+import { FindTasksQuery } from '@src/modules/task/queries/find-tasks/find-tasks.query'
 
 @QueryHandler(FindTasksQuery)
 /**
@@ -15,7 +17,7 @@ export class FindTasksQueryHandler extends QueryHandlerBase {
    * @param {TaskRepository} taskRepo
    */
   constructor(private readonly taskRepo: TaskRepository) {
-    super();
+    super()
   }
 
   /**
@@ -26,7 +28,7 @@ export class FindTasksQueryHandler extends QueryHandlerBase {
    * @return {Promise<Result<TaskEntity[]>>}
    */
   async handle(query: FindTasksQuery): Promise<Result<TaskEntity[]>> {
-    const tasks = await this.taskRepo.findTasks(query);
-    return Result.ok(tasks);
+    const tasks = await this.taskRepo.findTasks(query)
+    return Result.ok(tasks)
   }
 }

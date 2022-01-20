@@ -1,9 +1,9 @@
-import { TaskRepository } from '@modules/task/database/task.repository';
-import { TaskResponse } from '@modules/task/dtos/task.response.dto';
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql'
 
-import { FindTasksQuery } from './find-tasks.query';
-import { FindTasksRequest } from './find-tasks.request.dto';
+import { TaskRepository } from '@modules/task/database/task.repository'
+import { TaskResponse } from '@modules/task/dtos/task.response.dto'
+import { FindTasksQuery } from '@modules/task/queries/find-tasks/find-tasks.query'
+import { FindTasksRequest } from '@modules/task/queries/find-tasks/find-tasks.request.dto'
 
 @Resolver()
 /**
@@ -14,7 +14,7 @@ export class FindTasksGraphqlResolver {
    * constructor
    * @param {TaskRepository} taskRepo
    */
-  constructor(private readonly taskRepo: TaskRepository) {}
+  constructor(private readonly taskRepo: TaskRepository) { }
 
   @Query(() => [TaskResponse])
   /**
@@ -23,9 +23,9 @@ export class FindTasksGraphqlResolver {
   async findTasks(
     @Args('input') input: FindTasksRequest,
   ): Promise<TaskResponse[]> {
-    const query = new FindTasksQuery(input);
-    const users = await this.taskRepo.findTasks(query);
+    const query = new FindTasksQuery(input)
+    const users = await this.taskRepo.findTasks(query)
 
-    return users.map((task) => new TaskResponse(task));
+    return users.map((task) => new TaskResponse(task))
   }
 }

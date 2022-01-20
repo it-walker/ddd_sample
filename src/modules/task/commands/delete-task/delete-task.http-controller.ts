@@ -1,8 +1,9 @@
-import { Controller, Delete, Param } from '@nestjs/common';
-import { routesV1 } from '@src/infrastructure/configs/app.routes';
+import { Controller, Delete, Param } from '@nestjs/common'
 
-import { DeleteTaskCommand } from './delete-task.command';
-import { DeleteTaskService } from './delete-task.service';
+import { DeleteTaskCommand } from '@modules/task/commands/delete-task/delete-task.command'
+import { DeleteTaskService } from '@modules/task/commands/delete-task/delete-task.service'
+
+import { routesV1 } from '@src/infrastructure/configs/app.routes'
 
 @Controller(routesV1.version)
 /**
@@ -13,7 +14,7 @@ export class DeleteTaskHttpController {
    * constructor
    * @param {DeleteTaskService} service
    */
-  constructor(private readonly service: DeleteTaskService) {}
+  constructor(private readonly service: DeleteTaskService) { }
 
   @Delete(routesV1.task.delete)
   /**
@@ -21,7 +22,7 @@ export class DeleteTaskHttpController {
    * @param {string} id
    */
   async deleteTask(@Param('id') id: string): Promise<void> {
-    const command = new DeleteTaskCommand({ taskId: id });
-    await this.service.execute(command);
+    const command = new DeleteTaskCommand({ taskId: id })
+    await this.service.execute(command)
   }
 }

@@ -1,9 +1,9 @@
 import {
   DomainPrimitive,
   ValueObject,
-} from '@src/libs/ddd/domain/base-classes/value-object.base';
-import { Guard } from '@src/libs/ddd/domain/guard';
-import { ArgumentOutOfRangeException } from '@src/libs/exceptions';
+} from '@src/libs/ddd/domain/base-classes/value-object.base'
+import { Guard } from '@src/libs/ddd/domain/guard'
+import { ArgumentOutOfRangeException } from '@src/libs/exceptions'
 
 /**
  * TaskPostponeCount class
@@ -14,15 +14,15 @@ export class TaskPostponeCount extends ValueObject<number> {
    * @param {number} value
    */
   constructor(value: number) {
-    super({ value });
-    this.props.value = value;
+    super({ value })
+    this.props.value = value
   }
 
   /**
    *
    */
   get value(): number {
-    return this.props.value;
+    return this.props.value
   }
 
   /**
@@ -30,7 +30,7 @@ export class TaskPostponeCount extends ValueObject<number> {
    */
   protected validate({ value }: DomainPrimitive<number>): void {
     if (!Guard.lengthIsBetween(value, 1, 1)) {
-      throw new ArgumentOutOfRangeException('postponeCount is out of range');
+      throw new ArgumentOutOfRangeException('postponeCount is out of range')
     }
   }
 
@@ -40,6 +40,6 @@ export class TaskPostponeCount extends ValueObject<number> {
    * @return {string}
    */
   static format(name: string): string {
-    return name.trim().toLowerCase();
+    return name.trim().toLowerCase()
   }
 }

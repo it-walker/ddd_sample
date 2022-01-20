@@ -13,9 +13,9 @@ export function final<T extends { new (...args: any[]): object }>(
      */
     constructor(...args: any[]) {
       if (new.target !== Final) {
-        throw new Error(`Cannot extend a final class "${target.name}"`);
+        throw new Error(`Cannot extend a final class "${target.name}"`)
       }
-      super(...args);
+      super(...args)
     }
-  };
+  }
 }

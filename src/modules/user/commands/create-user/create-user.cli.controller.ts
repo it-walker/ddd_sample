@@ -1,10 +1,11 @@
-import { Logger } from '@libs/ddd/domain/ports/logger.port';
-import { createUserCliLoggerSymbol } from '@modules/user/user.providers';
-import { Inject } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
-import { Command, Console } from 'nestjs-console';
+import { Inject } from '@nestjs/common'
+import { CommandBus } from '@nestjs/cqrs'
+import { Command, Console } from 'nestjs-console'
 
-import { CreateUserCommand } from './create-user.command';
+import { Logger } from '@libs/ddd/domain/ports/logger.port'
+
+import { CreateUserCommand } from '@modules/user/commands/create-user/create-user.command'
+import { createUserCliLoggerSymbol } from '@modules/user/user.providers'
 
 // Allows creating a user using CLI (Command Line Interface)
 @Console({
@@ -24,7 +25,7 @@ export class CreateUserCliController {
     private readonly commandBus: CommandBus,
     @Inject(createUserCliLoggerSymbol)
     private readonly logger: Logger,
-  ) {}
+  ) { }
 
   @Command({
     command: 'user <email> <country> <postalCode> <street>',
@@ -48,10 +49,10 @@ export class CreateUserCliController {
       country,
       postalCode,
       street,
-    });
+    })
 
-    const id = await this.commandBus.execute(command);
+    const id = await this.commandBus.execute(command)
 
-    this.logger.log('User created:', id.unwrap().value);
+    this.logger.log('User created:', id.unwrap().value)
   }
 }

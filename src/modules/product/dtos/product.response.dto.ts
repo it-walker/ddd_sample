@@ -1,9 +1,10 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
-import { Product } from '@src/interface-adapters/interfaces/product/product.interface';
-import { ResponseBase } from '@src/libs/ddd/interface-adapters/base-classes/response.base';
+import { Field, ObjectType } from '@nestjs/graphql'
+import { ApiProperty } from '@nestjs/swagger'
 
-import { ProductEntity } from '../domain/entities/product.entity';
+import { ProductEntity } from '@modules/product/domain/entities/product.entity'
+
+import { Product } from '@src/interface-adapters/interfaces/product/product.interface'
+import { ResponseBase } from '@src/libs/ddd/interface-adapters/base-classes/response.base'
 
 @ObjectType()
 /**
@@ -15,10 +16,10 @@ export class ProductResponse extends ResponseBase implements Product {
    * @param {ProductEntity} product
    */
   constructor(product: ProductEntity) {
-    super(product);
+    super(product)
 
-    const props = product.getPropsCopy();
-    this.name = props.name.value;
+    const props = product.getPropsCopy()
+    this.name = props.name.value
   }
 
   @ApiProperty({
@@ -32,4 +33,4 @@ export class ProductResponse extends ResponseBase implements Product {
 /**
  * ProductHttpResponse class
  */
-export class ProductHttpResponse extends ProductResponse implements Product {}
+export class ProductHttpResponse extends ProductResponse implements Product { }

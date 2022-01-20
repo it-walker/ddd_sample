@@ -1,23 +1,23 @@
-import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base';
-import { DomainEvents } from '@libs/ddd/domain/domain-events';
-import { Logger } from '@libs/ddd/domain/ports/logger.port';
-import { ID } from '@libs/ddd/domain/value-objects/id.value-object';
-import { FindConditions, ObjectLiteral, Repository } from 'typeorm';
+import { FindConditions, ObjectLiteral, Repository } from 'typeorm'
 
-import { NotFoundException } from '../../../../exceptions';
+import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
+import { DomainEvents } from '@libs/ddd/domain/domain-events'
+import { Logger } from '@libs/ddd/domain/ports/logger.port'
 import {
   DataWithPaginationMeta,
   FindManyPaginatedParams,
   QueryParams,
   RepositoryPort,
-} from '../../../domain/ports/repository.ports';
-import { OrmMapper } from './orm-mapper.base';
+} from '@libs/ddd/domain/ports/repository.ports'
+import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
+import { OrmMapper } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base'
+import { NotFoundException } from '@libs/exceptions'
 
 export type WhereCondition<OrmEntity> =
   | FindConditions<OrmEntity>[]
   | FindConditions<OrmEntity>
   | ObjectLiteral
-  | string;
+  | string
 
 /**
  * TypeormRepositoryBase class
@@ -26,7 +26,7 @@ export abstract class TypeormRepositoryBase<
   Entity extends AggregateRoot<unknown>,
   EntityProps,
   OrmEntity,
-> implements RepositoryPort<Entity, EntityProps>
+  > implements RepositoryPort<Entity, EntityProps>
 {
   /**
    * constructor
@@ -38,7 +38,7 @@ export abstract class TypeormRepositoryBase<
     protected readonly repository: Repository<OrmEntity>,
     protected readonly mapper: OrmMapper<Entity, OrmEntity>,
     protected readonly logger: Logger,
-  ) {}
+  ) { }
 
   protected abstract relations: string[];
 
@@ -54,18 +54,18 @@ export abstract class TypeormRepositoryBase<
    * @return {Promise<Entity>}
    */
   async save(entity: Entity): Promise<Entity> {
-    entity.validate(); // Protecting invariant before saving
-    const ormEntity = this.mapper.toOrmEntity(entity);
-    const result = await this.repository.save(ormEntity);
+    entity.validate() // Protecting invariant before saving
+    const ormEntity = this.mapper.toOrmEntity(entity)
+    const result = await this.repository.save(ormEntity)
     await DomainEvents.publishEvents(
       entity.id,
       this.logger,
       this.correlationId,
-    );
+    )
     this.logger.debug(
       `[${entity.constructor.name}] persisted ${entity.id.value}`,
-    );
-    return this.mapper.toDomainEntity(result);
+    )
+    return this.mapper.toDomainEntity(result)
   }
 
   /**
@@ -75,19 +75,19 @@ export abstract class TypeormRepositoryBase<
    */
   async saveMultiple(entities: Entity[]): Promise<Entity[]> {
     const ormEntities = entities.map((entity) => {
-      entity.validate();
-      return this.mapper.toOrmEntity(entity);
-    });
-    const result = await this.repository.save(ormEntities);
+      entity.validate()
+      return this.mapper.toOrmEntity(entity)
+    })
+    const result = await this.repository.save(ormEntities)
     await Promise.all(
       entities.map((entity) =>
         DomainEvents.publishEvents(entity.id, this.logger, this.correlationId),
       ),
-    );
+    )
     this.logger.debug(
       `[${entities}]: persisted ${entities.map((entity) => entity.id)}`,
-    );
-    return result.map((entity) => this.mapper.toDomainEntity(entity));
+    )
+    return result.map((entity) => this.mapper.toDomainEntity(entity))
   }
 
   /**
@@ -98,12 +98,12 @@ export abstract class TypeormRepositoryBase<
   async findOne(
     params: QueryParams<EntityProps> = {},
   ): Promise<Entity | undefined> {
-    const where = this.prepareQuery(params);
+    const where = this.prepareQuery(params)
     const found = await this.repository.findOne({
       where,
       relations: this.relations,
-    });
-    return found ? this.mapper.toDomainEntity(found) : undefined;
+    })
+    return found ? this.mapper.toDomainEntity(found) : undefined
   }
 
   /**
@@ -112,11 +112,11 @@ export abstract class TypeormRepositoryBase<
    * @return {Promise<Entity>}
    */
   async findOneOrThrow(params: QueryParams<EntityProps> = {}): Promise<Entity> {
-    const found = await this.findOne(params);
+    const found = await this.findOne(params)
     if (!found) {
-      throw new NotFoundException();
+      throw new NotFoundException()
     }
-    return found;
+    return found
   }
 
   /**
@@ -127,11 +127,11 @@ export abstract class TypeormRepositoryBase<
   async findOneByIdOrThrow(id: ID | string): Promise<Entity> {
     const found = await this.repository.findOne({
       where: { id: id instanceof ID ? id.value : id },
-    });
+    })
     if (!found) {
-      throw new NotFoundException();
+      throw new NotFoundException()
     }
-    return this.mapper.toDomainEntity(found);
+    return this.mapper.toDomainEntity(found)
   }
 
   /**
@@ -143,9 +143,9 @@ export abstract class TypeormRepositoryBase<
     const result = await this.repository.find({
       where: this.prepareQuery(params),
       relations: this.relations,
-    });
+    })
 
-    return result.map((item) => this.mapper.toDomainEntity(item));
+    return result.map((item) => this.mapper.toDomainEntity(item))
   }
 
   /**
@@ -166,16 +166,16 @@ export abstract class TypeormRepositoryBase<
       where: this.prepareQuery(params),
       order: orderBy,
       relations: this.relations,
-    });
+    })
 
     const result: DataWithPaginationMeta<Entity[]> = {
       data: data.map((item) => this.mapper.toDomainEntity(item)),
       count,
       limit: pagination?.limit,
       page: pagination?.page,
-    };
+    }
 
-    return result;
+    return result
   }
 
   /**
@@ -184,17 +184,17 @@ export abstract class TypeormRepositoryBase<
    * @return {Promise<Entity>}
    */
   async delete(entity: Entity): Promise<Entity> {
-    entity.validate();
-    await this.repository.remove(this.mapper.toOrmEntity(entity));
+    entity.validate()
+    await this.repository.remove(this.mapper.toOrmEntity(entity))
     await DomainEvents.publishEvents(
       entity.id,
       this.logger,
       this.correlationId,
-    );
+    )
     this.logger.debug(
       `[${entity.constructor.name}] deleted ${entity.id.value}`,
-    );
-    return entity;
+    )
+    return entity
   }
 
   protected correlationId?: string;
@@ -205,9 +205,9 @@ export abstract class TypeormRepositoryBase<
    * @return {this}
    */
   setCorrelationId(correlationId: string): this {
-    this.correlationId = correlationId;
-    this.setContext();
-    return this;
+    this.correlationId = correlationId
+    this.setContext()
+    return this
   }
 
   /**
@@ -215,9 +215,9 @@ export abstract class TypeormRepositoryBase<
    */
   private setContext() {
     if (this.correlationId) {
-      this.logger.setContext(`${this.constructor.name}:${this.correlationId}`);
+      this.logger.setContext(`${this.constructor.name}:${this.correlationId}`)
     } else {
-      this.logger.setContext(this.constructor.name);
+      this.logger.setContext(this.constructor.name)
     }
   }
 }

@@ -7,7 +7,7 @@ export class DeleteTaskCommand {
    * @param {DeleteTaskCommand} props
    */
   constructor(props: DeleteTaskCommand) {
-    this.taskId = props.taskId;
+    this.taskId = props.taskId
   }
 
   readonly taskId: string;

@@ -1,4 +1,4 @@
-import { ExceptionBase } from '@src/libs/exceptions';
+import { ExceptionBase } from '@src/libs/exceptions'
 
 /**
  * TaskAlreadyExistsError class
@@ -13,6 +13,6 @@ export class TaskAlreadyExistsError extends ExceptionBase {
    * @param {unknown} metadata
    */
   constructor(metadata?: unknown) {
-    super(TaskAlreadyExistsError.message, metadata);
+    super(TaskAlreadyExistsError.message, metadata)
   }
 }

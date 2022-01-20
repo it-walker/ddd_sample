@@ -1,7 +1,7 @@
 import {
   Command,
   CommandProps,
-} from '@src/libs/ddd/domain/base-classes/command.base';
+} from '@src/libs/ddd/domain/base-classes/command.base'
 
 /**
  * CreateTaskCommand class
@@ -12,9 +12,9 @@ export class CreateTaskCommand extends Command {
    * @param {CommandProps<CreateTaskCommand>} props
    */
   constructor(props: CommandProps<CreateTaskCommand>) {
-    super(props);
-    this.name = props.name;
-    this.dueDate = props.dueDate;
+    super(props)
+    this.name = props.name
+    this.dueDate = props.dueDate
   }
 
   readonly name: string;
