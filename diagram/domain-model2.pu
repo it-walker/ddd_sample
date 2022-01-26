@@ -1,0 +1,33 @@
+@startuml 部と部員のドメインモデル図
+' left to right direction
+skinparam PackageStyle rectangle
+
+package 部集約 {
+    object 部 {
+        部ID
+        名前
+        承認状態
+    }
+
+    object 部員 {
+        部ID
+        生徒ID
+    }
+}
+package 生徒集約 {
+    object 生徒 {
+        生徒ID
+    }
+}
+
+部 ”1” *--> "0..n" 部員
+部員 "0..n" *-right-> "1" 生徒
+
+note right of 部
+    * 部活動の単位組織を表す。（野球部、ダンス部など）
+    　承認状態は、最初から「未承認」であり、
+    　部員が５人以上所属し、学校の商人が通ると「承認済」となる。
+    　部員が４人以下になると承認状態は「未承認」に戻る。
+end note
+
+@enduml

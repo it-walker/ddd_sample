@@ -1,4 +1,4 @@
-import { typeormConfig } from '@config/ormconfig'
+import { typeormConfig } from '@configs/ormconfig'
 
 const database = {
   ...typeormConfig,
