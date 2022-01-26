@@ -1,11 +1,9 @@
+import { Logger } from '@libs/ddd/domain/ports/logger.port'
+import { createClubCliLoggerSymbol } from '@modules/club/club.providers'
+import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 import { Inject } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { Command, Console } from 'nestjs-console'
-
-import { Logger } from '@libs/ddd/domain/ports/logger.port'
-
-import { createClubCliLoggerSymbol } from '@modules/club/club.providers'
-import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 
 @Console({
   command: 'new',

@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common'
-
 import { UserDomain } from '@src/domain/user.domain'
 import { TYPES } from '@src/interfaces/types'
 import { ICreateUserApplication } from '@src/interfaces/users/applications/create.user.application.interface'

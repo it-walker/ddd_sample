@@ -2,6 +2,7 @@ version: '3'
 services:
   db_data:
     image: busybox
+    # command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
       - /var/lib/mysql
   db:
@@ -9,7 +10,7 @@ services:
     volumes_from:
       - db_data
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_DATABASE: ddd
       MYSQL_ROOT_PASSWORD: password

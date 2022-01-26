@@ -1,15 +1,12 @@
-import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
-import { QueryBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
-
+import { routesV1 } from '@configs/app.routes'
 import { Result } from '@libs/ddd/domain/utils/result.util'
-
 import { ClubEntity } from '@modules/club/domain/entities/club.entity'
 import { ClubHttpResponse } from '@modules/club/dtos/club.response.dto'
 import { FindClubsQuery } from '@modules/club/queries/find-clubs/find-clubs.query'
 import { FindClubsHttpRequest } from '@modules/club/queries/find-clubs/find-clubs.request.dto'
-
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
+import { QueryBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
 
 @Controller(routesV1.version)
 export class FindClubsHttpController {

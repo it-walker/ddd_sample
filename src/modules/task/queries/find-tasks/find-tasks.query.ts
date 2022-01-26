@@ -1,5 +1,4 @@
 import { Query } from '@libs/ddd/domain/base-classes/query-handler.base'
-
 import { TaskStatus } from '@src/modules/task/domain/entities/task.type'
 
 /**

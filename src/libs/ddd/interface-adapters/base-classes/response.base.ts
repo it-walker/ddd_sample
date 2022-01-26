@@ -1,7 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger'
-
 import { BaseEntityProps } from '@libs/ddd/domain/base-classes/entity.base'
 import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
+import { ApiProperty } from '@nestjs/swagger'
 
 /**
  * ResponseBaseクラス

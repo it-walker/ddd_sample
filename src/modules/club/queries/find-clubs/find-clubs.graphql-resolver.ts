@@ -1,9 +1,8 @@
-import { Args, Query, Resolver } from '@nestjs/graphql'
-
 import { ClubRepository } from '@modules/club/database/club.repository'
 import { ClubResponse } from '@modules/club/dtos/club.response.dto'
 import { FindClubsQuery } from '@modules/club/queries/find-clubs/find-clubs.query'
 import { FindClubsRequest } from '@modules/club/queries/find-clubs/find-clubs.request.dto'
+import { Args, Query, Resolver } from '@nestjs/graphql'
 
 @Resolver()
 export class FindClubsGraphqlResolver {

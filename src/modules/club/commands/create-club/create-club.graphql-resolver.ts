@@ -1,10 +1,8 @@
-import { CommandBus } from '@nestjs/cqrs'
-import { Args, Mutation, Resolver } from '@nestjs/graphql'
-
 import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
-
 import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 import { CreateClubRequest } from '@modules/club/commands/create-club/create-club.request.dto'
+import { CommandBus } from '@nestjs/cqrs'
+import { Args, Mutation, Resolver } from '@nestjs/graphql'
 
 @Resolver()
 export class CreateClubGraphqlResolver {

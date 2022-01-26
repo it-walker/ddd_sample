@@ -1,12 +1,10 @@
 import { Result } from '@badrap/result'
-import { CommandHandler } from '@nestjs/cqrs'
-
 import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
 import { ProductEntity } from '@modules/product/domain/entities/product.entity'
 import { ProductDescription } from '@modules/product/domain/value-objects/product.description.value.object'
 import { ProductName } from '@modules/product/domain/value-objects/product.name.value.object'
 import { ProductPrice } from '@modules/product/domain/value-objects/product.price.value.object'
-
+import { CommandHandler } from '@nestjs/cqrs'
 import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 import { CommandHandlerBase } from '@src/libs/ddd/domain/base-classes/command-handler.base'
 import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object'

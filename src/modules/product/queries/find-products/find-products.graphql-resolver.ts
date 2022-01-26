@@ -1,9 +1,8 @@
-import { Args, Query, Resolver } from '@nestjs/graphql'
-
 import { ProductRepository } from '@modules/product/database/product.repository'
 import { ProductResponse } from '@modules/product/dtos/product.response.dto'
 import { FindProductsQuery } from '@modules/product/queries/find-products/find-products.query'
 import { FindProductsRequest } from '@modules/product/queries/find-products/find-products.request.dto'
+import { Args, Query, Resolver } from '@nestjs/graphql'
 
 @Resolver()
 /**

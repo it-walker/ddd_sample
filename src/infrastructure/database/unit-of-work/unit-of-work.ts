@@ -1,19 +1,19 @@
-import { Injectable } from '@nestjs/common'
-
 import { TypeormUnitOfWork } from '@libs/ddd/infrastructure/database/base-classes/typeorm-unit-of-work'
-
 import { ClubOrmEntity } from '@modules/club/database/club.orm-entity'
 import { ClubRepository } from '@modules/club/database/club.repository'
 import { MailaddressOrmEntity } from '@modules/mailaddress/database/mailaddress.orm-entity'
 import { MailaddressRepository } from '@modules/mailaddress/database/mailaddress.repository'
 import { ProductOrmEntity } from '@modules/product/database/product.orm-entity'
 import { ProductRepository } from '@modules/product/database/product.repository'
+import { StudentOrmEntity } from '@modules/student/database/student.orm-entity'
+import { StudentRepository } from '@modules/student/database/student.repository'
 import { TaskOrmEntity } from '@modules/task/database/task.orm-entity'
 import { TaskRepository } from '@modules/task/database/task.repository'
 import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
 import { UserRepository } from '@modules/user/database/user.repository'
 import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
 import { WalletRepository } from '@modules/wallet/database/wallet.repository'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class UnitOfWork extends TypeormUnitOfWork {
@@ -73,13 +73,24 @@ export class UnitOfWork extends TypeormUnitOfWork {
   }
 
   /**
-     * get ClubRepository
-     * @param {string} correlationId
-     * @return {ClubRepository}
-     */
+   * get ClubRepository
+   * @param {string} correlationId
+   * @return {ClubRepository}
+   */
   getClubRepository(correlationId: string): ClubRepository {
     return new ClubRepository(
       this.getOrmRepository(ClubOrmEntity, correlationId),
+    ).setCorrelationId(correlationId)
+  }
+
+  /**
+   * get StudentRepository
+   * @param {string} correlationId
+   * @return {StudentRepository}
+   */
+  getStudentRepository(correlationId: string): StudentRepository {
+    return new StudentRepository(
+      this.getOrmRepository(StudentOrmEntity, correlationId),
     ).setCorrelationId(correlationId)
   }
 }

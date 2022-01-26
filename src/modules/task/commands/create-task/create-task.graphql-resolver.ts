@@ -1,9 +1,7 @@
-import { CommandBus } from '@nestjs/cqrs'
-import { Args, Mutation, Resolver } from '@nestjs/graphql'
-
 import { CreateTaskCommand } from '@modules/task/commands/create-task/create-task.command'
 import { CreateTaskRequest } from '@modules/task/commands/create-task/create-task.request.dto'
-
+import { CommandBus } from '@nestjs/cqrs'
+import { Args, Mutation, Resolver } from '@nestjs/graphql'
 import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Resolver()

@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing'
-
 import { UserDomain } from '@src/domain/user.domain'
 import { TYPES } from '@src/interfaces/types'
 import { UsersController } from '@src/users/users.controller'

@@ -1,3 +1,5 @@
+import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
+import { CreateProductHttpRequest } from '@modules/product/commands/create-product/create-product.request.dto'
 import {
   Body,
   ConflictException,
@@ -7,10 +9,6 @@ import {
 } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { ApiOperation, ApiResponse } from '@nestjs/swagger'
-
-import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
-import { CreateProductHttpRequest } from '@modules/product/commands/create-product/create-product.request.dto'
-
 import { routesV1 } from '@src/infrastructure/configs/app.routes'
 import { Result } from '@src/libs/ddd/domain/utils/result.util'
 import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object'

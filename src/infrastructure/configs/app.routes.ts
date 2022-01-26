@@ -5,7 +5,9 @@
 const usersRoot = '/users'
 const productsRoot = '/products'
 const tasksRoot = '/tasks'
-const clubsRoot = '/tasks'
+const clubsRoot = '/clubs'
+const clubMembersRoot = '/clubMembers'
+const studentsRoot = '/students'
 export const routesV1 = {
   version: 'v1',
   user: {
@@ -23,5 +25,13 @@ export const routesV1 = {
   club: {
     root: clubsRoot,
     delete: `${clubsRoot}/:id`,
+  },
+  clubMember: {
+    root: clubMembersRoot,
+    delete: `${clubMembersRoot}/:id`,
+  },
+  student: {
+    root: studentsRoot,
+    delete: `${studentsRoot}/:id`,
   },
 }

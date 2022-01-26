@@ -1,9 +1,7 @@
-import { Controller, Delete, Param } from '@nestjs/common'
-
+import { routesV1 } from '@configs/app.routes'
 import { DeleteProductCommand } from '@modules/product/commands/delete-product/delete-product.commands'
 import { DeleteProductService } from '@modules/product/commands/delete-product/delete-product.service'
-
-import { routesV1 } from '@configs/app.routes'
+import { Controller, Delete, Param } from '@nestjs/common'
 
 @Controller(routesV1.version)
 /**

@@ -1,9 +1,8 @@
-import { Inject } from '@nestjs/common'
-import { CommandHandler } from '@nestjs/cqrs'
-
 import { DeleteUserCommand } from '@modules/user/commands/delete-user/delete-user.command'
 import { UserRepository } from '@modules/user/database/user.repository'
 import { UserRepositoryPort } from '@modules/user/database/user.repository.port'
+import { Inject } from '@nestjs/common'
+import { CommandHandler } from '@nestjs/cqrs'
 
 @CommandHandler(DeleteUserCommand)
 /**

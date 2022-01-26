@@ -1,15 +1,12 @@
-import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
-import { QueryBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
-
+import { routesV1 } from '@configs/app.routes'
+import { Result } from '@libs/ddd/domain/utils/result.util'
 import { UserEntity } from '@modules/user/domain/entities/user.entity'
 import { UserHttpResponse } from '@modules/user/dtos/user.response.dto'
 import { FindUsersQuery } from '@modules/user/queries/find-users/find-users.query'
 import { FindUsersHttpRequest } from '@modules/user/queries/find-users/find-users.request.dto'
-
-import { routesV1 } from '@configs/app.routes'
-
-import { Result } from '@libs/ddd/domain/utils/result.util'
+import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
+import { QueryBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
 
 @Controller(routesV1.version)
 /**

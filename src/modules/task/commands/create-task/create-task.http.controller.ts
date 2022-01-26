@@ -1,4 +1,7 @@
 import { Result } from '@badrap/result'
+import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
+import { CreateTaskCommand } from '@modules/task/commands/create-task/create-task.command'
+import { CreateTaskHttpRequest } from '@modules/task/commands/create-task/create-task.request.dto'
 import {
   Body,
   ConflictException,
@@ -8,12 +11,6 @@ import {
 } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { ApiOperation, ApiResponse } from '@nestjs/swagger'
-
-import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
-
-import { CreateTaskCommand } from '@modules/task/commands/create-task/create-task.command'
-import { CreateTaskHttpRequest } from '@modules/task/commands/create-task/create-task.request.dto'
-
 import { routesV1 } from '@src/infrastructure/configs/app.routes'
 import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object'
 import { TaskAlreadyExistsError } from '@src/modules/task/errors/task.errors'

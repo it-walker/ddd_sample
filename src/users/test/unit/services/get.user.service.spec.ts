@@ -1,10 +1,9 @@
 import { Test } from '@nestjs/testing'
 import { getRepositoryToken } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
-
 import { User } from '@src/entities/user.entity'
 import { UserMailAddress } from '@src/entities/userMailAddress.entity'
 import { GetUserService } from '@src/users/services/get.user.service'
+import { Repository } from 'typeorm'
 
 describe('GetUserService', () => {
   let service: GetUserService

@@ -1,14 +1,9 @@
-import { Injectable, Logger } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
-
 import { QueryParams } from '@libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
 import { NotFoundException } from '@libs/exceptions'
-
 import { ClubOrmEntity } from '@modules/club/database/club.orm-entity'
 import { ClubOrmMapper } from '@modules/club/database/club.orm-mapper'
 import { ClubRepositoryPort } from '@modules/club/database/club.repository.port'
@@ -17,8 +12,10 @@ import {
   ClubProps,
 } from '@modules/club/domain/entities/club.entity'
 import { FindClubsQuery } from '@modules/club/queries/find-clubs/find-clubs.query'
-
+import { Injectable, Logger } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util'
+import { Repository } from 'typeorm'
 
 @Injectable()
 export class ClubRepository

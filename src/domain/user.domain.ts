@@ -1,6 +1,5 @@
-import { IsArray, IsString } from 'class-validator'
-
 import { UserMailAddressDomain } from '@src/domain/user.mailAddress.domain'
+import { IsArray, IsString } from 'class-validator'
 
 /**
  * UserDomain class

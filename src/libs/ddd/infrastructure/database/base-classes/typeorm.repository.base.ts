@@ -1,5 +1,3 @@
-import { FindConditions, ObjectLiteral, Repository } from 'typeorm'
-
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { DomainEvents } from '@libs/ddd/domain/domain-events'
 import { Logger } from '@libs/ddd/domain/ports/logger.port'
@@ -12,6 +10,7 @@ import {
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
 import { OrmMapper } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base'
 import { NotFoundException } from '@libs/exceptions'
+import { FindConditions, ObjectLiteral, Repository } from 'typeorm'
 
 export type WhereCondition<OrmEntity> =
   | FindConditions<OrmEntity>[]

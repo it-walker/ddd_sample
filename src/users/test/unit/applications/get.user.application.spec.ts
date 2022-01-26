@@ -1,6 +1,5 @@
 import { NotFoundException } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
-
 import { UserDomain } from '@src/domain/user.domain'
 import { TYPES } from '@src/interfaces/types'
 import { GetUserApplication } from '@src/users/applications/get.user.application'

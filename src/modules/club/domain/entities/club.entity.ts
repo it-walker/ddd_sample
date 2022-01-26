@@ -1,6 +1,5 @@
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
-
 import { ClubCreatedDomainEvent } from '@modules/club/domain/events/club-created.domain-event'
 import { ClubName } from '@modules/club/domain/value-objects/club.name.value-object'
 

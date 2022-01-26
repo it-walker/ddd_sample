@@ -3,7 +3,6 @@ import { TaskEntity, TaskProps } from '@modules/task/domain/entities/task.entity
 import { TaskDueDate } from '@modules/task/domain/value-objects/task.due.date.value-object'
 import { TaskName } from '@modules/task/domain/value-objects/task.name.value-object'
 import { TaskPostponeCount } from '@modules/task/domain/value-objects/task.postpone.count.value-object'
-
 import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object'
 import {
   EntityProps,

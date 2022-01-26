@@ -1,11 +1,9 @@
+import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
+import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
+import { CreateClubMessageRequest } from '@modules/club/commands/create-club/create-club.request.dto'
 import { Controller } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { MessagePattern } from '@nestjs/microservices'
-
-import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
-
-import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
-import { CreateClubMessageRequest } from '@modules/club/commands/create-club/create-club.request.dto'
 
 @Controller()
 export class CreateClubMessageController {

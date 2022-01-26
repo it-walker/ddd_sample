@@ -1,19 +1,17 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
-
 import { TaskOrmEntity } from '@modules/task/database/task.orm-entity'
 import { TaskOrmMapper } from '@modules/task/database/task.orm-mapper'
 import { TaskRepositoryPort } from '@modules/task/database/task.repository.port'
 import { TaskEntity, TaskProps } from '@modules/task/domain/entities/task.entity'
 import { FindTasksQuery } from '@modules/task/queries/find-tasks/find-tasks.query'
-
+import { Injectable, Logger, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
 import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util'
+import { Repository } from 'typeorm'
 
 @Injectable()
 /**

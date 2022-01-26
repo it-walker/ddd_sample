@@ -1,8 +1,6 @@
 import { Result } from '@badrap/result'
-import { CommandHandler } from '@nestjs/cqrs'
-
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
-
+import { CommandHandler } from '@nestjs/cqrs'
 import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 import { CommandHandlerBase } from '@src/libs/ddd/domain/base-classes/command-handler.base'
 import { CreateTaskCommand } from '@src/modules/task/commands/create-task/create-task.command'
