@@ -1,6 +1,5 @@
 import { MailaddressRepositoryPort } from '@modules/mailaddress/database/mailaddress.repository.port'
 import { MailaddressEntity } from '@modules/mailaddress/domain/entities/mailaddress.entity'
-
 import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 import {
   DomainEvent,

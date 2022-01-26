@@ -1,12 +1,11 @@
 import { ArgsType, Field, InputType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
+import { CreateClub } from '@src/interface-adapters/interfaces/club/create.club.interface'
 import {
   IsString,
   MaxLength,
   MinLength,
 } from 'class-validator'
-
-import { CreateClub } from '@src/interface-adapters/interfaces/club/create.club.interface'
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType() // <- only if you are using GraphQL

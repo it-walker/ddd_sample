@@ -1,10 +1,8 @@
+import { CreateTaskCommand } from '@modules/task/commands/create-task/create-task.command'
+import { CreateTaskMessageRequest } from '@modules/task/commands/create-task/create-task.request.dto'
 import { Controller } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { MessagePattern } from '@nestjs/microservices'
-
-import { CreateTaskCommand } from '@modules/task/commands/create-task/create-task.command'
-import { CreateTaskMessageRequest } from '@modules/task/commands/create-task/create-task.request.dto'
-
 import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Controller()

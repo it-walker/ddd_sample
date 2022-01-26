@@ -1,4 +1,9 @@
 import {
+  ConflictException,
+  ExceptionBase,
+  NotFoundException,
+} from '@libs/exceptions'
+import {
   CallHandler,
   // To avoid confusion between internal app exceptions and NestJS exceptions
   ConflictException as NestConflictException,
@@ -8,12 +13,6 @@ import {
 } from '@nestjs/common'
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
-
-import {
-  ConflictException,
-  ExceptionBase,
-  NotFoundException,
-} from '@libs/exceptions'
 
 /**
  * ExceptionInterceptor class

@@ -1,5 +1,6 @@
 import { ArgsType, Field, InputType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
+import { CreateUser } from '@src/interface-adapters/interfaces/user/create.user.interface'
 import {
   IsAlphanumeric,
   IsEmail,
@@ -8,8 +9,6 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator'
-
-import { CreateUser } from '@src/interface-adapters/interfaces/user/create.user.interface'
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType() // <- only if you are using GraphQL

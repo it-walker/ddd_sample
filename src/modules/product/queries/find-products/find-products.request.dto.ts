@@ -1,8 +1,7 @@
 import { ArgsType, Field, InputType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
-import { IsOptional, IsString, MaxLength } from 'class-validator'
-
 import { FindProducts } from '@src/interface-adapters/interfaces/product/find-products.interface'
+import { IsOptional, IsString, MaxLength } from 'class-validator'
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType()

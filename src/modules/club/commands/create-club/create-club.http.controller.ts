@@ -1,17 +1,14 @@
-import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
-import { CommandBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
-
+import { routesV1 } from '@configs/app.routes'
 import { Result } from '@libs/ddd/domain/utils/result.util'
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
 import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
 import { ConflictException } from '@libs/exceptions'
-
 import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 import { CreateClubHttpRequest } from '@modules/club/commands/create-club/create-club.request.dto'
 import { ClubAlreadyExistsError } from '@modules/club/errors/club.errors'
-
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
+import { CommandBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
 
 @Controller(routesV1.version)
 export class CreateClubHttpController {

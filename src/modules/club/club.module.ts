@@ -1,7 +1,3 @@
-import { Module } from '@nestjs/common'
-import { CqrsModule } from '@nestjs/cqrs'
-import { TypeOrmModule } from '@nestjs/typeorm'
-
 import { createClubCliLoggerProvider } from '@modules/club/club.providers'
 import { CreateClubCliController } from '@modules/club/commands/create-club/create-club.cli.controller'
 import { CreateClubGraphqlResolver } from '@modules/club/commands/create-club/create-club.graphql-resolver'
@@ -15,6 +11,9 @@ import { ClubRepository } from '@modules/club/database/club.repository'
 import { FindClubsGraphqlResolver } from '@modules/club/queries/find-clubs/find-clubs.graphql-resolver'
 import { FindClubsHttpController } from '@modules/club/queries/find-clubs/find-clubs.http.controller'
 import { FindClubsQueryHandler } from '@modules/club/queries/find-clubs/find-clubs.query-handler'
+import { Module } from '@nestjs/common'
+import { CqrsModule } from '@nestjs/cqrs'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
 const httpControllers = [
   CreateClubHttpController,

@@ -2,10 +2,10 @@ import { typeormConfig } from '@configs/ormconfig'
 
 const database = {
   ...typeormConfig,
-  entities: ['dist/**/*.orm-entity.js'],
+  entities: ['src/**/*.orm-entity.ts'],
   migrationsTableName: 'migrations',
-  migrations: ['dist/**/migrations/*.js'],
-  seeds: ['dist/**/seeding/**/*.seeder.js'],
+  migrations: ['src/**/migrations/*.ts'],
+  seeds: ['src/**/seeding/**/*.seeder.ts'],
   factories: ['dist/**/factories/**/*.js'],
   cli: {
     migrationsDir: 'src/infrastructure/database/migrations',

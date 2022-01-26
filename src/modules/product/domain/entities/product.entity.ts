@@ -2,7 +2,6 @@ import { ProductCreatedDomainEvent } from '@modules/product/domain/events/produc
 import { ProductDescription } from '@modules/product/domain/value-objects/product.description.value.object'
 import { ProductName } from '@modules/product/domain/value-objects/product.name.value.object'
 import { ProductPrice } from '@modules/product/domain/value-objects/product.price.value.object'
-
 import { AggregateRoot } from '@src/libs/ddd/domain/base-classes/aggregate-root.base'
 import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object'
 

@@ -1,10 +1,7 @@
+import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
+import { UserEntity } from '@modules/user/domain/entities/user.entity'
 import { Field, ObjectType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
-
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
-
-import { UserEntity } from '@modules/user/domain/entities/user.entity'
-
 import { User } from '@src/interface-adapters/interfaces/user/user.interface'
 
 @ObjectType() // only if you are using graphql

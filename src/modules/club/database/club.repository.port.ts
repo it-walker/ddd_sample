@@ -1,5 +1,4 @@
 import { RepositoryPort } from '@libs/ddd/domain/ports/repository.ports'
-
 import { ClubEntity, ClubProps } from '@modules/club/domain/entities/club.entity'
 
 export interface ClubRepositoryPort

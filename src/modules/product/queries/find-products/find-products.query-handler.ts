@@ -1,11 +1,8 @@
-import { QueryHandler } from '@nestjs/cqrs'
-
 import { Result } from '@libs/ddd/domain/utils/result.util'
-
 import { ProductRepository } from '@modules/product/database/product.repository'
 import { ProductEntity } from '@modules/product/domain/entities/product.entity'
 import { FindProductsQuery } from '@modules/product/queries/find-products/find-products.query'
-
+import { QueryHandler } from '@nestjs/cqrs'
 import { QueryHandlerBase } from '@src/libs/ddd/domain/base-classes/query-handler.base'
 
 @QueryHandler(FindProductsQuery)

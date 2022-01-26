@@ -2,7 +2,6 @@ import { ProductOrmEntity } from '@modules/product/database/product.orm-entity'
 import { ProductDescription } from '@modules/product/domain/value-objects/product.description.value.object'
 import { ProductName } from '@modules/product/domain/value-objects/product.name.value.object'
 import { ProductPrice } from '@modules/product/domain/value-objects/product.price.value.object'
-
 import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object'
 import {
   EntityProps,

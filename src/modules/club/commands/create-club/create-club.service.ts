@@ -1,15 +1,12 @@
-import { CommandHandler } from '@nestjs/cqrs'
-
 import { CommandHandlerBase } from '@libs/ddd/domain/base-classes/command-handler.base'
 import { Result } from '@libs/ddd/domain/utils/result.util'
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
-
 import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 import { ClubRepositoryPort } from '@modules/club/database/club.repository.port'
 import { ClubEntity } from '@modules/club/domain/entities/club.entity'
 import { ClubName } from '@modules/club/domain/value-objects/club.name.value-object'
 import { ClubAlreadyExistsError } from '@modules/club/errors/club.errors'
-
+import { CommandHandler } from '@nestjs/cqrs'
 import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 
 @CommandHandler(CreateClubCommand)

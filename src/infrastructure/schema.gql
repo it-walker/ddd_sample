@@ -6,6 +6,31 @@ type IdResponse {
   id: String!
 }
 
+type ClubResponse {
+  name: String!
+  isApproval: Boolean!
+}
+
+type ProductResponse {
+  name: String!
+}
+
+type StudentResponse {
+  name: String!
+}
+
+type TaskResponse {
+  name: String!
+  dueDate: DateTime!
+  postponeCount: Float!
+  status: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type UserResponse {
   email: String!
   country: String!
@@ -15,6 +40,10 @@ type UserResponse {
 
 type Query {
   findUsers(input: FindUsersRequest!): [UserResponse!]!
+  findProducts(input: FindProductsRequest!): [ProductResponse!]!
+  findTasks(input: FindTasksRequest!): [TaskResponse!]!
+  findClubs(input: FindClubsRequest!): [ClubResponse!]!
+  findStudents(input: FindStudentsRequest!): [StudentResponse!]!
 }
 
 input FindUsersRequest {
@@ -23,13 +52,29 @@ input FindUsersRequest {
   street: String
 }
 
-type Mutation {
-  create(input: CreateUserRequest!): IdResponse!
+input FindProductsRequest {
+  name: String
 }
 
-input CreateUserRequest {
-  email: String!
-  country: String!
-  postalCode: String!
-  street: String!
+input FindTasksRequest {
+  name: String
+  dueDate: DateTime
+  postponeCount: Float
+}
+
+input FindClubsRequest {
+  name: String
+  isApproval: Boolean
+}
+
+input FindStudentsRequest {
+  name: String
+}
+
+type Mutation {
+  create(input: CreateStudentRequest!): IdResponse!
+}
+
+input CreateStudentRequest {
+  name: String!
 }

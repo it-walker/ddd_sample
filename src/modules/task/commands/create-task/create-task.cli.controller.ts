@@ -1,10 +1,9 @@
 import { Inject } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
-import { Command, Console } from 'nestjs-console'
-
 import { Logger } from '@src/libs/ddd/domain/ports/logger.port'
 import { CreateTaskCommand } from '@src/modules/task/commands/create-task/create-task.command'
 import { createTaskCliLoggerSymbol } from '@src/modules/task/task.providers'
+import { Command, Console } from 'nestjs-console'
 
 @Console({
   command: 'new',

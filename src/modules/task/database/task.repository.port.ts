@@ -1,5 +1,4 @@
 import { TaskEntity, TaskProps } from '@modules/task/domain/entities/task.entity'
-
 import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports'
 
 export interface TaskRepositoryPort

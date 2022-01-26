@@ -1,10 +1,8 @@
+import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
+import { CreateProductMessageRequest } from '@modules/product/commands/create-product/create-product.request.dto'
 import { Controller } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { MessagePattern } from '@nestjs/microservices'
-
-import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
-import { CreateProductMessageRequest } from '@modules/product/commands/create-product/create-product.request.dto'
-
 import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Controller()

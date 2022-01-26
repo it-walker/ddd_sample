@@ -1,8 +1,6 @@
-import { Column, Entity } from 'typeorm'
-
 import { TypeormEntityBase } from '@libs/ddd/infrastructure/database/base-classes/typeorm.entity.base'
-
 import { UserRoles } from '@modules/user/domain/entities/user.types'
+import { Column, Entity } from 'typeorm'
 
 @Entity('user')
 export class UserOrmEntity extends TypeormEntityBase {

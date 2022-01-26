@@ -1,7 +1,3 @@
-import { Injectable, Logger } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
-
 import { MailaddressOrmEntity } from '@modules/mailaddress/database/mailaddress.orm-entity'
 import { MailaddressOrmMapper } from '@modules/mailaddress/database/mailaddress.orm-mapper'
 import { MailaddressRepositoryPort } from '@modules/mailaddress/database/mailaddress.repository.port'
@@ -9,12 +5,14 @@ import {
   MailaddressEntity,
   MailaddressProps,
 } from '@modules/mailaddress/domain/entities/mailaddress.entity'
-
+import { Injectable, Logger } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
+import { Repository } from 'typeorm'
 
 @Injectable()
 /**
