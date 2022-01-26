@@ -1,22 +1,21 @@
 import { Injectable } from '@nestjs/common'
 
+import { TypeormUnitOfWork } from '@libs/ddd/infrastructure/database/base-classes/typeorm-unit-of-work'
+
+import { ClubOrmEntity } from '@modules/club/database/club.orm-entity'
+import { ClubRepository } from '@modules/club/database/club.repository'
+import { MailaddressOrmEntity } from '@modules/mailaddress/database/mailaddress.orm-entity'
+import { MailaddressRepository } from '@modules/mailaddress/database/mailaddress.repository'
+import { ProductOrmEntity } from '@modules/product/database/product.orm-entity'
+import { ProductRepository } from '@modules/product/database/product.repository'
+import { TaskOrmEntity } from '@modules/task/database/task.orm-entity'
+import { TaskRepository } from '@modules/task/database/task.repository'
 import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
 import { UserRepository } from '@modules/user/database/user.repository'
 import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
 import { WalletRepository } from '@modules/wallet/database/wallet.repository'
 
-import { TypeormUnitOfWork } from '@src/libs/ddd/infrastructure/database/base-classes/typeorm-unit-of-work'
-import { MailaddressOrmEntity } from '@src/modules/mailaddress/database/mailaddress.orm-entity'
-import { MailaddressRepository } from '@src/modules/mailaddress/database/mailaddress.repository'
-import { ProductOrmEntity } from '@src/modules/product/database/product.orm-entity'
-import { ProductRepository } from '@src/modules/product/database/product.repository'
-import { TaskOrmEntity } from '@src/modules/task/database/task.orm-entity'
-import { TaskRepository } from '@src/modules/task/database/task.repository'
-
 @Injectable()
-/**
- * UnitOfWork class
- */
 export class UnitOfWork extends TypeormUnitOfWork {
   /**
    * get UserRepository
@@ -70,6 +69,17 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getTaskRepository(correlationId: string): TaskRepository {
     return new TaskRepository(
       this.getOrmRepository(TaskOrmEntity, correlationId),
+    ).setCorrelationId(correlationId)
+  }
+
+  /**
+     * get ClubRepository
+     * @param {string} correlationId
+     * @return {ClubRepository}
+     */
+  getClubRepository(correlationId: string): ClubRepository {
+    return new ClubRepository(
+      this.getOrmRepository(ClubOrmEntity, correlationId),
     ).setCorrelationId(correlationId)
   }
 }

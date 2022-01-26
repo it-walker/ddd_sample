@@ -24,7 +24,7 @@
       "@modules/*": [
         "src/modules/*"
       ],
-      "@config/*": [
+      "@configs/*": [
         "src/infrastructure/configs/*"
       ],
       "@exceptions": [

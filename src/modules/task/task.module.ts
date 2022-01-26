@@ -2,19 +2,19 @@ import { Module } from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { CreateTaskCliController } from '@src/modules/task/commands/create-task/create-task.cli.controller'
-import { CreateTaskGraphqlResolver } from '@src/modules/task/commands/create-task/create-task.graphql-resolver'
-import { CreateTaskHttpController } from '@src/modules/task/commands/create-task/create-task.http.controller'
-import { CreateTaskMessageController } from '@src/modules/task/commands/create-task/create-task.message.controller'
-import { CreateTaskService } from '@src/modules/task/commands/create-task/create-task.service'
-import { DeleteTaskHttpController } from '@src/modules/task/commands/delete-task/delete-task.http-controller'
-import { DeleteTaskService } from '@src/modules/task/commands/delete-task/delete-task.service'
-import { TaskOrmEntity } from '@src/modules/task/database/task.orm-entity'
-import { TaskRepository } from '@src/modules/task/database/task.repository'
-import { FindTasksGraphqlResolver } from '@src/modules/task/queries/find-tasks/find-tasks.graphql-resolver'
-import { FindTasksHttpController } from '@src/modules/task/queries/find-tasks/find-tasks.http.controller'
-import { FindTasksQueryHandler } from '@src/modules/task/queries/find-tasks/find-tasks.query-handler'
-import { createTaskCliLoggerProvider } from '@src/modules/task/task.providers'
+import { CreateTaskCliController } from '@modules/task/commands/create-task/create-task.cli.controller'
+import { CreateTaskGraphqlResolver } from '@modules/task/commands/create-task/create-task.graphql-resolver'
+import { CreateTaskHttpController } from '@modules/task/commands/create-task/create-task.http.controller'
+import { CreateTaskMessageController } from '@modules/task/commands/create-task/create-task.message.controller'
+import { CreateTaskService } from '@modules/task/commands/create-task/create-task.service'
+import { DeleteTaskHttpController } from '@modules/task/commands/delete-task/delete-task.http-controller'
+import { DeleteTaskService } from '@modules/task/commands/delete-task/delete-task.service'
+import { TaskOrmEntity } from '@modules/task/database/task.orm-entity'
+import { TaskRepository } from '@modules/task/database/task.repository'
+import { FindTasksGraphqlResolver } from '@modules/task/queries/find-tasks/find-tasks.graphql-resolver'
+import { FindTasksHttpController } from '@modules/task/queries/find-tasks/find-tasks.http.controller'
+import { FindTasksQueryHandler } from '@modules/task/queries/find-tasks/find-tasks.query-handler'
+import { createTaskCliLoggerProvider } from '@modules/task/task.providers'
 
 const httpControllers = [
   CreateTaskHttpController,
@@ -46,7 +46,4 @@ const queryHandlers = [FindTasksQueryHandler]
     createTaskCliLoggerProvider,
   ],
 })
-/**
- * TaskModule class
- */
-export class TaskModule {}
+export class TaskModule { }

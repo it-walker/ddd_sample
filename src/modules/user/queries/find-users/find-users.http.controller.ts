@@ -7,9 +7,9 @@ import { UserHttpResponse } from '@modules/user/dtos/user.response.dto'
 import { FindUsersQuery } from '@modules/user/queries/find-users/find-users.query'
 import { FindUsersHttpRequest } from '@modules/user/queries/find-users/find-users.request.dto'
 
-import { Result } from '@src/libs/ddd/domain/utils/result.util'
+import { routesV1 } from '@configs/app.routes'
 
-import { routesV1 } from '@config/app.routes'
+import { Result } from '@libs/ddd/domain/utils/result.util'
 
 @Controller(routesV1.version)
 /**

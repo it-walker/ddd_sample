@@ -7,9 +7,9 @@ import { ProductHttpResponse } from '@modules/product/dtos/product.response.dto'
 import { FindProductsQuery } from '@modules/product/queries/find-products/find-products.query'
 import { FindProductsHttpRequest } from '@modules/product/queries/find-products/find-products.request.dto'
 
-import { Result } from '@src/libs/ddd/domain/utils/result.util'
+import { routesV1 } from '@configs/app.routes'
 
-import { routesV1 } from '@config/app.routes'
+import { Result } from '@src/libs/ddd/domain/utils/result.util'
 
 @Controller(routesV1.version)
 /**

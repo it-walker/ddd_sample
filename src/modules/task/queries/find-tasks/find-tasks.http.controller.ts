@@ -4,17 +4,14 @@ import { ApiOperation, ApiResponse } from '@nestjs/swagger'
 
 import { TaskHttpResponse } from '@modules/task/dtos/task.response.dto'
 
-import { Result } from '@src/libs/ddd/domain/utils/result.util'
-import { TaskEntity } from '@src/modules/task/domain/entities/task.entity'
-import { FindTasksQuery } from '@src/modules/task/queries/find-tasks/find-tasks.query'
-import { FindTasksHttpRequest } from '@src/modules/task/queries/find-tasks/find-tasks.request.dto'
+import { routesV1 } from '@configs/app.routes'
 
-import { routesV1 } from '@config/app.routes'
+import { Result } from '@libs/ddd/domain/utils/result.util'
+import { TaskEntity } from '@modules/task/domain/entities/task.entity'
+import { FindTasksQuery } from '@modules/task/queries/find-tasks/find-tasks.query'
+import { FindTasksHttpRequest } from '@modules/task/queries/find-tasks/find-tasks.request.dto'
 
 @Controller(routesV1.version)
-/**
- * FindTasksHttpController class
- */
 export class FindTasksHttpController {
   /**
    * constructor

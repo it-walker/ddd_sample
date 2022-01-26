@@ -8,11 +8,11 @@ import { CreateUserCommand } from '@modules/user/commands/create-user/create-use
 import { CreateUserHttpRequest } from '@modules/user/commands/create-user/create-user.request.dto'
 import { UserAlreadyExistsError } from '@modules/user/errors/user.errors'
 
-import { Result } from '@src/libs/ddd/domain/utils/result.util'
-import { ID } from '@src/libs/ddd/domain/value-objects/id.value-object'
-import { ConflictException } from '@src/libs/exceptions'
+import { routesV1 } from '@configs/app.routes'
 
-import { routesV1 } from '@config/app.routes'
+import { Result } from '@libs/ddd/domain/utils/result.util'
+import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
+import { ConflictException } from '@libs/exceptions'
 
 @Controller(routesV1.version)
 /**

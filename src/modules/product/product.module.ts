@@ -49,7 +49,4 @@ const queryHandlers = [FindProductsQueryHandler]
     createProductCliLoggerProvider,
   ],
 })
-/**
- * ProductModule class
- */
 export class ProductModule { }
