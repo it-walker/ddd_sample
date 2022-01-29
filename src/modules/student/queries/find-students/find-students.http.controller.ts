@@ -1,12 +1,15 @@
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
+import { QueryBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
 import { Result } from '@libs/ddd/domain/utils/result.util'
+
 import { StudentEntity } from '@modules/student/domain/entities/student.entity'
 import { StudentHttpResponse } from '@modules/student/dtos/student.response.dto'
 import { FindStudentsQuery } from '@modules/student/queries/find-students/find-students.query'
 import { FindStudentsHttpRequest } from '@modules/student/queries/find-students/find-students.request.dto'
-import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
-import { QueryBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
+import { routesV1 } from '@configs/app.routes'
 
 @Controller(routesV1.version)
 export class FindStudentsHttpController {

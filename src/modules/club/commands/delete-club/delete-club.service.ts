@@ -1,8 +1,9 @@
+import { Inject } from '@nestjs/common'
+import { CommandHandler } from '@nestjs/cqrs'
+
 import { DeleteClubCommand } from '@modules/club/commands/delete-club/delete-club.command'
 import { ClubRepository } from '@modules/club/database/club.repository'
 import { ClubRepositoryPort } from '@modules/club/database/club.repository.port'
-import { Inject } from '@nestjs/common'
-import { CommandHandler } from '@nestjs/cqrs'
 
 @CommandHandler(DeleteClubCommand)
 export class DeleteClubService {

@@ -1,6 +1,8 @@
 import { NonFunctionProperties } from '@libs/types'
+
 import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
 import { UserRoles } from '@modules/user/domain/entities/user.types'
+
 import { createdAtUpdatedAtMock } from '@src/libs/test-utils/mocks/generic-model-props.mock'
 
 /**

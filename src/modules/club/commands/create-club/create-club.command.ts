@@ -10,8 +10,9 @@ export class CreateClubCommand extends Command {
   constructor(props: CommandProps<CreateClubCommand>) {
     super(props)
     this.name = props.name
+    this.memberIds = props.memberIds
   }
 
   readonly name: string;
-
+  readonly memberIds: string[];
 }

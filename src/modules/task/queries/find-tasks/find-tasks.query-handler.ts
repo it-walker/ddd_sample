@@ -1,5 +1,7 @@
-import { Result } from '@libs/ddd/domain/utils/result.util'
 import { QueryHandler } from '@nestjs/cqrs'
+
+import { Result } from '@libs/ddd/domain/utils/result.util'
+
 import { QueryHandlerBase } from '@src/libs/ddd/domain/base-classes/query-handler.base'
 import { TaskRepository } from '@src/modules/task/database/task.repository'
 import { TaskEntity } from '@src/modules/task/domain/entities/task.entity'

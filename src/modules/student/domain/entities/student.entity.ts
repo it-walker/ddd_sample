@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
+
 import { StudentName } from '@modules/student/domain/value-objects/student.name.value-object'
 
 export interface CreateStudentProps {

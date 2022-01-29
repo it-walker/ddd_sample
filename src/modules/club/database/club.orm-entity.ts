@@ -1,5 +1,6 @@
-import { TypeormEntityBase } from '@libs/ddd/infrastructure/database/base-classes/typeorm.entity.base'
 import { Column, Entity } from 'typeorm'
+
+import { TypeormEntityBase } from '@libs/ddd/infrastructure/database/base-classes/typeorm.entity.base'
 
 @Entity('club')
 export class ClubOrmEntity extends TypeormEntityBase {
@@ -16,4 +17,8 @@ export class ClubOrmEntity extends TypeormEntityBase {
 
   @Column()
   isApproval: boolean;
+
+  memberIds: string[];
+  // @OneToMany(() => ClubMemberOrmEntity, (members) => members.club)
+  // members?: ClubMemberOrmEntity[];
 }

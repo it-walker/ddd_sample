@@ -1,9 +1,11 @@
-import { Logger } from '@libs/ddd/domain/ports/logger.port'
-import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
-import { createStudentCliLoggerSymbol } from '@modules/student/student.providers'
 import { Inject } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { Command, Console } from 'nestjs-console'
+
+import { Logger } from '@libs/ddd/domain/ports/logger.port'
+
+import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
+import { createStudentCliLoggerSymbol } from '@modules/student/student.providers'
 
 @Console({
   command: 'new',

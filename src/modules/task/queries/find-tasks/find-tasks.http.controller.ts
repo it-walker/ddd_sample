@@ -1,12 +1,15 @@
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
+import { QueryBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
 import { Result } from '@libs/ddd/domain/utils/result.util'
+
 import { TaskEntity } from '@modules/task/domain/entities/task.entity'
 import { TaskHttpResponse } from '@modules/task/dtos/task.response.dto'
 import { FindTasksQuery } from '@modules/task/queries/find-tasks/find-tasks.query'
 import { FindTasksHttpRequest } from '@modules/task/queries/find-tasks/find-tasks.request.dto'
-import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
-import { QueryBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
+import { routesV1 } from '@configs/app.routes'
 
 @Controller(routesV1.version)
 export class FindTasksHttpController {

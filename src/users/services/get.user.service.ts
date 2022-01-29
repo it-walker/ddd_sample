@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+
 import { UserDomain } from '@src/domain/user.domain'
 import { User } from '@src/entities/user.entity'
 import { IGetUserUseCase } from '@src/interfaces/users/usecases/get.user.service.usecase'
-import { Repository } from 'typeorm'
 
 @Injectable()
 /**

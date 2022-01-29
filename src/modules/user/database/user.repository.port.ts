@@ -1,4 +1,5 @@
 import { RepositoryPort } from '@libs/ddd/domain/ports/repository.ports'
+
 import { UserEntity, UserProps } from '@modules/user/domain/entities/user.entity'
 
 /* Repository port belongs to application's core, but since it usually

@@ -1,9 +1,11 @@
+import { QueryHandler } from '@nestjs/cqrs'
+
 import { QueryHandlerBase } from '@libs/ddd/domain/base-classes/query-handler.base'
 import { Result } from '@libs/ddd/domain/utils/result.util'
+
 import { StudentRepository } from '@modules/student/database/student.repository'
 import { StudentEntity } from '@modules/student/domain/entities/student.entity'
 import { FindStudentsQuery } from '@modules/student/queries/find-students/find-students.query'
-import { QueryHandler } from '@nestjs/cqrs'
 
 @QueryHandler(FindStudentsQuery)
 export class FindStudentsQueryHandler extends QueryHandlerBase {

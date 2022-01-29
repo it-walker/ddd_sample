@@ -1,3 +1,7 @@
+import { Module } from '@nestjs/common'
+import { CqrsModule } from '@nestjs/cqrs'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { CreateUserCliController } from '@modules/user/commands/create-user/create-user.cli.controller'
 import { CreateUserGraphqlResolver } from '@modules/user/commands/create-user/create-user.graphql-resolver'
 import { CreateUserHttpController } from '@modules/user/commands/create-user/create-user.http.controller'
@@ -11,9 +15,6 @@ import { FindUsersGraphqlResolver } from '@modules/user/queries/find-users/find-
 import { FindUsersHttpController } from '@modules/user/queries/find-users/find-users.http.controller'
 import { FindUsersQueryHandler } from '@modules/user/queries/find-users/find-users.query-handler'
 import { createUserCliLoggerProvider } from '@modules/user/user.providers'
-import { Module } from '@nestjs/common'
-import { CqrsModule } from '@nestjs/cqrs'
-import { TypeOrmModule } from '@nestjs/typeorm'
 
 const httpControllers = [
   CreateUserHttpController,

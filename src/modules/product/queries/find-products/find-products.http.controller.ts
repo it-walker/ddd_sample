@@ -1,11 +1,14 @@
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
+import { QueryBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
 import { ProductEntity } from '@modules/product/domain/entities/product.entity'
 import { ProductHttpResponse } from '@modules/product/dtos/product.response.dto'
 import { FindProductsQuery } from '@modules/product/queries/find-products/find-products.query'
 import { FindProductsHttpRequest } from '@modules/product/queries/find-products/find-products.request.dto'
-import { Body, Controller, Get, HttpStatus } from '@nestjs/common'
-import { QueryBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
+import { routesV1 } from '@configs/app.routes'
+
 import { Result } from '@src/libs/ddd/domain/utils/result.util'
 
 @Controller(routesV1.version)

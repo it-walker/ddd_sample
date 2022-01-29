@@ -1,9 +1,11 @@
-import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
-import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
-import { CreateStudentMessageRequest } from '@modules/student/commands/create-student/create-student.request.dto'
 import { Controller } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { MessagePattern } from '@nestjs/microservices'
+
+import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
+
+import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
+import { CreateStudentMessageRequest } from '@modules/student/commands/create-student/create-student.request.dto'
 
 @Controller()
 export class CreateStudentMessageController {

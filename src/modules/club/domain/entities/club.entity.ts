@@ -1,14 +1,19 @@
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
+
 import { ClubCreatedDomainEvent } from '@modules/club/domain/events/club-created.domain-event'
 import { ClubName } from '@modules/club/domain/value-objects/club.name.value-object'
 
+import { ClubMemberEntity } from '@src/modules/clubMember/domain/entities/club.member.entity'
+
 export interface CreateClubProps {
   name: ClubName;
+  memberIds: string[];
+  // members?: ClubMemberEntity[];
 }
 
 export interface ClubProps extends CreateClubProps {
-  isApproval: boolean
+  isApproval: boolean;
 }
 
 export class ClubEntity extends AggregateRoot<ClubProps> {
@@ -28,6 +33,7 @@ export class ClubEntity extends AggregateRoot<ClubProps> {
         aggregateId: id.value,
         name: props.name.getRawProps(),
         isApproval: props.isApproval,
+        memberIds: props.memberIds,
       }),
     )
     return club

@@ -1,6 +1,7 @@
-import { Id } from '@libs/ddd/interface-adapters/interfaces/id.interface'
 import { Field, ObjectType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { Id } from '@libs/ddd/interface-adapters/interfaces/id.interface'
 
 @ObjectType() // <- only if you are using GraphQL
 /**

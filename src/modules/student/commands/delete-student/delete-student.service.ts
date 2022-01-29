@@ -1,8 +1,9 @@
+import { Inject } from '@nestjs/common'
+import { CommandHandler } from '@nestjs/cqrs'
+
 import { DeleteStudentCommand } from '@modules/student/commands/delete-student/delete-student.command'
 import { StudentRepository } from '@modules/student/database/student.repository'
 import { StudentRepositoryPort } from '@modules/student/database/student.repository.port'
-import { Inject } from '@nestjs/common'
-import { CommandHandler } from '@nestjs/cqrs'
 
 @CommandHandler(DeleteStudentCommand)
 export class DeleteStudentService {

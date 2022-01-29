@@ -1,6 +1,5 @@
 import { ArgsType, Field, InputType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
-import { FindStudents } from '@src/interface-adapters/interfaces/student/find-students.interface'
 import {
   IsAlphanumeric,
   IsOptional,
@@ -8,6 +7,8 @@ import {
   Matches,
   MaxLength,
 } from 'class-validator'
+
+import { FindStudents } from '@src/interface-adapters/interfaces/student/find-students.interface'
 
 @ArgsType() // <- only if you are using GraphQL
 @InputType()

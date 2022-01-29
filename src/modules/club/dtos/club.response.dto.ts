@@ -1,7 +1,10 @@
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
-import { ClubEntity } from '@modules/club/domain/entities/club.entity'
 import { Field, ObjectType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
+
+import { ClubEntity } from '@modules/club/domain/entities/club.entity'
+
 import { Club } from '@src/interface-adapters/interfaces/club/club.interface'
 
 @ObjectType()

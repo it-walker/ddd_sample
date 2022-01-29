@@ -1,7 +1,9 @@
-import { routesV1 } from '@configs/app.routes'
+import { Controller, Delete, Param } from '@nestjs/common'
+
 import { DeleteStudentCommand } from '@modules/student/commands/delete-student/delete-student.command'
 import { DeleteStudentService } from '@modules/student/commands/delete-student/delete-student.service'
-import { Controller, Delete, Param } from '@nestjs/common'
+
+import { routesV1 } from '@configs/app.routes'
 
 @Controller(routesV1.version)
 export class DeleteStudentHttpController {

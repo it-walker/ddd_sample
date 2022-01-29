@@ -1,9 +1,11 @@
+import { QueryHandler } from '@nestjs/cqrs'
+
 import { QueryHandlerBase } from '@libs/ddd/domain/base-classes/query-handler.base'
 import { Result } from '@libs/ddd/domain/utils/result.util'
+
 import { UserRepository } from '@modules/user/database/user.repository'
 import { UserEntity } from '@modules/user/domain/entities/user.entity'
 import { FindUsersQuery } from '@modules/user/queries/find-users/find-users.query'
-import { QueryHandler } from '@nestjs/cqrs'
 
 @QueryHandler(FindUsersQuery)
 /**

@@ -1,3 +1,7 @@
+import { Module } from '@nestjs/common'
+import { CqrsModule } from '@nestjs/cqrs'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { CreateProductCliController } from '@modules/product/commands/create-product/create-product.cli.controller'
 import { CreateProductGraphqlResolver } from '@modules/product/commands/create-product/create-product.graphql-resolver'
 import { CreateProductHttpController } from '@modules/product/commands/create-product/create-product.http.controller'
@@ -11,9 +15,6 @@ import { createProductCliLoggerProvider } from '@modules/product/product.provide
 import { FindProductsGraphqlResolver } from '@modules/product/queries/find-products/find-products.graphql-resolver'
 import { FindProductsHttpController } from '@modules/product/queries/find-products/find-products.http.controller'
 import { FindProductsQueryHandler } from '@modules/product/queries/find-products/find-products.query-handler'
-import { Module } from '@nestjs/common'
-import { CqrsModule } from '@nestjs/cqrs'
-import { TypeOrmModule } from '@nestjs/typeorm'
 
 const httpControllers = [
   CreateProductHttpController,

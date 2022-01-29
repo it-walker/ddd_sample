@@ -1,7 +1,9 @@
-import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
-import { CreateProductRequest } from '@modules/product/commands/create-product/create-product.request.dto'
 import { CommandBus } from '@nestjs/cqrs'
 import { Args, Mutation, Resolver } from '@nestjs/graphql'
+
+import { CreateProductCommand } from '@modules/product/commands/create-product/create-product.command'
+import { CreateProductRequest } from '@modules/product/commands/create-product/create-product.request.dto'
+
 import { IdResponse } from '@src/libs/ddd/interface-adapters/dtos/id.response.dto'
 
 @Resolver()

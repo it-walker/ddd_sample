@@ -1,8 +1,9 @@
+import { Args, Query, Resolver } from '@nestjs/graphql'
+
 import { TaskRepository } from '@modules/task/database/task.repository'
 import { TaskResponse } from '@modules/task/dtos/task.response.dto'
 import { FindTasksQuery } from '@modules/task/queries/find-tasks/find-tasks.query'
 import { FindTasksRequest } from '@modules/task/queries/find-tasks/find-tasks.request.dto'
-import { Args, Query, Resolver } from '@nestjs/graphql'
 
 @Resolver()
 /**

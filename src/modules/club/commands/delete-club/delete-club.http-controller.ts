@@ -1,7 +1,9 @@
-import { routesV1 } from '@configs/app.routes'
+import { Controller, Delete, Param } from '@nestjs/common'
+
 import { DeleteClubCommand } from '@modules/club/commands/delete-club/delete-club.command'
 import { DeleteClubService } from '@modules/club/commands/delete-club/delete-club.service'
-import { Controller, Delete, Param } from '@nestjs/common'
+
+import { routesV1 } from '@configs/app.routes'
 
 @Controller(routesV1.version)
 export class DeleteClubHttpController {

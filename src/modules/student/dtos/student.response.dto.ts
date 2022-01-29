@@ -1,7 +1,10 @@
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
-import { StudentEntity } from '@modules/student/domain/entities/student.entity'
 import { Field, ObjectType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
+
+import { StudentEntity } from '@modules/student/domain/entities/student.entity'
+
 import { Student } from '@src/interface-adapters/interfaces/student/student.interface'
 
 @ObjectType() // only if you are using graphql

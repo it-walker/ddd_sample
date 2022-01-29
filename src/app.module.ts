@@ -1,19 +1,22 @@
 import { join } from 'path'
 
+import { Module } from '@nestjs/common'
+import { GraphQLModule } from '@nestjs/graphql'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { NestEventModule } from 'nest-event'
+import { ConsoleModule } from 'nestjs-console'
+
 import { ClubModule } from '@modules/club/club.module'
+import { ClubMemberModule } from '@modules/clubMember/club.member.module'
 import { ProductModule } from '@modules/product/product.module'
 import { StudentModule } from '@modules/student/student.module'
 import { TaskModule } from '@modules/task/task.module'
 import { UserModule } from '@modules/user/user.module'
 import { WalletModule } from '@modules/wallet/wallet.module'
-import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { AppConfigModule } from '@src/config/app/config.module'
 import { typeormConfig } from '@src/infrastructure/configs/ormconfig'
 import { UnitOfWorkModule } from '@src/infrastructure/database/unit-of-work/unit-of-work.module'
-import { NestEventModule } from 'nest-event'
-import { ConsoleModule } from 'nestjs-console'
 
 @Module({
   imports: [
@@ -33,6 +36,7 @@ import { ConsoleModule } from 'nestjs-console'
     ProductModule,
     TaskModule,
     ClubModule,
+    ClubMemberModule,
     StudentModule,
   ],
   controllers: [],

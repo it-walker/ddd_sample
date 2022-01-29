@@ -1,9 +1,4 @@
 import {
-  ConflictException,
-  ExceptionBase,
-  NotFoundException,
-} from '@libs/exceptions'
-import {
   CallHandler,
   // To avoid confusion between internal app exceptions and NestJS exceptions
   ConflictException as NestConflictException,
@@ -14,9 +9,14 @@ import {
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 
-/**
- * ExceptionInterceptor class
- */
+import {
+  ConflictException,
+  ExceptionBase,
+  NotFoundException,
+} from '@libs/exceptions'
+
+import { ClubAlreadyExistsError } from '@src/modules/club/errors/club.errors'
+
 export class ExceptionInterceptor implements NestInterceptor {
   /**
    *
@@ -36,6 +36,9 @@ export class ExceptionInterceptor implements NestInterceptor {
          */
         if (err instanceof NotFoundException) {
           throw new NestNotFoundException(err.message)
+        }
+        if (err instanceof ClubAlreadyExistsError) {
+          throw new ConflictException(err.message)
         }
         if (err instanceof ConflictException) {
           throw new NestConflictException(err.message)

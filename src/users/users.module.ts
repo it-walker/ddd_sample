@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { User } from '@src/entities/user.entity'
 import { UserMailAddress } from '@src/entities/userMailAddress.entity'
 import { TYPES } from '@src/interfaces/types'

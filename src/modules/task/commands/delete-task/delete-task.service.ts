@@ -1,6 +1,8 @@
-import { DeleteTaskCommand } from '@modules/task/commands/delete-task/delete-task.command'
 import { Inject } from '@nestjs/common'
 import { CommandHandler } from '@nestjs/cqrs'
+
+import { DeleteTaskCommand } from '@modules/task/commands/delete-task/delete-task.command'
+
 import { TaskRepository } from '@src/modules/task/database/task.repository'
 import { TaskRepositoryPort } from '@src/modules/task/database/task.repository.port'
 

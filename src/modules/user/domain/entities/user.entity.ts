@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
+
 import { UpdateUserAddressProps, UserRoles } from '@modules/user/domain/entities/user.types'
 import { UserCreatedDomainEvent } from '@modules/user/domain/events/user-created.domain-event'
 import { Address, AddressProps } from '@modules/user/domain/value-objects/address.value-object'

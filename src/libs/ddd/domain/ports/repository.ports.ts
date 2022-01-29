@@ -12,7 +12,7 @@ import { DeepPartial } from '@libs/types'
 export type QueryParams<EntityProps> = DeepPartial<
   BaseEntityProps & EntityProps
 >
-  ; export interface Save<Entity> {
+;export interface Save<Entity> {
   save(entity: Entity): Promise<Entity>;
 }
 
@@ -30,6 +30,10 @@ export interface FindOneById<Entity> {
 
 export interface FindMany<Entity, EntityProps> {
   findMany(params: QueryParams<EntityProps>): Promise<Entity[]>;
+}
+
+export interface FindByIds<Entity> {
+  findByIds(ids: string[]): Promise<Entity[]>;
 }
 
 export interface OrderBy {
@@ -67,11 +71,12 @@ export interface DeleteOne<Entity> {
 
 export interface RepositoryPort<Entity, EntityProps>
   extends Save<Entity>,
-  FindOne<Entity, EntityProps>,
-  FindOneById<Entity>,
-  FindMany<Entity, EntityProps>,
-  FindManyPaginated<Entity, EntityProps>,
-  DeleteOne<Entity>,
-  SaveMultiple<Entity> {
+    FindOne<Entity, EntityProps>,
+    FindOneById<Entity>,
+    FindMany<Entity, EntityProps>,
+    FindManyPaginated<Entity, EntityProps>,
+    FindByIds<Entity>,
+    DeleteOne<Entity>,
+    SaveMultiple<Entity> {
   setCorrelationId(correlationId: string): this;
 }

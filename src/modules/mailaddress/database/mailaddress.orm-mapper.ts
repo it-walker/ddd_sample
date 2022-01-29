@@ -3,6 +3,7 @@ import {
   MailaddressEntity,
   MailaddressProps,
 } from '@modules/mailaddress/domain/entities/mailaddress.entity'
+
 import { UUID } from '@src/libs/ddd/domain/value-objects/uuid.value-object'
 import {
   EntityProps,

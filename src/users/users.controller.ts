@@ -10,6 +10,7 @@ import {
   Res,
   UsePipes,
 } from '@nestjs/common'
+
 import { ValidationPipe } from '@src/common/validation.pipe'
 import { UserDomain } from '@src/domain/user.domain'
 import { TYPES } from '@src/interfaces/types'

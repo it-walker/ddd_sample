@@ -1,9 +1,11 @@
-import { Logger } from '@libs/ddd/domain/ports/logger.port'
-import { createClubCliLoggerSymbol } from '@modules/club/club.providers'
-import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 import { Inject } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import { Command, Console } from 'nestjs-console'
+
+import { Logger } from '@libs/ddd/domain/ports/logger.port'
+
+import { createClubCliLoggerSymbol } from '@modules/club/club.providers'
+import { CreateClubCommand } from '@modules/club/commands/create-club/create-club.command'
 
 @Console({
   command: 'new',
@@ -19,7 +21,7 @@ export class CreateClubCliController {
     private readonly commandBus: CommandBus,
     @Inject(createClubCliLoggerSymbol)
     private readonly logger: Logger,
-  ) { }
+  ) {}
 
   @Command({
     command: 'club <name> <status>',
@@ -29,12 +31,10 @@ export class CreateClubCliController {
    *
    * @param {string} name
    */
-  async createClub(
-    name: string,
-    isApproval: boolean,
-  ): Promise<void> {
+  async createClub(name: string, memberIds: string[]): Promise<void> {
     const command = new CreateClubCommand({
       name,
+      memberIds,
     })
 
     const id = await this.commandBus.execute(command)
