@@ -1,3 +1,7 @@
+import { Module } from '@nestjs/common'
+import { CqrsModule } from '@nestjs/cqrs'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { CreateStudentCliController } from '@modules/student/commands/create-student/create-student.cli.controller'
 import { CreateStudentGraphqlResolver } from '@modules/student/commands/create-student/create-student.graphql-resolver'
 import { CreateStudentHttpController } from '@modules/student/commands/create-student/create-student.http.controller'
@@ -11,9 +15,6 @@ import { FindStudentsGraphqlResolver } from '@modules/student/queries/find-stude
 import { FindStudentsHttpController } from '@modules/student/queries/find-students/find-students.http.controller'
 import { FindStudentsQueryHandler } from '@modules/student/queries/find-students/find-students.query-handler'
 import { createStudentCliLoggerProvider } from '@modules/student/student.providers'
-import { Module } from '@nestjs/common'
-import { CqrsModule } from '@nestjs/cqrs'
-import { TypeOrmModule } from '@nestjs/typeorm'
 
 const httpControllers = [
   CreateStudentHttpController,

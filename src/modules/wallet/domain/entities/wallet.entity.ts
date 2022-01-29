@@ -1,7 +1,9 @@
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { UUID } from '@libs/ddd/domain/value-objects/uuid.value-object'
 import { ArgumentOutOfRangeException } from '@libs/exceptions'
+
 import { WalletNotEnoughBalanceError } from '@modules/wallet/errors/wallet.errors'
+
 import { Result } from '@src/libs/ddd/domain/utils/result.util'
 
 export interface CreateWalletProps {

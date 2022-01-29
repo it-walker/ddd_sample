@@ -1,8 +1,10 @@
-import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
-import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
-import { CreateStudentRequest } from '@modules/student/commands/create-student/create-student.request.dto'
 import { CommandBus } from '@nestjs/cqrs'
 import { Args, Mutation, Resolver } from '@nestjs/graphql'
+
+import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
+
+import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
+import { CreateStudentRequest } from '@modules/student/commands/create-student/create-student.request.dto'
 
 @Resolver()
 export class CreateStudentGraphqlResolver {

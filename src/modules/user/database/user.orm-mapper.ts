@@ -4,14 +4,15 @@ import {
   OrmEntityProps,
   OrmMapper,
 } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base'
+
 import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
-import { UserEntity, UserProps } from '@modules/user/domain/entities/user.entity'
+import {
+  UserEntity,
+  UserProps,
+} from '@modules/user/domain/entities/user.entity'
 import { Address } from '@modules/user/domain/value-objects/address.value-object'
 import { Email } from '@modules/user/domain/value-objects/email.value-object'
 
-/**
- * UserOrmMapper class
- */
 export class UserOrmMapper extends OrmMapper<UserEntity, UserOrmEntity> {
   /**
    *

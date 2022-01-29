@@ -1,6 +1,7 @@
+import { nanoid } from 'nanoid'
+
 import { Guard } from '@libs/ddd/domain/guard'
 import { ArgumentNotProvidedException } from '@libs/exceptions'
-import { nanoid } from 'nanoid'
 
 export type CommandProps<T> = Omit<T, 'correlationId'> & Partial<Command>
   ; export class Command {

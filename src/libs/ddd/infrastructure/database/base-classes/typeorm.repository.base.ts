@@ -1,3 +1,5 @@
+import { FindConditions, ObjectLiteral, Repository } from 'typeorm'
+
 import { AggregateRoot } from '@libs/ddd/domain/base-classes/aggregate-root.base'
 import { DomainEvents } from '@libs/ddd/domain/domain-events'
 import { Logger } from '@libs/ddd/domain/ports/logger.port'
@@ -10,7 +12,6 @@ import {
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
 import { OrmMapper } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base'
 import { NotFoundException } from '@libs/exceptions'
-import { FindConditions, ObjectLiteral, Repository } from 'typeorm'
 
 export type WhereCondition<OrmEntity> =
   | FindConditions<OrmEntity>[]
@@ -24,9 +25,8 @@ export type WhereCondition<OrmEntity> =
 export abstract class TypeormRepositoryBase<
   Entity extends AggregateRoot<unknown>,
   EntityProps,
-  OrmEntity,
-  > implements RepositoryPort<Entity, EntityProps>
-{
+  OrmEntity
+> implements RepositoryPort<Entity, EntityProps> {
   /**
    * constructor
    * @param {Repository<OrmEntity>} repository
@@ -37,7 +37,7 @@ export abstract class TypeormRepositoryBase<
     protected readonly repository: Repository<OrmEntity>,
     protected readonly mapper: OrmMapper<Entity, OrmEntity>,
     protected readonly logger: Logger,
-  ) { }
+  ) {}
 
   protected abstract relations: string[];
 
@@ -77,7 +77,7 @@ export abstract class TypeormRepositoryBase<
       entity.validate()
       return this.mapper.toOrmEntity(entity)
     })
-    const result = await this.repository.save(ormEntities)
+const result = await this.repository.save(ormEntities)
     await Promise.all(
       entities.map((entity) =>
         DomainEvents.publishEvents(entity.id, this.logger, this.correlationId),
@@ -143,6 +143,12 @@ export abstract class TypeormRepositoryBase<
       where: this.prepareQuery(params),
       relations: this.relations,
     })
+
+    return result.map((item) => this.mapper.toDomainEntity(item))
+  }
+
+  async findByIds(ids: string[]): Promise<Entity[]> {
+    const result = await this.repository.findByIds(ids)
 
     return result.map((item) => this.mapper.toDomainEntity(item))
   }

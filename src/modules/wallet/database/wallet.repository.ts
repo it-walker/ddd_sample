@@ -1,15 +1,17 @@
+import { Injectable, Logger } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+
 import { QueryParams } from '@libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
+
 import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
 import { WalletOrmMapper } from '@modules/wallet/database/wallet.orm-mapper'
 import { WalletRepositoryPort } from '@modules/wallet/database/wallet.repository.port'
 import { WalletEntity, WalletProps } from '@modules/wallet/domain/entities/wallet.entity'
-import { Injectable, Logger } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
 
 @Injectable()
 /**

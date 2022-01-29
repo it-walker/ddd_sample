@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing'
+
 import { UserDomain } from '@src/domain/user.domain'
 import { TYPES } from '@src/interfaces/types'
 import { CreateUserApplication } from '@src/users/applications/create.user.application'

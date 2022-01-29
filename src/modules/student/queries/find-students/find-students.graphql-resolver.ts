@@ -1,8 +1,9 @@
+import { Args, Query, Resolver } from '@nestjs/graphql'
+
 import { StudentRepository } from '@modules/student/database/student.repository'
 import { StudentResponse } from '@modules/student/dtos/student.response.dto'
 import { FindStudentsQuery } from '@modules/student/queries/find-students/find-students.query'
 import { FindStudentsRequest } from '@modules/student/queries/find-students/find-students.request.dto'
-import { Args, Query, Resolver } from '@nestjs/graphql'
 
 @Resolver()
 export class FindStudentsGraphqlResolver {

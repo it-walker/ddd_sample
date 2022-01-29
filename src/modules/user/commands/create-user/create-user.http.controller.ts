@@ -1,14 +1,17 @@
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
+import { CommandBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
 import { Result } from '@libs/ddd/domain/utils/result.util'
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
 import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
 import { ConflictException } from '@libs/exceptions'
+
 import { CreateUserCommand } from '@modules/user/commands/create-user/create-user.command'
 import { CreateUserHttpRequest } from '@modules/user/commands/create-user/create-user.request.dto'
 import { UserAlreadyExistsError } from '@modules/user/errors/user.errors'
-import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
-import { CommandBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
+import { routesV1 } from '@configs/app.routes'
 
 @Controller(routesV1.version)
 /**

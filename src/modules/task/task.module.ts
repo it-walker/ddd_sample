@@ -1,3 +1,7 @@
+import { Module } from '@nestjs/common'
+import { CqrsModule } from '@nestjs/cqrs'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { CreateTaskCliController } from '@modules/task/commands/create-task/create-task.cli.controller'
 import { CreateTaskGraphqlResolver } from '@modules/task/commands/create-task/create-task.graphql-resolver'
 import { CreateTaskHttpController } from '@modules/task/commands/create-task/create-task.http.controller'
@@ -11,9 +15,6 @@ import { FindTasksGraphqlResolver } from '@modules/task/queries/find-tasks/find-
 import { FindTasksHttpController } from '@modules/task/queries/find-tasks/find-tasks.http.controller'
 import { FindTasksQueryHandler } from '@modules/task/queries/find-tasks/find-tasks.query-handler'
 import { createTaskCliLoggerProvider } from '@modules/task/task.providers'
-import { Module } from '@nestjs/common'
-import { CqrsModule } from '@nestjs/cqrs'
-import { TypeOrmModule } from '@nestjs/typeorm'
 
 const httpControllers = [
   CreateTaskHttpController,

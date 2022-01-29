@@ -1,6 +1,11 @@
+import { Injectable } from '@nestjs/common'
+
 import { TypeormUnitOfWork } from '@libs/ddd/infrastructure/database/base-classes/typeorm-unit-of-work'
+
 import { ClubOrmEntity } from '@modules/club/database/club.orm-entity'
 import { ClubRepository } from '@modules/club/database/club.repository'
+import { ClubMemberOrmEntity } from '@modules/clubMember/database/club.member.orm-entity'
+import { ClubMemberRepository } from '@modules/clubMember/database/club.member.repository'
 import { MailaddressOrmEntity } from '@modules/mailaddress/database/mailaddress.orm-entity'
 import { MailaddressRepository } from '@modules/mailaddress/database/mailaddress.repository'
 import { ProductOrmEntity } from '@modules/product/database/product.orm-entity'
@@ -13,7 +18,6 @@ import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
 import { UserRepository } from '@modules/user/database/user.repository'
 import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
 import { WalletRepository } from '@modules/wallet/database/wallet.repository'
-import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class UnitOfWork extends TypeormUnitOfWork {
@@ -80,6 +84,17 @@ export class UnitOfWork extends TypeormUnitOfWork {
   getClubRepository(correlationId: string): ClubRepository {
     return new ClubRepository(
       this.getOrmRepository(ClubOrmEntity, correlationId),
+    ).setCorrelationId(correlationId)
+  }
+
+  /**
+   * get ClubMemberRepository
+   * @param {string} correlationId
+   * @return {ClubMemberRepository}
+   */
+  getClubMemberRepository(correlationId: string): ClubMemberRepository {
+    return new ClubMemberRepository(
+      this.getOrmRepository(ClubMemberOrmEntity, correlationId),
     ).setCorrelationId(correlationId)
   }
 

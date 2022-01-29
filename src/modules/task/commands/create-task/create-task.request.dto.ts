@@ -1,7 +1,8 @@
 import { ArgsType, Field, InputType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
-import { CreateTask } from '@src/interface-adapters/interfaces/task/create.task.interface'
 import { IsDateString, MaxLength, MinLength } from 'class-validator'
+
+import { CreateTask } from '@src/interface-adapters/interfaces/task/create.task.interface'
 
 @ArgsType()
 @InputType()

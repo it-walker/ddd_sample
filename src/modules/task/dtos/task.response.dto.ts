@@ -1,8 +1,11 @@
-import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
-import { TaskEntity } from '@modules/task/domain/entities/task.entity'
-import { TaskStatus } from '@modules/task/domain/entities/task.type'
 import { Field, ObjectType } from '@nestjs/graphql'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { ResponseBase } from '@libs/ddd/interface-adapters/base-classes/response.base'
+
+import { TaskEntity } from '@modules/task/domain/entities/task.entity'
+import { TaskStatus } from '@modules/task/domain/entities/task.type'
+
 import { Task } from '@src/interface-adapters/interfaces/task/task.interface'
 
 @ObjectType() // only if you are using graphql

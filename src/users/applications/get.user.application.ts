@@ -1,4 +1,5 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common'
+
 import { UserDomain } from '@src/domain/user.domain'
 import { TYPES } from '@src/interfaces/types'
 import { IGetUserApplication } from '@src/interfaces/users/applications/get.user.application.interface'

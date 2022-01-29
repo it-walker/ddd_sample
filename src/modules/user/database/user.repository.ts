@@ -1,9 +1,14 @@
+import { Injectable, Logger } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+
 import { QueryParams } from '@libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
   WhereCondition,
 } from '@libs/ddd/infrastructure/database/base-classes/typeorm.repository.base'
 import { NotFoundException } from '@libs/exceptions'
+
 import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
 import { UserOrmMapper } from '@modules/user/database/user.orm-mapper'
 import { UserRepositoryPort } from '@modules/user/database/user.repository.port'
@@ -12,10 +17,8 @@ import {
   UserProps,
 } from '@modules/user/domain/entities/user.entity'
 import { FindUsersQuery } from '@modules/user/queries/find-users/find-users.query'
-import { Injectable, Logger } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
+
 import { removeUndefinedProps } from '@src/libs/utils/remove-undefined-props.util'
-import { Repository } from 'typeorm'
 
 @Injectable()
 /**

@@ -4,6 +4,7 @@ import {
   OrmEntityProps,
   OrmMapper,
 } from '@libs/ddd/infrastructure/database/base-classes/orm-mapper.base'
+
 import { WalletOrmEntity } from '@modules/wallet/database/wallet.orm-entity'
 import { WalletEntity, WalletProps } from '@modules/wallet/domain/entities/wallet.entity'
 

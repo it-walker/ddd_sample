@@ -1,4 +1,5 @@
 import { Global, Logger, Module } from '@nestjs/common'
+
 import { UnitOfWork } from '@src/infrastructure/database/unit-of-work/unit-of-work'
 
 const unitOfWorkSingleton = new UnitOfWork(new Logger())

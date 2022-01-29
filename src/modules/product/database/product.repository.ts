@@ -1,9 +1,12 @@
+import { Injectable, Logger, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+
 import { ProductOrmEntity } from '@modules/product/database/product.orm-entity'
 import { ProductOrmMapper } from '@modules/product/database/product.orm.mapper'
 import { ProductRepositoryPort } from '@modules/product/database/product.repository.port'
 import { FindProductsQuery } from '@modules/product/queries/find-products/find-products.query'
-import { Injectable, Logger, NotFoundException } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
+
 import { QueryParams } from '@src/libs/ddd/domain/ports/repository.ports'
 import {
   TypeormRepositoryBase,
@@ -14,7 +17,6 @@ import {
   ProductEntity,
   ProductProps,
 } from '@src/modules/product/domain/entities/product.entity'
-import { Repository } from 'typeorm'
 
 @Injectable()
 /**

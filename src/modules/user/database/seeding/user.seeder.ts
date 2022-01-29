@@ -1,6 +1,7 @@
+import { Factory, Seeder } from 'typeorm-seeding'
+
 import { userSeeds } from '@modules/user/database/seeding/user.seeds'
 import { UserOrmEntity } from '@modules/user/database/user.orm-entity'
-import { Factory, Seeder } from 'typeorm-seeding'
 
 /**
  * CreateUsers class

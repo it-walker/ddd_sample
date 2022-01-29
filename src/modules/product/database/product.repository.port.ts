@@ -1,4 +1,5 @@
 import { ProductEntity, ProductProps } from '@modules/product/domain/entities/product.entity'
+
 import { RepositoryPort } from '@src/libs/ddd/domain/ports/repository.ports'
 
 export interface ProductRepositoryPort

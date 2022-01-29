@@ -13,3 +13,17 @@ export class StudentAlreadyExistsError extends ExceptionBase {
     super(StudentAlreadyExistsError.message, metadata)
   }
 }
+
+export class StudentNotFoundError extends ExceptionBase {
+  static readonly message: 'Student not found';
+
+  public readonly code = 'STUDENT.NOT_FOUND';
+
+  /**
+   * constructor
+   * @param {unknown} metadata
+   */
+  constructor(metadata?: unknown) {
+    super(StudentAlreadyExistsError.message, metadata)
+  }
+}

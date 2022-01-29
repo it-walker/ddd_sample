@@ -1,6 +1,8 @@
+import { Controller, Delete, Param } from '@nestjs/common'
+
 import { DeleteTaskCommand } from '@modules/task/commands/delete-task/delete-task.command'
 import { DeleteTaskService } from '@modules/task/commands/delete-task/delete-task.service'
-import { Controller, Delete, Param } from '@nestjs/common'
+
 import { routesV1 } from '@src/infrastructure/configs/app.routes'
 
 @Controller(routesV1.version)

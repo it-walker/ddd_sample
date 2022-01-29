@@ -1,14 +1,17 @@
-import { routesV1 } from '@configs/app.routes'
+import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
+import { CommandBus } from '@nestjs/cqrs'
+import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
 import { Result } from '@libs/ddd/domain/utils/result.util'
 import { ID } from '@libs/ddd/domain/value-objects/id.value-object'
 import { IdResponse } from '@libs/ddd/interface-adapters/dtos/id.response.dto'
 import { ConflictException } from '@libs/exceptions'
+
 import { CreateStudentCommand } from '@modules/student/commands/create-student/create-student.command'
 import { CreateStudentHttpRequest } from '@modules/student/commands/create-student/create-student.request.dto'
 import { StudentAlreadyExistsError } from '@modules/student/errors/student.errors'
-import { Body, Controller, HttpStatus, Post } from '@nestjs/common'
-import { CommandBus } from '@nestjs/cqrs'
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+
+import { routesV1 } from '@configs/app.routes'
 
 @Controller(routesV1.version)
 export class CreateStudentHttpController {

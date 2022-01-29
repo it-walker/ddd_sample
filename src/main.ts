@@ -5,6 +5,7 @@ import {
   SwaggerDocumentOptions,
   SwaggerModule,
 } from '@nestjs/swagger'
+
 import { AppModule } from '@src/app.module'
 import { AppConfigService } from '@src/config/app/config.service'
 import { ExceptionInterceptor } from '@src/infrastructure/interceptors/exception.interceptor'

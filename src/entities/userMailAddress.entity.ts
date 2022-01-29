@@ -1,4 +1,3 @@
-import { User } from '@src/entities/user.entity'
 import {
   BaseEntity,
   Column,
@@ -7,6 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm'
+
+import { User } from '@src/entities/user.entity'
 
 @Entity()
 export class UserMailAddress extends BaseEntity {
